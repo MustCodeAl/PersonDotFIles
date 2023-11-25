@@ -1,0 +1,96 @@
+Actions.app
+Alacritty.app
+AltTab.app
+Anki.app
+AnyUnlock
+Background Music.app
+BetterDiscord.app
+Boris Continuum OFX HitFilm 2021.5
+Brave Browser.app
+Clean Me.app
+ClipGrab.app
+CodeWhisperer.app
+Color Picker.app
+Copilot for Xcode.app
+CotEditor.app
+Dash.app
+DevUtils.app
+Discord.app
+Do Not Disturb.app
+Docker.app
+Figma.app
+FileZilla.app
+Firefox Developer Edition.app
+Firefox.app
+Folder Peek.app
+GIMP.app
+GitHub Desktop.app
+Google Chrome Dev.app
+Google Chrome.app
+Google Docs.app
+Google Drive.app
+Google Sheets.app
+Google Slides.app
+Gyazo Menu.app
+Gyazo Video.app
+Gyazo.app
+HandBrake.app
+HandBrakeCLI
+Hidden Bar.app
+HitFilm.app
+Itsycal.app
+JetBrains Toolbox Apps
+Karabiner-Elements.app
+Karabiner-EventViewer.app
+Keynote.app
+Linear.app
+LinkLiar.app
+Microsoft Edge.app
+MiddleClick.app
+Notion.app
+Numbers.app
+Numi.app
+OBS.app
+OverSight.app
+PDFArchiver.app
+Pages.app
+Pareto Security.app
+Plash.app
+Platypus.app
+Postman.app
+PowerShell.app
+Python 3.12
+RapidAPI.app
+Raycast.app
+Refined GitHub.app
+RemotePlay.app
+Requestly.app
+Safari.app
+Shareful.app
+Stats.app
+SwitchHosts.app
+Timelane.app
+TinkerTool.app
+Tools for Xcode.app
+TorGuard.app
+UTM.app
+Unity
+Utilities
+VimR.app
+Visual Studio Code - Insiders.app
+Warp.app
+Wireshark.app
+Xcode.app
+YaCy.app
+Yippy.app
+badchrome_too.app
+blobsaver.app
+iMovie.app
+iTerm.app
+keycode
+logioptionsplus.app
+massCode.app
+mobirise.app
+response.html
+superProductivity.app
+zoom.us.app

@@ -1,0 +1,14 @@
+blessed==1.20.0
+click==8.1.7
+colorama==0.4.6
+gitdb==4.0.11
+GitPython==3.1.40
+inquirer==3.1.4
+pip==23.2.1
+python-editor==1.0.4
+readchar==4.0.5
+setuptools==69.0.2
+shallow-backup==6.3a0
+six==1.16.0
+smmap==5.0.1
+wcwidth==0.2.12
