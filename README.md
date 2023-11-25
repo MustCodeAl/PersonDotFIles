@@ -1,2 +1,2 @@
 # PersonDotFIles
-zsh etc
+zsh etc for mac
