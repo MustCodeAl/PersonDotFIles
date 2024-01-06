@@ -24,7 +24,6 @@ config.adjust_window_size_when_changing_font_size = false
 config.window_background_opacity = 0.9
 
 config.window_close_confirmation = 'NeverPrompt'
-config.default_prog = { '/opt/homebrew/bin/zsh', '-l' }
 -- and finally, return the configuration to wezterm
 return config
  
