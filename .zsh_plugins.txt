@@ -7,56 +7,77 @@ romkatv/zsh-defer kind:clone
 
 
 # git hub repos
-mroth/evalcache
 mafredri/zsh-async
 zpm-zsh/ls
 jeffreytse/zsh-vi-mode
+Freed-Wu/zsh-help
 MichaelAquilina/zsh-you-should-use
-qoomon/zsh-lazyload
+zpm-zsh/undollar
+zpm-zsh/mysql-colorize
+caarlos0/zsh-pg
+reegnz/jq-zsh-plugin
 
 
-# oh my zsh plugins
+
+
+
+## oh my zsh plugins
 ohmyzsh/ohmyzsh path:lib
 ohmyzsh/ohmyzsh path:plugins/aliases
 ohmyzsh/ohmyzsh path:plugins/brew
-ohmyzsh/ohmyzsh path:plugins/bundler
 ohmyzsh/ohmyzsh path:plugins/bun
 ohmyzsh/ohmyzsh path:plugins/command-not-found
+ohmyzsh/ohmyzsh path:plugins/docker
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/encode64
 ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/git
-ohmyzsh/ohmyzsh path:plugins/gradle
+ohmyzsh/ohmyzsh path:plugins/gradle kind:defer
 ohmyzsh/ohmyzsh path:plugins/mongocli
 ohmyzsh/ohmyzsh path:plugins/macos
-ohmyzsh/ohmyzsh path:plugins/npm
+ohmyzsh/ohmyzsh path:plugins/mise
 ohmyzsh/ohmyzsh path:plugins/nmap
-ohmyzsh/ohmyzsh path:plugins/nvm kind:defer
+ohmyzsh/ohmyzsh path:plugins/npm
 ohmyzsh/ohmyzsh path:plugins/pip
-ohmyzsh/ohmyzsh path:plugins/postgres kind:defer
+ohmyzsh/ohmyzsh path:plugins/postgres 
 ohmyzsh/ohmyzsh path:plugins/python
 ohmyzsh/ohmyzsh path:plugins/rust
-ohmyzsh/ohmyzsh path:plugins/tmux
-ohmyzsh/ohmyzsh path:plugins/thefuck
+ohmyzsh/ohmyzsh path:plugins/thefuck kind:defer
+ohmyzsh/ohmyzsh path:plugins/tmux kind:defer
+ohmyzsh/ohmyzsh path:plugins/wp-cli kind:defer
 ohmyzsh/ohmyzsh path:plugins/yarn
-ohmyzsh/ohmyzsh path:plugins/vagrant
-ohmyzsh/ohmyzsh path:plugins/wp-cli
 ohmyzsh/ohmyzsh path:plugins/zoxide
+
+
+
+
+
+
+
 
 #theme
 romkatv/powerlevel10k kind:fpath
 
+
+
+# benchmarking
 romkatv/zsh-bench kind:path
 
-zpm-zsh/mysql-colorize kind:defer
+
+
+
 zdharma-continuum/fast-syntax-highlighting kind:defer
 zsh-users/zsh-autosuggestions kind:defer
-reegnz/jq-zsh-plugin kind:defer
-caarlos0/zsh-pg kind:defer
 Aloxaf/fzf-tab kind:defer
+Freed-Wu/fzf-tab-source kind:defer
+hlissner/zsh-autopair kind:defer
+unixorn/warhol.plugin.zsh kind:defer
 
+
+
+
+# completions
 MenkeTechnologies/zsh-more-completions
-# mattmc3/zephyr path:plugins/completion
 
 
 
