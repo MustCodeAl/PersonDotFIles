@@ -1,0 +1,38 @@
+[style.description]
+foreground = {rgb= {r =253 ,g =254 ,b = 255 } }
+underline = false
+bold = false
+italic = false
+
+[style.command_name]
+foreground = {rgb={r =96, g = 174, b =239 }}
+
+underline = false
+bold = true
+italic = false
+
+[style.example_text]
+foreground = {rgb ={ r = 213, g = 216 ,b =224 }}  
+underline = false
+bold = false
+italic = true
+
+[style.example_code]
+foreground = {rgb = { r = 79 , g = 250, b =123 } }
+
+underline = false
+bold = false
+italic = true
+
+[style.example_variable]
+foreground = {rgb ={r = 255 , g =121 ,b=  197  } }
+underline = true
+bold = false
+italic = false
+
+
+[updates]
+auto_update = false
+auto_update_interval_hours = 720
+
+[directories]
