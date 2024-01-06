@@ -1,19 +1,11 @@
+
 # CodeWhisperer pre block. Keep at the top of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
-
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
-
-
 
 
 
 # .zshrc
+FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 autoload -Uz compinit
 ZSH_COMPDUMP=${ZSH_COMPDUMP:-${ZDOTDIR:-~}/.zcompdump}
 
@@ -33,15 +25,47 @@ fi
 
 
 
+
 setopt COMBINING_CHARS
+
 # ########################################################################################################################
 # environment variables
 # ########################################################################################################################
 
 
 
+# remove duplicat entries from $PATH
+# zsh uses $path array along with $PATH
+typeset -U PATH path
 
-#export NVM_DIR="$HOME/.nvm"
+
+
+export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
+export PATH="/opt/homebrew/opt/icu4c/sbin:$PATH"
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+
+#export FPATH="~/eza/completions/zsh:$FPATH"
+
+
+
+
+
+#For compilers to find readline you may need to set:
+#  export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
+#  export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
+
+#export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
+
+
+export ANTIDOTE_HOME="$HOME/.cache/antidote"
+export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
+
+export HOMEBREW_PREFIX=/opt/homebrew
+
+#---------------------------------------exports-----------------------------------------------#
 
 
 if [[ -n $SSH_CONNECTION ]]; then
@@ -52,72 +76,57 @@ fi
 
 
 
-# remove duplicat entries from $PATH
-# zsh uses $path array along with $PATH
-typeset -U PATH path
 
-
-
-#export PATH="$(yarn global bin):$PATH"
-export PATH="/usr/local/opt/libpq/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
-
-
-export ANTIDOTE_HOME="$HOME/.cache/antidote"
-export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
-
-
-export LANG=en_US.UTF-8
-# You don't strictly need this collation, but most technical people
-# probably want C collation for sane results
-export LC_COLLATE=C
-
-
-
-
-
-
-
-
-export RUST_BACKTRACE=full
-
-export CARGO_INCREMENTAL=0
-export SCCACHE_ERROR_LOG=/tmp/sccache_log.txt
-#export SCCACHE_LOG=debug
-
-export RUSTC_WRAPPER=~/.cargo/bin/sccache
-export CMAKE_C_COMPILER_LAUNCHER=sccache
-export CMAKE_CXX_COMPILER_LAUNCHER=sccache
-
-
-
-
-#export PYTHONSTARTUP=$HOME/.pythonstartup
-#export PYTHONVERBOSE=1
 export PYTHONDEBUG=1
 export BETTER_EXCEPTIONS=1
 
 
 
-export CLICOLOR=1
-export LESS="$LESS -R"
-export LESSOPEN='|~/.lessfilter %s'
-export LESSCOLORIZER='bat'
-#export BATPIPE='color'
-
-export MANPAGER='manpager --theme=\"Monokai Extended\" --style=plain | less --pattern=^\\S+'
 
 
+export SCCACHE_ERROR_LOG=/tmp/sccache_log.txt
+
+
+export RUST_BACKTRACE=full
+export CARGO_INCREMENTAL=0
+export RUSTC_WRAPPER=~/.cargo/bin/sccache
+
+export CMAKE_C_COMPILER_LAUNCHER=sccache
+export CMAKE_CXX_COMPILER_LAUNCHER=sccache
+
+
+
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+
+export CFLAGS="-I$(brew --prefix)/include" 
+export CPPFLAGS="-I/opt/homebrew/include"
+export LDFLAGS="-L$(brew --prefix)/lib"
 
 
 
 
-export LDFLAGS="-L/opt/homebrew/opt/postgresql@15/lib"
-export CPPFLAGS="-I/opt/homebrew/opt/postgresql@15/include"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@15/lib/pkgconfig"
-export VCPKG_ROOT="$HOME/vcpkg"
+#export LDFLAGS="-L/opt/homebrew/lib"
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/postgresql@16/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/postgresql@16/include"
 
 
+export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/lib/pkgconfig"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+#export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig:$(brew --prefix)/opt/mysql-client/lib/pkgconfig:/opt/homebrew/opt/readline/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/curl/lib/pkgconfig:/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+
+
+
+
+
+
+
+
+
+
+
+#------------------------------------plugin exports-------------------------------------#
 
 
 export FZF_BASE="/opt/homebrew/bin/fzf"
@@ -126,25 +135,26 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
 
+export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion history)
+export ZSH_AUTOSUGGEST_COMPLETION_IGNORE="\#*"
 
 
 
+export CLICOLOR=1
+export LESS="$LESS -R"
+export LESSOPEN='|~/.lessfilter %s'
+export LESSCOLORIZER='bat'
+export MANPAGER='manpager --style=plain | less --pattern=^\\S+'
 
-# git repository greeter
-last_repository=
-check_directory_for_new_repository() {
-	current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
 
-	if [ "$current_repository" ] && \
-	   [ "$current_repository" != "$last_repository" ]; then
-		onefetch
-	fi
-	last_repository=$current_repository
-}
-cd() {
-	builtin cd "$@"
-	check_directory_for_new_repository
-}
+export warhol_ignore_du=1
+export warhol_ignore_df=1
+export warhol_ignore_diff=1
+export warhol_ignore_ls=1
+export warhol_ignore_ps=1
+
+
+
 
 
 # ########################################################################################################################
@@ -193,27 +203,16 @@ source $zsh_plugins
 
 
 # integrations
-#source $HOME/.iterm2_shell_integration.zsh
+source $HOME/.iterm2_shell_integration.zsh
 
-#zstyle ':antidote:bundle' use-friendly-names 'yes'
 
 # Append a command directly
 zvm_after_init_commands+=(
-    '_evalcache atuin init zsh'
-    '[ -f /opt/homebrew/share/zsh-autopair/autopair.zsh ] && source /opt/homebrew/share/zsh-autopair/autopair.zsh'
+    'eval "$(atuin init zsh)"'
 )
 
-#zvm_after_init_commands+=(
-#    '_evalcache atuin init zsh'
-#    '[ -f /opt/homebrew/share/zsh-autopair/autopair.zsh ] && source /opt/homebrew/share/zsh-autopair/autopair.zsh'
-#    '[ -f ~/fzf-tab/fzf-tab.plugin.zsh ] && source ~/fzf-tab/fzf-tab.plugin.zsh'
-#)
 
 
-
-
-#ZSH_AUTOSUGGEST_STRATEGY=(completion match_prev_cmd history)
-ZSH_AUTOSUGGEST_COMPLETION_IGNORE="\#*"
 
 
 
@@ -228,11 +227,6 @@ autoload -Uz promptinit && promptinit && prompt powerlevel10k
 
 
 
-
-
-#source /opt/homebrew/etc/grc.zsh
-
-source ~/zsh-help/help.plugin.zsh
 
 
 # ########################################################################################################################
@@ -262,9 +256,9 @@ source ~/zsh-help/help.plugin.zsh
 # binds
 # ########################################################################################################################
 
-ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BEAM
-ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
+# ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BEAM
+# ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
+# ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
 
 
 
@@ -275,113 +269,10 @@ ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
 
 
 
-# ########################################################################################################################
-# completion stuff
-# ########################################################################################################################
+
+# #############################################[ Evals ]###########################################################
 
 
-
-# disable sort when completing `git checkout`
-zstyle ':completion:*:git-checkout:*' sort false
-# set descriptions format to enable group support
-zstyle ':completion:*:descriptions' format '[%d]'
-# set list-colors to enable filename colorizing
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-
-
-
-
-# preview directory's content with eza when completing cd
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath' # remember to use single quote here!!!
-
-# switch group using `,` and `.`
-zstyle ':fzf-tab:*' switch-group ',' '.'
-
-
-# preview stuff with lesspiper
-zstyle ':fzf-tab:complete:*:*' fzf-preview 'less ${(Q)realpath}'
-
-# disable preview for options and subcommands
-zstyle ':fzf-tab:complete:*:options' fzf-preview 
-zstyle ':fzf-tab:complete:*:argument-1' fzf-preview
-
-
-
-# for killl give a preview of commandline arguments when completing `kill`
-zstyle ':completion:*:*:*:*:processes' command "ps -u $USER -o pid,user,comm -w -w"
-zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-preview '[[ $group == "[process ID]" ]] && ps --pid=$word -o cmd --no-headers -w -w'
-zstyle ':fzf-tab:complete:(kill|ps):argument-rest' fzf-flags --preview-window=down:3:wrap
-zstyle ':fzf-tab:complete:systemctl-*:*' fzf-preview 'SYSTEMD_COLORS=1 systemctl status $word'
-
-
-
-
-
-# for env variables
-zstyle ':fzf-tab:complete:(-command-|-parameter-|-brace-parameter-|export|unset|expand):*' fzf-preview 'echo ${(P)word}'
-
-
-# homebrew competion
-zstyle ':fzf-tab:complete:brew-(install|uninstall|search|info):*-argument-rest' fzf-preview 'brew info $word'
-
-# for man pagesf
-zstyle ':fzf-tab:complete:(\\|)run-help:*' fzf-preview 'run-help $word'
-zstyle ':fzf-tab:complete:(\\|*/|)man:*' fzf-preview 'man $word'
-
-# for tldr
-zstyle ':fzf-tab:complete:tldr:argument-1' fzf-preview 'tldr --color always $word'
-
-
-
-# for command completions
-zstyle ':fzf-tab:complete:-command-:*' fzf-preview \ ¦ '(out=$(tldr --color always "$word") 2>/dev/null && echo $out) || (out=$(MANWIDTH=$FZF_PREVIEW_COLUMNS man "$word") 2>/dev/null && echo $out) || (out=$(which "$word") && echo $out) || echo "${(P)word}"'
-
-
-
-
-# for git completions it is an example. you can change it
-zstyle ':fzf-tab:complete:git-(add|diff|restore):*' fzf-preview 'git diff $word | delta'
-zstyle ':fzf-tab:complete:git-log:*' fzf-preview 'git log --color=always $word'
-zstyle ':fzf-tab:complete:git-help:*' fzf-preview 'git help $word | bat -plman --color=always'
-zstyle ':fzf-tab:complete:git-show:*' fzf-preview \
-	'case "$group" in
-	"commit tag") git show --color=always $word ;;
-	*) git show --color=always $word | delta ;;
-	esac'
-zstyle ':fzf-tab:complete:git-checkout:*' fzf-preview \
-	'case "$group" in
-	"modified file") git diff $word | delta ;;
-	"recent commit object name") git show --color=always $word | delta ;;
-	*) git log --color=always $word ;;
-	esac'
-	
-	
-
-
-
-
-# for other completions
-zstyle ':fzf-tab:user-expand:*' fzf-preview 'less ${(Q)word}'
-
-
-
-
-
-FZF_TAB_GROUP_COLORS=(
-    $'\033[94m' $'\033[32m' $'\033[33m' $'\033[35m' $'\033[31m' $'\033[38;5;27m' $'\033[36m' \
-    $'\033[38;5;100m' $'\033[38;5;98m' $'\033[91m' $'\033[38;5;80m' $'\033[92m' \
-    $'\033[38;5;214m' $'\033[38;5;165m' $'\033[38;5;124m' $'\033[38;5;120m'
-)
-
-zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
-
-
-
-
-
-
-
-# ########################################################################################################################
 
 
 
@@ -391,152 +282,94 @@ zstyle ':fzf-tab:*' group-colors $FZF_TAB_GROUP_COLORS
 # -------aliases---------
 # ########################################################################################################################
 
-_evalcache manpager
-#_evalcache batpipe
-_evalcache thefuck --alias FUCK
-_evalcache direnv hook zsh
-#_evalcache dircolors -b
-lesspipe.sh | source /dev/stdin
-
-# --------------------------------appearance-------------------------------#
 
 
 
-alias cat="bat --paging=never"
-
-alias lt="ls --tree"
-alias sl='ls'
-# Save from mistyping
-
-
-
+# -------------------------------------replacements--------------------------#
+alias aggregate="rs-aggregate"
+alias cat="bat"
+alias cloc="tokei"
+alias curl="curlie"
+alias cp="xcp"
+alias df="duf"
+alias du="dust"
+alias diff="delta"
+alias find="fd"
+alias grep="rga --color=auto"
+alias hexadump="hexyl"
+alias ps="procs"
+alias sed="sd"
+alias timer="hyperfine"
+alias top="btm"
+alias uniq="huniq"
 
 # -------------------------------------commands--------------------------#
-alias grep="rg --color=auto"
-alias curl=curlie
-alias find=fd
-alias ps=procs
+
 
 
 # Overwrite existing commands for better defaults
+alias cp="cp -i"
+
 alias mv="mv -i"
-# -i prompts before overwrite
+
+alias rm="rm -i"
+
 alias mkdir="mkdir -p"
-# -p make parent dirs as needed
-alias df="df -h"
-# -h prints human readable format
+
+# -------------------------------------utitlies--------------------------#
+
+alias csvutil="qsv"
+alias ch="cht.sh"
+alias code="code-insiders"
+alias dox="sn0int"
+alias hp="http-prompt"
+alias int="interpreter"
+alias listalias="als"
+alias lte="ls --tree"
+alias ltd="tldr -p linux"
+alias lv="lnav"
+alias sl="ls"
+alias szrc="source ~/.zshrc"
+alias wt="wezterm"
+alias zplug="cot ~/.zsh_plugins.txt"
+alias zpro="cot ~/.zprofile"
+alias zrc="cot ~/.zshrc"
 
 
-alias tldrl="tldr -p linux"
 
 
-alias zshconfig="cot ~/.zshrc"
-alias zshplugins="cot ~/.zsh_plugins.txt"
-#alias log="/opt/homebrew/bin/grc --colour=auto log"
 
+# ##########################################[Lazy Loading scripts ]###############################################################
 
 
 
 #macchina
-[ "$(date +%j)" != "$(cat ~/.mf.prevtime 2>/dev/null)" ] && { macchina > ~/.mf; date +%j > ~/.mf.prevtime; cat ~/.mf; } || cat ~/.mf
-
-# neofetch
-#[ "$(date +%j)" != "$(cat ~/.nf.prevtime 2>/dev/null)" ] && { neofetch > ~/.nf; date +%j > ~/.nf.prevtime; cat ~/.nf; } || cat ~/.nf
-# ########################################################################################################################
+[ "$(date +%j)" != "$(cat ~/.mf.prevtime 2>/dev/null)" ] && { macchina > ~/.mf; date +%j > ~/.mf.prevtime; cat --style=plain ~/.mf; } || cat --style=plain ~/.mf
 
 
+# git repository greeter aka onefetch
+last_repository=
+check_directory_for_new_repository() {
+	current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-alias code=code-insiders
-
-
-PYENV_ROOT="${HOME}/.pyenv"
-if [[ -d "$PYENV_ROOT}" ]]; then
-  pyenv () {
-    if ! (($path[(Ie)${PYENV_ROOT}/bin])); then
-      path[1,0]="${PYENV_ROOT}/bin"
-    fi
-    eval "$(command pyenv init -)"
-    pyenv "$@"
-    unfunction pyenv
-  }
-else
-  unset PYENV_ROOT
-fi
-
-
-
-
-# Add any commands which depend on conda here
-lazy_conda_aliases=('python' 'conda')
-
-load_conda() {
-  for lazy_conda_alias in $lazy_conda_aliases
-  do
-    unalias $lazy_conda_alias
-  done
-
-  __conda_prefix="$HOME/.miniconda3" # Set your conda Location
-
-  # >>> conda initialize >>>
-  __conda_setup="$("$__conda_prefix/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
-  if [ $? -eq 0 ]; then
-      eval "$__conda_setup"
-  else
-      if [ -f "$__conda_prefix/etc/profile.d/conda.sh" ]; then
-          . "$__conda_prefix/etc/profile.d/conda.sh"
-      else
-          export PATH="$__conda_prefix/bin:$PATH"
-      fi
-  fi
-  unset __conda_setup
-  # <<< conda initialize <<<
-
-  unset __conda_prefix
-  unfunction load_conda
+	if [ "$current_repository" ] && \
+	   [ "$current_repository" != "$last_repository" ]; then
+		onefetch
+	fi
+	last_repository=$current_repository
+}
+cd() {
+	z "$@"
+	check_directory_for_new_repository
 }
 
-for lazy_conda_alias in $lazy_conda_aliases
-do
-  alias $lazy_conda_alias="load_conda && $lazy_conda_alias"
-done
 
 
+# bun completions
+#[ -s "/opt/homebrew/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/share/zsh/site-functions/_bun"
 
 
+#[ -s "/opt/homebrew/share/zsh/site-functions/_mise" ] && source "/opt/homebrew/share/zsh/site-functions/_mise"
 
 
 
@@ -544,4 +377,6 @@ done
 
 # CodeWhisperer post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
+
+
 
