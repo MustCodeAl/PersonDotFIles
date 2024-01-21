@@ -2,7 +2,7 @@ local cmp = require "cmp"
 
 local plugins = {
     {
-        'mrjones2014/legendary.nvim',
+        'mrjones2014/legendary.nvim', -- editor actions window like vs code and intellj
         -- since legendary.nvim handles all your keymaps/commands,
         -- its recommended to load legendary.nvim before other plugins
         priority = 10000,
@@ -14,6 +14,13 @@ local plugins = {
 
                 autocmds = {
 
+                    -- Create autocmds and augroups
+                    { 'BufWritePre', vim.lsp.buf.format, description = 'Format on save' },
+                    {
+                        name = 'MyAugroup',
+                        clear = true,
+                        -- autocmds here
+                    },
                 },
 
                 -- load extesnions
@@ -46,7 +53,7 @@ local plugins = {
         end,
     },
     {
-        "rcarriga/nvim-dap-ui",
+        "rcarriga/nvim-dap-ui", -- dap ui interface
         dependencies = "mfussenegger/nvim-dap",
         config = function()
             require("neodev").setup({ library = { plugins = { "nvim-dap-ui" }, types = true } })
@@ -66,28 +73,46 @@ local plugins = {
     },
 
     {
-        "williamboman/mason.nvim",
+        "williamboman/mason.nvim", -- plugin installer
         ops = {
             ensure_installed = {
-                "rust-analyzer",
                 "black",
+
                 "debugpy",
                 "mypy",
                 "ruff",
-                "pyright",
-                "eslint-lsp",
+
                 "prettierd",
                 "tailwindcss-language-server",
-                "typescript-language-server",
-            },
+            }
+
+
         },
     },
+
+    { "williamboman/mason-lspconfig.nvim",
+      lazy = false,
+      config = function()
+          require("mason-lspconfig").setup {
+              ensure_installed = { "rust_analyzer",
+
+                                   "pyright",
+                                   "eslint",
+
+              },
+          }
+      end,
+
+
+    },
+
+
     {
-        'nvim-treesitter/nvim-treesitter-context',
+        'nvim-treesitter/nvim-treesitter-context', -- add context bars at status bar for top
         lazy = false
     },
     {
-        "github/copilot.vim",
+        "github/copilot.vim", -- github copilot
         lazy = false,
         config = function()
             -- Mapping tab is already used by NvChad
@@ -97,20 +122,7 @@ local plugins = {
             -- or run <leader>ch to see copilot mapping section
         end
     },
-    --    {
-    --        "zbirenbaum/copilot.lua",
-    --        cmd = "Copilot",
-    --        event = "InsertEnter",
-    --        config = function()
-    --            require("copilot").setup({})
-    --        end,
-    --    },
-    --    {
-    --        "zbirenbaum/copilot-cmp",
-    --        config = function()
-    --            require("copilot_cmp").setup()
-    --        end
-    --    },
+
     {
         "neovim/nvim-lspconfig",
         config = function()
@@ -119,48 +131,18 @@ local plugins = {
         end,
 
     },
-    {
-        "lvimuser/lsp-inlayhints.nvim",
-        lazy = false,
-        config = function()
-            require("lsp-inlayhints").setup()
-            require("lsp-inlayhints").toggle()
-            require('lsp-inlayhints').show()
-        end,
-    },
-    {
-        "rust-lang/rust.vim",
-        ft = "rust",
-        init = function()
-            vim.g.rustfmt_autosave = 1
-        end,
-
-    },
-    --		disabling rust-tools
-    --	{
-    --		"simrat39/rust-tools.nvim",
-    --		ft = "rust",
-    --		dependencies = "neovim/nvim-lspconfig",
-    --
-    --		opts = function ()
-    --			return require "custom.configs.rust-tools"
-    --		end,
-    --		config = function(_, opts)
-    --			require('rust-tools').setup(opts)
-    --		end
-    --
-    --	},
-
 
 
     {
-        "mfussenegger/nvim-dap",
+        "mfussenegger/nvim-dap", -- debugger for every language
         init = function()
             require("core.utils").load_mappings("dap")
+            require "custom.configs.dap"
+
         end
     },
     {
-        "mfussenegger/nvim-dap-python",
+        "mfussenegger/nvim-dap-python", -- debugger for python language
         ft = "python",
         dependencies = {
             "mfussenegger/nvim-dap",
@@ -189,54 +171,26 @@ local plugins = {
 
         end,
     },
+
     {
-    "windwp/nvim-ts-autotag",
-    ft = {"javascript", "javascriptreact", "typescript", "typescriptreact"},
-    config = function()
-      require("nvim-ts-autotag").setup()
-    end,
-  },
-    {
-        "theHamsta/nvim-dap-virtual-text",
+        "theHamsta/nvim-dap-virtual-text", -- show debugger errors in line
         lazy = false,
         config = function(_, opts)
             require("nvim-dap-virtual-text").setup()
         end
     },
+
     {
-        "hrsh7th/nvim-cmp",
-        opts = function()
-            local M = require "plugins.configs.cmp"
-            M.completion.completeopt = "menu,menuone,noselect"
-            M.mapping["<CR>"] = cmp.mapping.confirm {
-                behavior = cmp.ConfirmBehavior.Insert,
-                select = false,
-            }
-            table.insert(M.sources, { name = "crates" })
-            return M
-        end,
-    },
-    {
-        "jose-elias-alvarez/null-ls.nvim",
-        ft = { "python" },
-        opts = function()
-            return require "custom.configs.null-ls"
-        end,
-    },
-    { "folke/neodev.nvim", opts = {}, lazy = false },
-    {
-        "yamatsum/nvim-cursorline",
+        "yamatsum/nvim-cursorline", -- add underline to word undernetih curosr
         lazy = false,
     },
     {
-        "HiPhish/rainbow-delimiters.nvim",
+        "HiPhish/rainbow-delimiters.nvim", -- add rainbow delimiters like rainbow brackets
         lazy = false,
     },
     {
-        'gelguy/wilder.nvim',
-        dependencies = { 'roxma/nvim-yarp',
-                         'roxma/vim-hug-neovim-rpc',
-                         'romgrk/fzy-lua-native', },
+        'gelguy/wilder.nvim', -- better menu for commands
+        dependencies = { 'romgrk/fzy-lua-native', },
         lazy = false,
         config = function()
             local wilder = require("wilder")
@@ -261,54 +215,32 @@ local plugins = {
         end,
     },
     {
-        'sakhnik/nvim-gdb'
-    },
-    {
-        "luukvbaal/statuscol.nvim",
-        dependencies = "mfussenegger/nvim-dap",
-        config = function()
-            -- local builtin = require("statuscol.builtin")
-            require("statuscol").setup({
-            })
-        end,
-        lazy = false,
+        'sakhnik/nvim-gdb' -- code lldb and gdb integration
     },
 
     {
-        "SmiteshP/nvim-navic",
-        lazy = false,
-    },
-    {
-        'gorbit99/codewindow.nvim',
-        lazy = false,
-        config = function()
-            local codewindow = require('codewindow')
-            codewindow.setup()
-            codewindow.apply_default_keybinds()
-        end,
-    },
-    {
-        "utilyre/barbecue.nvim",
+        "utilyre/barbecue.nvim", -- window bars for coding
         name = "barbecue",
         version = "*",
         dependencies = {
             "SmiteshP/nvim-navic",
             "nvim-tree/nvim-web-devicons", -- optional dependency
         },
-        lazy = false,
         opts = {
             -- configurations go here
         },
     },
     {
-        'mfussenegger/nvim-lint',
-        lazy = false,
+        'mfussenegger/nvim-lint', -- linting plugin
     },
     {
-        'mhartington/formatter.nvim',
+        'mhartington/formatter.nvim', -- formatting for all linters
+        config = function()
+            require "custom.configs.formatter"
+        end,
     },
     {
-        'mrcjkb/rustaceanvim',
+        'mrcjkb/rustaceanvim', -- rust plugin
         version = '^3', -- Recommended
         ft = { 'rust' },
         dependencies = {
@@ -321,32 +253,28 @@ local plugins = {
         },
         config = function()
             vim.g.rustaceanvim = {
-                -- Update this path
-                dap = {
-                    adapter = require('rustaceanvim.dap').get_codelldb_adapter('~/.vscode-insiders/extensions/vadimcn.vscode-lldb-1.10.0/adapter/codelldb', '~/.vscode-insiders/extensions/vadimcn.vscode-lldb-1.10.0/lldb/lib/liblldb.dylib'),
-                },
-                --                inlay_hints = {
-                --                    highlight = "NonText",
-                --                },
                 tools = {
                     hover_actions = {
                         auto_focus = true,
                     },
 
                 },
-                --server = {
-                --on_attach = function(client, bufnr)
-                --require("lsp-inlayhints").on_attach(client, bufnr)
+                inlay_hints = {
+                    highlight = "NonText",
+                },
+                server = {
+                    on_attach = function(client, bufnr)
+                        require("lsp-inlayhints").on_attach(client, bufnr)
 
-                --end
-                --}
-
+                        -- you can also put keymaps in here
+                    end,
+                },
             }
         end,
     },
     {
-        "ThePrimeagen/refactoring.nvim",
-        lazy = false,
+        "ThePrimeagen/refactoring.nvim", -- refacotring plugin
+        
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
@@ -355,13 +283,13 @@ local plugins = {
             require("refactoring").setup()
         end,
     },
-    { "pmizio/typescript-tools.nvim",
+    { "pmizio/typescript-tools.nvim", -- typescript tools
       dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
       opts = {},
 
     },
     {
-        "ray-x/web-tools.nvim",
+        "ray-x/web-tools.nvim", -- web tools
         config = function()
             require 'web-tools'.setup({
                 keymaps = {
@@ -383,20 +311,19 @@ local plugins = {
 
     },
     {
-        "hinell/lsp-timeout.nvim",
+        "hinell/lsp-timeout.nvim", -- idle loading for lsp
         dependencies = "neovim/nvim-lspconfig",
         lazy = false,
     },
     {
-        'VidocqH/lsp-lens.nvim',
-        lazy = false,
+        'VidocqH/lsp-lens.nvim', -- intellj like code usage lens
         config = function()
             require('lsp-lens').setup()
         end,
 
     },
     {
-        "kylechui/nvim-surround",
+        "kylechui/nvim-surround", -- surround vim brackets
         version = "*", -- Use for stability; omit to use `main` branch for the latest features
         event = "VeryLazy",
         config = function()
@@ -406,127 +333,60 @@ local plugins = {
         end
     },
     {
-        'christoomey/vim-tmux-navigator',
+        'christoomey/vim-tmux-navigator', -- tmux integration
     },
     {
-        'onsails/lspkind.nvim',
+        'onsails/lspkind.nvim', -- pictograms for code completion menu
         lazy = false,
         config = function()
             require('lspkind').init({
-                -- DEPRECATED (use mode instead): enables text annotations
-                --
-                -- default: true
-                -- with_text = true,
-
-                -- defines how annotations are shown
-                -- default: symbol
-                -- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
-                mode = 'symbol_text',
-
-                -- default symbol map
-                -- can be either 'default' (requires nerd-fonts font) or
-                -- 'codicons' for codicon preset (requires vscode-codicons font)
-                --
-                -- default: 'default'
-                preset = 'codicons',
-
-                -- override preset symbols
-                --
-                -- default: {}
-                symbol_map = {
-                    Text = "󰉿",
-                    Method = "󰆧",
-                    Function = "󰊕",
-                    Constructor = "",
-                    Field = "󰜢",
-                    Variable = "󰀫",
-                    Class = "󰠱",
-                    Interface = "",
-                    Module = "",
-                    Property = "󰜢",
-                    Unit = "󰑭",
-                    Value = "󰎠",
-                    Enum = "",
-                    Keyword = "󰌋",
-                    Snippet = "",
-                    Color = "󰏘",
-                    File = "󰈙",
-                    Reference = "󰈇",
-                    Folder = "󰉋",
-                    EnumMember = "",
-                    Constant = "󰏿",
-                    Struct = "󰙅",
-                    Event = "",
-                    Operator = "󰆕",
-                    TypeParameter = "",
-                },
             })
         end,
     },
+    --    {
+    --        "cpea2506/relative-toggle.nvim",
+    --        lazy = false,
+    --    },
     {
-        "cpea2506/relative-toggle.nvim",
-        lazy = false,
+        "ThePrimeagen/harpoon", -- bookmarks for code
+        branch = "harpoon2",
+        dependencies = { "nvim-lua/plenary.nvim" }
     },
     {
-        'ThePrimeagen/harpoon',
+        'duane9/nvim-rg', --rip grep intergration
     },
     {
-        'duane9/nvim-rg',
-    },
-    {
-        "0oAstro/dim.lua",
+        "0oAstro/dim.lua", -- code focusing feature to turn  code grey when not used
         dependencies = { "nvim-treesitter/nvim-treesitter", "neovim/nvim-lspconfig" },
-        lazy = false,
     },
     {
-        'stevearc/dressing.nvim',
+        'stevearc/dressing.nvim', -- better ui for neovim menus
         opts = {},
         lazy = false,
     },
-    { "andrewferrier/debugprint.nvim",
-      lazy = false,
 
-        -- Dependency only needed for NeoVim 0.8
-      dependencies = {
-          "nvim-treesitter/nvim-treesitter"
-      },
-    },
 
     {
-        'nvim-treesitter/nvim-treesitter-textobjects',
-        lazy = false,
+        'nvim-treesitter/nvim-treesitter-textobjects', -- text swapping features
     },
     {
-        'Wansmer/treesj',
+        'Wansmer/treesj', -- code spllitting and joining blocks of code
         keys = { '<space>m', '<space>j', '<space>s' },
         dependencies = { 'nvim-treesitter/nvim-treesitter' },
         config = function()
             require('treesj').setup({--[[ your config ]]})
         end,
     },
-    {
-        'ThePrimeagen/vim-be-good',
-    },
 
-    --    {
-    --        "m4xshen/hardtime.nvim",
-    --        lazy = false,
-    --        dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-    --        opts = {disable_mouse = false, restriction_mode = "hint" }
-    --    },
-    { 'rcarriga/nvim-notify' },
     {
-        'mizlan/iswap.nvim',
-    },
-    {
-        "cshuaimin/ssr.nvim",
+        "cshuaimin/ssr.nvim", -- strucutred search and replace
 
     },
 
-    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build', lazy = false },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build', lazy = false }, -- use fzf for telescope
 
     {
-        "nvim-telescope/telescope.nvim",
+        "nvim-telescope/telescope.nvim", -- override default telescope to aadd fzf
         dependencies = {
             "nvim-lua/plenary.nvim",
             "debugloop/telescope-undo.nvim",
@@ -556,20 +416,8 @@ local plugins = {
             -- optional: vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
         end,
     },
-    {
-        "smjonas/live-command.nvim",
-        lazy = false,
-        -- live-command supports semantic versioning via tags
-        -- tag = "1.*",
-        config = function()
-            require("live-command").setup {
-                commands = {
-                    Norm = { cmd = "norm" },
-                },
-            }
-        end,
-    },
-    { 'kosayoda/nvim-lightbulb',
+
+    { 'kosayoda/nvim-lightbulb', -- lightbux to show somemthing needs to get fixed
       lazy = false,
       config = function()
           require("nvim-lightbulb").setup({
@@ -578,33 +426,34 @@ local plugins = {
       end,
     },
     {
-        'nvim-lua/lsp-status.nvim',
+        'nvim-lua/lsp-status.nvim', -- lsp information on jobs
         lazy = false,
-    },
-    {
-        "nvim-tree/nvim-tree.lua",
-        version = "*",
-        lazy = false,
-        dependencies = {
-            "nvim-tree/nvim-web-devicons",
-        },
         config = function()
-            require("nvim-tree").setup {}
+            require('lsp-status').register_progress()
+        end
+    },
+
+    {
+        "folke/trouble.nvim", -- pretty list for showing errors
+        dependencies = { "nvim-tree/nvim-web-devicons" },
+        cmd = "Trouble",
+        config = function()
+            dofile(vim.g.base46_cache .. "trouble")
+            require("trouble").setup()
+        end
+    },
+
+
+    {
+        'wfxr/minimap.vim', -- code glance lens
+        lazy = false,
+        build = "cargo install --locked code-minimap",
+        cmd = { "Minimap", "MinimapClose", "MinimapToggle", "MinimapRefresh", "MinimapUpdateHighlight" },
+        init = function()
+            vim.cmd("let g:minimap_width = 10")
+            vim.cmd("let g:minimap_auto_start = 1")
         end,
     },
-    {
-  "folke/trouble.nvim",
-  cmd = "Trouble",
-  config = function()
-     dofile(vim.g.base46_cache .. "trouble")
-     require("trouble").setup()
-  end
-}, {
-    'wfxr/minimap.vim',
-  },
-  {
-    'neoclide/coc.nvim',
-  }
 
 }
 
