@@ -11,8 +11,10 @@ then do `cargo install sccache --locked` before you install anything
 
 MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMUM PERFORMANCE GAINS ON MAC
 
+`brew install atuin bat tealdeer sd fd just bingrep ripgrep ripgrep-all git-delta procs grex starship just dust code-minimap mdbook ast-grep cherrybomb bacon fclones trippy gitui lemmeknow macchina onefetch tokei bottom qsv hyperfine mdcat hexyl`
 
-then `cargo install atuin bat eza tealdeer bottom git-delta fd-find macchina qsv tokei sd procs hexyl du-dust onefetch dtool huniq bingrep grex lemmeknow ripsecrets show-asm mdcat gitui starship`
+
+then `cargo install atuin bat eza tealdeer bottom git-delta fd-find macchina qsv tokei sd procs hexyl du-dust onefetch dtool huniq bingrep grex lemmeknow ripsecrets cargo-show-asm mdcat gitui starship`
 
 
 
