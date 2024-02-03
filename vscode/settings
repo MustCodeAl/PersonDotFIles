@@ -2,15 +2,18 @@
   "diffEditor.hideUnchangedRegions.enabled": true,
   "editor.accessibilitySupport": "off",
   "editor.fontSize": 14,
+  "editor.inlayHints.padding": true,
   "editor.inlineSuggest.enabled": true,
   "editor.semanticHighlighting.enabled": true,
   "errorLens.enabledDiagnosticLevels": [
     "error",
     "warning",
-    "info",
-    "hint"
+    "info"
   ],
-  "github.copilot.advanced": {},
+  "github.copilot.advanced": {
+    // "debug.testOverrideProxyUrl": "http://localhost:5001",
+    // "debug.overrideProxyUrl": "http://localhost:5001"
+  },
   "github.copilot.enable": {
     "*": true,
     "markdown": false,
@@ -19,11 +22,17 @@
   },
   "javascript.inlayHints.enumMemberValues.enabled": true,
   "javascript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "javascript.inlayHints.parameterNames.enabled": "all",
   "javascript.inlayHints.parameterTypes.enabled": true,
   "javascript.inlayHints.propertyDeclarationTypes.enabled": true,
   "javascript.inlayHints.variableTypes.enabled": true,
+  "javascript.inlayHints.variableTypes.suppressWhenTypeMatchesName": false,
   "material-icon-theme.activeIconPack": "react",
+  "php.inlayHints.parameters.byReference": true,
+  "php.inlayHints.parameters.enabled": true,
   "php.inlayHints.types.return": true,
+  "php.inlayHints.types.suppressVariableFromLiteral": false,
+  "php.inlayHints.types.variable": true,
   "python.analysis.inlayHints.callArgumentNames": "all",
   "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.pytestParameters": true,
@@ -37,6 +46,10 @@
   "rust-analyzer.inlayHints.lifetimeElisionHints.useParameterNames": true,
   "rust-analyzer.inlayHints.typeHints.hideClosureInitialization": true,
   "rust-analyzer.inlayHints.typeHints.hideNamedConstructor": true,
+  "rust-analyzer.semanticHighlighting.operator.specialization.enable": true,
+  "rust-analyzer.semanticHighlighting.punctuation.enable": true,
+  "rust-analyzer.semanticHighlighting.punctuation.separate.macro.bang": true,
+  "rust-analyzer.semanticHighlighting.punctuation.specialization.enable": true,
   "screencastMode.keyboardOptions": {
     "showCommandGroups": true,
     "showKeys": false,
@@ -53,9 +66,40 @@
   "terminal.integrated.fontFamily": "MesloLGS NF",
   "typescript.inlayHints.enumMemberValues.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.parameterNames.enabled": "all",
+  "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
   "workbench.colorCustomizations": {},
-  "workbench.colorTheme": "GapStyle VS",
-  "workbench.iconTheme": "material-icon-theme"
+  "workbench.colorTheme": "One Dark Pro",
+  "workbench.iconTheme": "vscode-icons",
+  "editor.inlayHints.fontSize": 11,
+  "editor.fontFamily": "Hack NF FC Ligatured, Meslo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.bracketPairColorization.independentColorPoolPerBracketType": true,
+  "editor.language.colorizedBracketPairs": [
+    
+  ],
+  "editor.codeLensFontSize": 10,
+
+  "editor.suggest.preview": true,
+  "errorLens.gutterIconsEnabled": true,
+  "errorLens.selectProblemType": "closestSeverity",
+  "[vue]": {
+    "editor.defaultFormatter": "Vue.volar"
+  },
+  "vue.inlayHints.inlineHandlerLeading": true,
+  "vue.inlayHints.missingProps": true,
+  "vue.inlayHints.optionsWrapper": true,
+  "statsBar.location": "Right",
+  "statsBar.modules": [
+    "cpuLoad",
+    "memoUsage",
+    "networkSpeed"
+  ],
+  "terminal.integrated.fontSize": 13,
+  "auto-rename-tag.activationOnLanguage": [
+  
+    "*"
+  ]
 }
