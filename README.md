@@ -2,7 +2,7 @@
 zsh etc for mac
 do `cargo install sccache --locked` to get started
 
-then `cargo install atuin bat eza tealdeer bottom git-delta fd-find macchina qsv tokei sd procs hexyl du-dust onefetch dtool huniq bingrep grex`
+then `cargo install atuin bat eza tealdeer bottom git-delta fd-find macchina qsv tokei sd procs hexyl du-dust onefetch dtool huniq bingrep grex lemmeknow ripsecrets show-asm mdcat gitui starship`
 
 
 use [brew](https://brew.sh/) to install every needed tool `brew install --no-quarantine mise alt-tab brave-browser jetbrains-toolbox devutils iterm2 codewhisperer diffusionbee displaylink librewolf powershell swift-quit
