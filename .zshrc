@@ -42,14 +42,12 @@ typeset -U PATH path
 
 export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
 export PATH="/opt/homebrew/opt/icu4c/sbin:$PATH"
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-
-#export FPATH="~/eza/completions/zsh:$FPATH"
-
-
+export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 
 
 
@@ -109,10 +107,19 @@ export LDFLAGS="-L$(brew --prefix)/lib"
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/postgresql@16/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/postgresql@16/include"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/mysql-client/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/mysql-client/include"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/sqlite/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/sqlite/include"
 
 
 export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/lib/pkgconfig"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+export VCPKG_ROOT="$HOME/vcpkg"
+
 
 #export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig:$(brew --prefix)/opt/mysql-client/lib/pkgconfig:/opt/homebrew/opt/readline/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/curl/lib/pkgconfig:/opt/homebrew/opt/openssl@3/lib/pkgconfig"
 
@@ -203,6 +210,14 @@ source $zsh_plugins
 
 
 # integrations
+#if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+##### WHAT YOU WANT TO DISABLE FOR WARP - BELOW
+
+#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+##### WHAT YOU WANT TO DISABLE FOR WARP - ABOVE
+#fi
+
 source $HOME/.iterm2_shell_integration.zsh
 
 
@@ -290,12 +305,13 @@ alias aggregate="rs-aggregate"
 alias cat="bat"
 alias cloc="tokei"
 alias curl="curlie"
-alias cp="xcp"
+# alias cp="xcp"
 alias df="duf"
 alias du="dust"
 alias diff="delta"
 alias find="fd"
 alias grep="rga --color=auto"
+alias egrep="rga -F"
 alias hexadump="hexyl"
 alias ps="procs"
 alias sed="sd"
@@ -342,7 +358,6 @@ alias zrc="cot ~/.zshrc"
 # ##########################################[Lazy Loading scripts ]###############################################################
 
 
-
 #macchina
 [ "$(date +%j)" != "$(cat ~/.mf.prevtime 2>/dev/null)" ] && { macchina > ~/.mf; date +%j > ~/.mf.prevtime; cat --style=plain ~/.mf; } || cat --style=plain ~/.mf
 
@@ -364,19 +379,49 @@ cd() {
 }
 
 
+mcd (){
+    mkdir -p -- "$1" &&
+    z "$1"
+}
 
-# bun completions
-#[ -s "/opt/homebrew/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/share/zsh/site-functions/_bun"
-
-
-#[ -s "/opt/homebrew/share/zsh/site-functions/_mise" ] && source "/opt/homebrew/share/zsh/site-functions/_mise"
-
+#
+## Add any commands which depend on conda here
+##lazy_conda_aliases=('python' 'conda')
+#
+#load_conda() {
+#  for lazy_conda_alias in $lazy_conda_aliases
+#  do
+#    unalias $lazy_conda_alias
+#  done
+#
+#  __conda_prefix="/opt/homebrew/Caskroom/miniconda/base" # Set your conda Location
+##  __conda_prefix="$HOME/.miniconda3" # Set your conda Location
+#
+#  # >>> conda initialize >>>
+#  __conda_setup="$("$__conda_prefix/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+#  if [ $? -eq 0 ]; then
+#      eval "$__conda_setup"
+#  else
+#      if [ -f "$__conda_prefix/etc/profile.d/conda.sh" ]; then
+## . "$__conda_prefix/etc/profile.d/conda.sh"  # commented out by conda initialize
+#      else
+#          export PATH="$__conda_prefix/bin:$PATH"
+#      fi
+#  fi
+#  unset __conda_setup
+#  # <<< conda initialize <<<
+#
+#  unset __conda_prefix
+#  unfunction load_conda
+#}
+#
+#for lazy_conda_alias in $lazy_conda_aliases
+#do
+#  alias $lazy_conda_alias="load_conda && $lazy_conda_alias"
+#done
 
 
 
 
 # CodeWhisperer post block. Keep at the bottom of this file.
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.post.zsh"
-
-
-
