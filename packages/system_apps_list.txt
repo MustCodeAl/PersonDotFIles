@@ -91,6 +91,24 @@ keycode
 logioptionsplus.app
 massCode.app
 mobirise.app
+
+1542271266  Silicon Info        (1.0.3)
+497799835   Xcode               (15.2)
+409183694   Keynote             (13.2)
+1586435171  Actions             (3.1.0)
+408981434   iMovie              (10.4)
+640199958   Developer           (10.4.1)
+1494023538  Plash               (2.14.1)
+899247664   TestFlight          (3.3.0)
+409201541   Pages               (13.2)
+1037126344  Apple Configurator  (2.17)
+1450874784  Transporter         (1.2.5)
+682658836   GarageBand          (10.4.10)
+1066302071  New File Menu Lite  (1.7.2)
+1496833156  Playgrounds         (4.4.1)
+409203825   Numbers             (13.2)
+1519867270  Refined GitHub      (23.12.1)
+
 response.html
 superProductivity.app
 zoom.us.app
