@@ -1,325 +1,60 @@
-tap "armmbed/formulae"
-tap "b3z/small"
-tap "esolitos/ipa"
-tap "guoxbin/guoxbin"
-tap "heroku/brew"
-tap "homebrew/bundle"
-tap "homebrew/cask"
-tap "homebrew/cask-fonts"
-tap "homebrew/core"
-tap "homebrew/services"
-tap "hudochenkov/sshpass"
-tap "jandedobbeleer/oh-my-posh"
-tap "kde-mac/kde", "https://invent.kde.org/packaging/homebrew-kde.git"
-tap "koekeishiya/formulae"
-tap "louisbrunner/valgrind"
-tap "markwu/personal"
-tap "michaeleisel/zld"
-tap "nikolaeu/numi"
-tap "romkatv/powerlevel10k"
-tap "schappim/ocr"
-tap "snaipe/soft"
-tap "sourcegraph/src-cli"
-tap "stripe/stripe-cli"
-tap "trufflesecurity/trufflehog"
-tap "vultr/vultr-cli"
-tap "wez/wezterm"
-brew "libpng"
-brew "archey"
-brew "glib"
-brew "openssl@1.1"
-brew "readline"
-brew "python@3.9"
-brew "atk"
-brew "atuin"
-brew "autoconf"
-brew "automake"
-brew "pycparser"
-brew "cffi"
-brew "python@3.11"
-brew "awscli"
-brew "bash"
-brew "bash-completion@2"
-brew "node"
-brew "bash-language-server"
-brew "boost"
-brew "bastet"
-brew "bat"
-brew "bat-extras"
-brew "bison"
-brew "python-packaging"
-brew "botan"
-brew "brew-gem"
-brew "bzip2"
-brew "cabal-install"
-brew "fontconfig"
-brew "cairo"
-brew "carthage"
-brew "coreutils"
-brew "unbound"
-brew "gnutls"
-brew "emacs"
-brew "cask"
-brew "clazy"
-brew "clib"
-brew "cling"
-brew "cmake"
-brew "cmake-docs"
-brew "cog"
-brew "comby"
-brew "freetds"
-brew "libsodium"
-brew "php"
-brew "composer"
-brew "cowsay"
-brew "cppcheck"
-brew "cppman"
-brew "curlie"
-brew "dashing"
-brew "deno"
-brew "gcc"
-brew "openblas"
-brew "dlib"
-brew "doctl"
-brew "doxygen"
-brew "dust"
-brew "harfbuzz"
-brew "emscripten"
-brew "exempi"
-brew "exiv2"
-brew "expat"
-brew "eza"
-brew "fd"
-brew "fdupes"
-brew "leptonica"
-brew "libass"
-brew "pango"
-brew "sdl2"
-brew "tesseract"
-brew "zeromq"
-brew "ffmpeg"
-brew "ffmpeg@4"
-brew "findutils"
-brew "ncurses"
-brew "fish"
-brew "fmt"
-brew "fortune"
-brew "fpp"
-brew "fx"
-brew "fzf"
-brew "gawk"
-brew "gcovr"
-brew "gdk-pixbuf"
-brew "geckodriver"
-brew "gflags"
-brew "gh"
-brew "ghq"
-brew "git"
-brew "git-delta"
-brew "gitui"
-brew "python@3.12"
-brew "glances"
-brew "glfw"
-brew "glog"
-brew "gnu-sed"
-brew "gnupg"
-brew "qt"
-brew "gnuplot"
-brew "go"
-brew "gobject-introspection"
-brew "golangci-lint"
-brew "gpgme"
-brew "gts"
-brew "librsvg"
-brew "graphviz"
-brew "grc"
-brew "grex"
-brew "grpc"
-brew "gsl"
-brew "gtk+"
-brew "gtk4"
-brew "handbrake"
-brew "hfstospell"
-brew "htop"
-brew "httpie"
-brew "hub"
-brew "ipcalc"
-brew "iproute2mac"
-brew "ipython", link: false
-brew "iredis"
-brew "iso-codes"
-brew "java-service-wrapper"
-brew "jc"
-brew "jq"
-brew "jump"
-brew "lcov"
-brew "libconfig"
-brew "libgit2@1.6"
-brew "libproxy"
-brew "libvoikko"
-brew "libvterm"
-brew "libxml2"
-brew "lighthouse"
-brew "qemu"
-brew "lima"
-brew "llvm"
-brew "lnav"
-brew "macchina"
-brew "make"
-brew "mas"
-brew "maven"
-brew "metashell"
-brew "minicom"
-brew "miniserve"
-brew "mint"
-brew "python-cryptography"
-brew "mitmproxy"
-brew "mongo-c-driver"
-brew "mongo-cxx-driver"
-brew "monolith"
-brew "mprocs"
-brew "yt-dlp"
-brew "mpv"
-brew "mycli"
-brew "mysql"
-brew "mysql-client"
-brew "mysql++"
-brew "nano"
-brew "nanorc"
-brew "neofetch"
-brew "neovim"
-brew "ninja"
-brew "ninvaders"
-brew "nlohmann-json"
-brew "nmap"
-brew "nudoku"
-brew "numcpp"
-brew "nushell"
-brew "nvm"
-brew "onefetch"
-brew "open-ocd"
-brew "openjdk@11"
-brew "openapi-generator"
-brew "openjdk@17"
-brew "pcapplusplus"
-brew "peco"
-brew "perl"
-brew "pgcli"
-brew "phoneinfoga"
-brew "pinentry-mac"
-brew "pipenv"
-brew "python-argcomplete"
-brew "pipx"
-brew "platypus"
-brew "podman"
-brew "podofo"
-brew "poppler-qt5"
-brew "powerlevel10k"
-brew "procs"
-brew "pup"
-brew "pv"
-brew "pyenv"
-brew "ruff"
-brew "python-lsp-server"
-brew "python-tk@3.11"
-brew "python-tk@3.12"
-brew "python-tk@3.9"
-brew "python@3.10"
-brew "qca"
-brew "quicktype"
-brew "rapidjson"
-brew "redis"
-brew "ripgrep"
-brew "rlwrap"
-brew "ruby@2.7", link: true
-brew "rust-analyzer"
-brew "s3cmd"
-brew "scc"
-brew "shellcheck"
-brew "shfmt"
-brew "sipcalc"
-brew "sn0int"
-brew "sonar-completion"
-brew "sonar-scanner"
-brew "sonarqube"
-brew "starship"
-brew "stdman"
-brew "streamlink"
-brew "tealdeer"
-brew "thefuck"
-brew "tmuxinator"
-brew "tokei"
-brew "umple"
-brew "uncrustify"
-brew "vcprompt"
-brew "vim"
-brew "wget"
-brew "wireshark", link: false
-brew "yarn"
-brew "yasm"
-brew "yaz"
-brew "youtube-dl"
-brew "yq"
-brew "zellij"
-brew "zoxide"
-brew "zsh"
-brew "zsh-autopair"
-brew "zsh-autosuggestions"
-brew "zsh-completions"
-brew "zsh-fast-syntax-highlighting"
-brew "zsh-vi-mode"
-brew "zsh-you-should-use"
-brew "armmbed/formulae/arm-none-eabi-gcc"
-brew "heroku/brew/heroku"
-brew "hudochenkov/sshpass/sshpass"
-brew "jandedobbeleer/oh-my-posh/oh-my-posh"
-brew "koekeishiya/formulae/skhd"
-brew "michaeleisel/zld/zld"
-brew "nikolaeu/numi/numi-cli"
-brew "schappim/ocr/ocr"
-brew "snaipe/soft/libcsptr"
-brew "sourcegraph/src-cli/src-cli"
-brew "stripe/stripe-cli/stripe"
-brew "trufflesecurity/trufflehog/trufflehog"
-brew "vultr/vultr-cli/vultr-cli"
-cask "alacritty"
-cask "alt-tab"
-cask "background-music"
-cask "chromedriver"
-cask "chromium"
-cask "clean-me"
-cask "clipy"
-cask "copilot-for-xcode"
-cask "coteditor"
-cask "cutter"
-cask "fig"
-cask "firefox"
-cask "font-fira-code-nerd-font"
-cask "hiddenbar"
-cask "iterm2"
-cask "linkliar"
-cask "middleclick"
-cask "notion"
-cask "platypus"
-cask "postman"
-cask "powershell"
-cask "superproductivity"
-cask "temurin"
-cask "vimr"
-cask "warp"
-cask "wireshark"
-cask "xquartz"
-cask "zoom"
-mas "Actions", id: 1586435171
-mas "Color Picker", id: 1545870783
-mas "Folder Peek", id: 1615988943
-mas "iMovie", id: 408981434
-mas "Keynote", id: 409183694
-mas "Numbers", id: 409203825
-mas "Pages", id: 409201541
-mas "PDF Archiver", id: 1433801905
-mas "Plash", id: 1494023538
-mas "Refined GitHub", id: 1519867270
-mas "Shareful", id: 1522267256
-mas "Tools for Xcode", id: 1524738503
-mas "Xcode", id: 497799835
+abseil			giflib			libevent		libxau			openjpeg		snappy
+ansifilter		glib			libffi			libxcb			openldap		speex
+aom			gmp			libfido2		libxdmcp		openssl@1.1		sqlite
+apr			gnu-sed			libgcrypt		libxext			openssl@3		srt
+apr-util		gnupg			libgit2			libxml2			openvino		stripe
+argon2			gnutls			libgpg-error		libxrender		opus			svt-av1
+aribb24			go			libheif			libyaml			ossp-uuid		tbb
+aspell			gpgme			libiconv		libzip			p11-kit			tesseract
+autoconf		graphite2		libidn			lima			pandoc			texinfo
+automake		grc			libidn2			little-cms2		pango			thefuck
+bash			groff			libksba			lnav			pcre			theora
+bashdb			handbrake		liblinear		lua			pcre2			tidy-html5
+bison			harfbuzz		liblqr			lua-language-server	php			tmux
+brotli			highway			libmagic		luajit			pinentry		tree-sitter
+ca-certificates		hivemind		libmicrohttpd		luv			pixman			uchardet
+cairo			html2text		libmpc			lz4			pkg-config		unbound
+capstone		http-prompt		libnghttp2		lzo			poppler			unibilium
+cjson			httpd			libogg			m4			postgresql@16		unixodbc
+cmake			httpie			libomp			mandoc			procyon-decompiler	unrtf
+colima			hurl			libpaper		mas			protobuf		utf8proc
+composer		hwloc			libplacebo		mbedtls			protobuf-c		vapoursynth
+conan			icu4c			libplist		mise			protobuf@21		vcpkg
+coreutils		imagemagick		libpng			mkcert			pscale			vde
+cpufetch		imath			libpq			mpdecimal		psutils			vulkan-headers
+curl			isl			libraw			mpfr			pugixml			vulkan-loader
+curlie			jansson			librist			mpg123			pv			webp
+dav1d			jasper			libsamplerate		mpv			pygments		wget
+dtc			jbig2dec		libscrypt		msgpack			python-brotli		wp-cli
+duf			jc			libslirp		mujs			python-certifi		x264
+exiftool		jpeg			libsndfile		mysql			python-click		x265
+eza			jpeg-turbo		libsodium		mysql-client		python-markupsafe	xorgproto
+ffmpeg			jpeg-xl			libsoxr			ncurses			python-mutagen		xvid
+fish			jq			libssh			netpbm			python@3.12		xz
+flac			json-c			libssh2			nettle			pyyaml			yara
+fmt			jsoncpp			libtasn1		ninja			qemu			youtube-dl
+fontconfig		krb5			libtermkey		nmap			qodana			yt-dlp
+freetds			lame			libtiff			npth			rav1e			zeromq
+freetype		leptonica		libtool			nspr			re2c			zimg
+frei0r			lesspipe		libunibreak		nss			readline		zlib
+fribidi			libarchive		libunistring		numpy			rlwrap			zoxide
+fzf			libass			libusb			nushell			rtmpdump		zsh
+gawk			libassuan		libuv			ocr			rtx			zshdb
+gcc			libavif			libvidstab		oh-my-posh		rubberband		zstd
+gd			libb2			libvmaf			oniguruma		sdl2
+geckodriver		libbluray		libvorbis		openblas		shaderc
+gettext			libcbor			libvpx			opencore-amr		shared-mime-info
+gh			libde265		libvterm		openexr			shellcheck
+ghostscript		libedit			libx11			openjdk			six
+
+==> Casks
+alt-tab				devutils			librewolf			powershell			swift-quit
+anki				docker				linear-linear			provisionql			switchhosts
+apparency			exifcleaner			linkliar			qlimagesize			syntax-highlight
+background-music		github				masscode			qlvideo				tunnelblick
+betterzip			google-chrome			mediainfo			qlzipinfo			utm
+cakebrew			handbrake			obs				quicklookase			visual-studio-code-insiders
+chromedriver			hiddenbar			orion				raycast				warp
+clover-configurator		iina				pencil				stats				wezterm
+coteditor			jetbrains-toolbox		pgadmin4			superproductivity
+cutter				keycastr			platypus			suspicious-package
