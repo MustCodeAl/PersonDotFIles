@@ -18,7 +18,7 @@ then `cargo install atuin bat eza tealdeer bottom git-delta fd-find macchina qsv
 
 
 
-```sh
+```shell
 $ brew install mise raycast alt-tab brave-browser hiddenbar jetbrains-toolbox iterm2 codewhisperer stats displaylink swift-quit
 $ brew install anki linear-linear provisionql switchhosts
 $ brew install apparency exifcleaner linkliar qlimagesize syntax-highlight
