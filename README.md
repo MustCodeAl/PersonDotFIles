@@ -28,7 +28,7 @@ cakebrew handbrake obs quicklookase visual-studio-code-insiders
 chromedriver orion  warp devutils
 clover-configurator diffusionbee iina pencil librewolf powershell wezterm
 coteditor pgadmin4 superproductivity
-cutter keycastr platypus suspicious-package mullvadvpn docker
+cutter keycastr platypus suspicious-package mullvadvpn docker zed pieces
 
 ```
 
