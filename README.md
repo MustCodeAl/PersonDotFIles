@@ -19,16 +19,16 @@ then `cargo install atuin bat eza tealdeer bottom git-delta fd-find macchina qsv
 
 
 ```sh
-brew install --no-quarantine mise raycast alt-tab brave-browser hiddenbar jetbrains-toolbox iterm2 codewhisperer stats displaylink swift-quit
-anki linear-linear provisionql switchhosts
-apparency exifcleaner linkliar qlimagesize syntax-highlight
-background-music github masscode qlvideo google-chrome
-betterzip google-chrome mediainfo qlzipinfo utm
-cakebrew handbrake obs quicklookase visual-studio-code-insiders
-chromedriver orion  warp devutils
-clover-configurator diffusionbee iina pencil librewolf powershell wezterm
-coteditor pgadmin4 superproductivity
-cutter keycastr platypus suspicious-package mullvadvpn docker zed pieces
+brew install mise raycast alt-tab brave-browser hiddenbar jetbrains-toolbox iterm2 codewhisperer stats displaylink swift-quit
+brew install anki linear-linear provisionql switchhosts
+brew install apparency exifcleaner linkliar qlimagesize syntax-highlight
+brew install background-music github masscode qlvideo google-chrome
+brew install betterzip google-chrome mediainfo qlzipinfo utm
+brew install cakebrew handbrake obs quicklookase visual-studio-code-insiders
+brew install chromedriver orion  warp devutils
+brew install clover-configurator diffusionbee iina pencil librewolf powershell wezterm
+brew install coteditor pgadmin4 superproductivity
+brew install cutter keycastr platypus suspicious-package mullvadvpn docker zed pieces
 
 ```
 
