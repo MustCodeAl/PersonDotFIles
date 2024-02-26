@@ -31,6 +31,8 @@ $ brew install clover-configurator diffusionbee iina pencil librewolf powershell
 $ brew install coteditor pgadmin4 superproductivity
 $ brew install cutter keycastr platypus suspicious-package mullvadvpn docker zed pieces
 ```
+make sure you do `brew outdated --greedy` to check for updates as some applications like brave-browser to self update and brew ignores them
+
 
 `brew install logi-options-plus`
 `brew install clipgrab`
