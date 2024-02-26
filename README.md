@@ -33,6 +33,10 @@ $ brew install cutter keycastr platypus suspicious-package mullvadvpn docker zed
 ```
 make sure you do `brew outdated --greedy` to check for updates as some applications like brave-browser to self update and brew ignores them
 
+`brew upgrade brave-browser --greedy`
+
+`brew upgrade --greedy` to update all casks at the same time (NOT RECOMMENDED )
+
 
 `brew install logi-options-plus`
 `brew install clipgrab`
