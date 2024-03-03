@@ -1,0 +1,15 @@
+venvs are in /Users/notlaggy/Library/Application Support/pipx/venvs
+apps are exposed on your $PATH at /Users/notlaggy/.local/bin
+manual pages are exposed at /Users/notlaggy/.local/share/man
+   package open-interpreter 0.2.0, installed using Python 3.12.2
+    - i
+    - interpreter
+   package pipenv 2023.12.1, installed using Python 3.12.1
+    - pipenv
+    - pipenv-resolver
+   package poetry 1.8.2, installed using Python 3.12.1
+    - poetry
+   package shallow-backup 6.2, installed using Python 3.12.1
+    - shallow-backup
+   package virtualenv 20.25.1, installed using Python 3.12.1
+    - virtualenv
