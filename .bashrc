@@ -11,10 +11,9 @@ export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
 export PATH="$HOME/.local/share/rtx/shims:$PATH"
 
-export PATH="$PATH:/Users/notlaggy/Library/Application Support/JetBrains/Toolbox/scripts"
+export PATH="$PATH:/Users/~/Library/Application Support/JetBrains/Toolbox/scripts"
 
 
-export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig"
 
 
 
@@ -31,6 +30,7 @@ export RUST_BACKTRACE=full
 
 export CARGO_INCREMENTAL=0
 export SCCACHE_ERROR_LOG=/tmp/sccache_log.txt 
+export SCCACHE_DIRECT=true
 
 export RUSTC_WRAPPER=~/.cargo/bin/sccache
 export CMAKE_C_COMPILER_LAUNCHER=sccache
@@ -38,11 +38,6 @@ export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 
 
 
-export CFLAGS="-I$(brew --prefix)/include" 
-export CPPFLAGS="-I/opt/homebrew/include"
-export LDFLAGS="-L$(brew --prefix)/lib"
-
-export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
 
 
@@ -132,7 +127,7 @@ export SCM_CHECK=true
 source "$BASH_IT"/bash_it.sh
 #[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-
+source ~/.iterm2_shell_integration.bash
 
 ble-face auto_complete='fg=gray'
 bleopt complete_ambiguous=
@@ -144,10 +139,9 @@ bleopt prompt_ps1_transient=always:trim
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-#eval "$(manpager)"
 eval "$(starship init bash)"
 eval "$(atuin init bash)"
-eval "$(miss activate bash)"
+eval "$(mise activate bash)"
 #eval lesspipe.sh
 
 
@@ -240,6 +234,52 @@ cd() {
 	z "$@"
 	check_directory_for_new_repository
 }
+
+
+export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig"
+
+
+export CFLAGS="-I$(brew --prefix)/include" 
+export CPPFLAGS="-I/opt/homebrew/include"
+export LDFLAGS="-L$(brew --prefix)/lib"
+
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+## Add any commands which depend on conda here
+#lazy_conda_aliases=('python' 'conda')
+#
+#load_conda() {
+#  for lazy_conda_alias in $lazy_conda_aliases
+#  do
+#    unalias $lazy_conda_alias
+#  done
+#
+#  __conda_prefix="/opt/homebrew/Caskroom/miniconda/base" # Set your conda Location
+##  __conda_prefix="$HOME/.miniconda3" # Set your conda Location
+#
+#  # >>> conda initialize >>>
+#  __conda_setup="$("$__conda_prefix/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
+#  if [ $? -eq 0 ]; then
+#      eval "$__conda_setup"
+#  else
+#      if [ -f "$__conda_prefix/etc/profile.d/conda.sh" ]; then
+#		 . "$__conda_prefix/etc/profile.d/conda.sh"
+#      else
+#          export PATH="$__conda_prefix/bin:$PATH"
+#      fi
+#  fi
+#  unset __conda_setup
+#  # <<< conda initialize <<<
+#
+#  unset __conda_prefix
+#  unfunction load_conda
+#}
+#
+#for lazy_conda_alias in $lazy_conda_aliases
+#do
+#  alias $lazy_conda_alias="load_conda && $lazy_conda_alias"
+#done
+
+
 
 
 # If not running interactively, don't do anything
