@@ -15,8 +15,9 @@ MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMU
 
 
 then `cargo install atuin bat eza tlrc bottom git-delta fd-find macchina qsv tokei sd procs hexyl du-dust onefetch dtool huniq bingrep grex lemmeknow ripsecrets cargo-show-asm mdcat gitui starship`
+`brew install libplist`
 
-
+brew cask installs
 
 ```sh-session
 
