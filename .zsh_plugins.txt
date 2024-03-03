@@ -28,6 +28,7 @@ ohmyzsh/ohmyzsh path:plugins/brew
 ohmyzsh/ohmyzsh path:plugins/bun
 ohmyzsh/ohmyzsh path:plugins/command-not-found
 ohmyzsh/ohmyzsh path:plugins/docker
+ohmyzsh/ohmyzsh path:plugins/docker-compose
 ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/encode64
 ohmyzsh/ohmyzsh path:plugins/fzf
@@ -61,7 +62,7 @@ romkatv/powerlevel10k kind:fpath
 
 
 # benchmarking
-romkatv/zsh-bench kind:path
+#romkatv/zsh-bench kind:path
 
 
 
