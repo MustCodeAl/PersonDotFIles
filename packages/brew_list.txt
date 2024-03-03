@@ -1,60 +1,209 @@
-abseil			giflib			libevent		libxau			openjpeg		snappy
-ansifilter		glib			libffi			libxcb			openldap		speex
-aom			gmp			libfido2		libxdmcp		openssl@1.1		sqlite
-apr			gnu-sed			libgcrypt		libxext			openssl@3		srt
-apr-util		gnupg			libgit2			libxml2			openvino		stripe
-argon2			gnutls			libgpg-error		libxrender		opus			svt-av1
-aribb24			go			libheif			libyaml			ossp-uuid		tbb
-aspell			gpgme			libiconv		libzip			p11-kit			tesseract
-autoconf		graphite2		libidn			lima			pandoc			texinfo
-automake		grc			libidn2			little-cms2		pango			thefuck
-bash			groff			libksba			lnav			pcre			theora
-bashdb			handbrake		liblinear		lua			pcre2			tidy-html5
-bison			harfbuzz		liblqr			lua-language-server	php			tmux
-brotli			highway			libmagic		luajit			pinentry		tree-sitter
-ca-certificates		hivemind		libmicrohttpd		luv			pixman			uchardet
-cairo			html2text		libmpc			lz4			pkg-config		unbound
-capstone		http-prompt		libnghttp2		lzo			poppler			unibilium
-cjson			httpd			libogg			m4			postgresql@16		unixodbc
-cmake			httpie			libomp			mandoc			procyon-decompiler	unrtf
-colima			hurl			libpaper		mas			protobuf		utf8proc
-composer		hwloc			libplacebo		mbedtls			protobuf-c		vapoursynth
-conan			icu4c			libplist		mise			protobuf@21		vcpkg
-coreutils		imagemagick		libpng			mkcert			pscale			vde
-cpufetch		imath			libpq			mpdecimal		psutils			vulkan-headers
-curl			isl			libraw			mpfr			pugixml			vulkan-loader
-curlie			jansson			librist			mpg123			pv			webp
-dav1d			jasper			libsamplerate		mpv			pygments		wget
-dtc			jbig2dec		libscrypt		msgpack			python-brotli		wp-cli
-duf			jc			libslirp		mujs			python-certifi		x264
-exiftool		jpeg			libsndfile		mysql			python-click		x265
-eza			jpeg-turbo		libsodium		mysql-client		python-markupsafe	xorgproto
-ffmpeg			jpeg-xl			libsoxr			ncurses			python-mutagen		xvid
-fish			jq			libssh			netpbm			python@3.12		xz
-flac			json-c			libssh2			nettle			pyyaml			yara
-fmt			jsoncpp			libtasn1		ninja			qemu			youtube-dl
-fontconfig		krb5			libtermkey		nmap			qodana			yt-dlp
-freetds			lame			libtiff			npth			rav1e			zeromq
-freetype		leptonica		libtool			nspr			re2c			zimg
-frei0r			lesspipe		libunibreak		nss			readline		zlib
-fribidi			libarchive		libunistring		numpy			rlwrap			zoxide
-fzf			libass			libusb			nushell			rtmpdump		zsh
-gawk			libassuan		libuv			ocr			rtx			zshdb
-gcc			libavif			libvidstab		oh-my-posh		rubberband		zstd
-gd			libb2			libvmaf			oniguruma		sdl2
-geckodriver		libbluray		libvorbis		openblas		shaderc
-gettext			libcbor			libvpx			opencore-amr		shared-mime-info
-gh			libde265		libvterm		openexr			shellcheck
-ghostscript		libedit			libx11			openjdk			six
+❯ brew list
+==> Formulae
+abseil				libxext
+ansifilter			libxml2
+aom				libxrender
+apr				libyaml
+apr-util			libzip
+argon2				lima
+aribb24				litecli
+aspell				little-cms2
+ast-grep			lnav
+atuin				lua
+autoconf			lua-language-server
+automake			luajit
+bacon				luv
+bash				lz4
+bashdb				lzo
+bat				m4
+bingrep				macchina
+bison				mandoc
+bottom				mas
+brotli				mbedtls
+c-ares				mdbook
+ca-certificates			mdcat
+cairo				mise
+capstone			mkcert
+cffi				mongocli
+chafa				mongodb-community
+cherrybomb			mongodb-database-tools
+cjson				mongosh
+cmake				mpdecimal
+cmake-docs			mpfr
+code-minimap			mpg123
+colima				mpv
+composer			msgpack
+conan				mujs
+coreutils			mycli
+cpufetch			mysql
+curl				mysql-client
+curlie				ncurses
+dav1d				neofetch
+docker				neovide
+docker-completion		neovim
+doctl				netpbm
+dtc				nettle
+duf				ninja
+dust				nmap
+emojify				npth
+exiftool			nspr
+eza				nss
+fclones				numpy
+fd				nushell
+ffmpeg				ocr
+fish				oh-my-posh
+flac				onefetch
+fmt				oniguruma
+fontconfig			openblas
+freetds				opencore-amr
+freetype			openexr
+frei0r				openjdk
+fribidi				openjpeg
+fzf				openldap
+gawk				openssl@1.1
+gcc				openssl@3
+gd				openvino
+gdk-pixbuf			opus
+geckodriver			ossp-uuid
+gettext				p11-kit
+gh				pandoc
+ghostscript			pango
+giflib				pcre
+git-delta			pcre2
+gitui				pgcli
+glib				php
+gmp				pinentry
+gnu-sed				pixman
+gnupg				pkg-config
+gnutls				poppler
+go				postgresql@16
+gpgme				procs
+graphite2			procyon-decompiler
+grc				protobuf
+grex				protobuf-c
+groff				protobuf@21
+handbrake			pscale
+harfbuzz			psutils
+hexyl				pugixml
+highway				pv
+hivemind			pycparser
+html2text			pygments
+http-prompt			python-brotli
+httpd				python-certifi
+httpie				python-click
+hurl				python-cryptography
+hwloc				python-dateutil
+hyperfine			python-markupsafe
+icu4c				python-mutagen
+imagemagick			python-packaging
+imath				python-setuptools
+isl				python-tabulate
+jansson				python-typing-extensions
+jasper				python@3.11
+jbig2dec			python@3.12
+jc				pyyaml
+jpeg				qemu
+jpeg-turbo			qodana
+jpeg-xl				qsv
+jq				rav1e
+json-c				re2c
+jsoncpp				readline
+just				redis
+krb5				ripgrep
+lame				ripgrep-all
+lemmeknow			ripsecrets
+leptonica			rlwrap
+lesspipe			rtmpdump
+libarchive			rtx
+libass				rubberband
+libassuan			ruby
+libavif				screenresolution
+libb2				sd
+libbluray			sdl2
+libcbor				semgrep
+libde265			shaderc
+libedit				shared-mime-info
+libev				shellcheck
+libevent			six
+libffi				snappy
+libfido2			speex
+libgcrypt			sqlite
+libgit2				sqlparse
+libgpg-error			srt
+libheif				starship
+libiconv			stripe
+libidn				svt-av1
+libidn2				tbb
+libksba				tesseract
+liblinear			texinfo
+liblqr				thefuck
+libmagic			theora
+libmicrohttpd			tidy-html5
+libmpc				tlrc
+libnghttp2			tmux
+libogg				tmuxinator
+libomp				tokei
+libpaper			tree-sitter
+libplacebo			trippy
+libplist			uchardet
+libpng				unbound
+libpq				unibilium
+libraw				unixodbc
+librist				unrtf
+librsvg				usql
+libsamplerate			utf8proc
+libscrypt			vapoursynth
+libslirp			vcpkg
+libsndfile			vde
+libsodium			vulkan-headers
+libsoxr				vulkan-loader
+libssh				webp
+libssh2				wget
+libtasn1			wp-cli
+libtermkey			x264
+libtiff				x265
+libtool				xorgproto
+libunibreak			xvid
+libunistring			xz
+libusb				yara
+libuv				youtube-dl
+libvidstab			yt-dlp
+libvmaf				zeromq
+libvorbis			zimg
+libvpx				zlib
+libvterm			zoxide
+libx11				zsh
+libxau				zshdb
+libxcb				zstd
+libxdmcp
 
 ==> Casks
-alt-tab				devutils			librewolf			powershell			swift-quit
-anki				docker				linear-linear			provisionql			switchhosts
-apparency			exifcleaner			linkliar			qlimagesize			syntax-highlight
-background-music		github				masscode			qlvideo				tunnelblick
-betterzip			google-chrome			mediainfo			qlzipinfo			utm
-cakebrew			handbrake			obs				quicklookase			visual-studio-code-insiders
-chromedriver			hiddenbar			orion				raycast				warp
-clover-configurator		iina				pencil				stats				wezterm
-coteditor			jetbrains-toolbox		pgadmin4			superproductivity
-cutter				keycastr			platypus			suspicious-package
+alt-tab				logi-options-plus
+anki				masscode
+apparency			microsoft-edge
+background-music		mullvadvpn
+betterzip			obs
+brave-browser			orion
+cakebrew			pgadmin4
+chromedriver			pieces
+clipgrab			pieces-os
+codewhisperer			platypus
+coteditor			powershell
+cutter				provisionql
+devutils			qlimagesize
+diffusionbee			qlvideo
+discord				qlzipinfo
+displaylink			quicklookase
+docker				raycast
+exifcleaner			sony-ps-remote-play
+github				stats
+google-chrome			superproductivity
+handbrake			suspicious-package
+hiddenbar			swift-quit
+iina				switchhosts
+iterm2				syntax-highlight
+jetbrains-toolbox		utm
+keycastr			visual-studio-code-insiders
+librewolf			warp
+linear-linear			wezterm
+linkliar
