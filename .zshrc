@@ -5,7 +5,7 @@
 
 
 # .zshrc
-FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 autoload -Uz compinit
 ZSH_COMPDUMP=${ZSH_COMPDUMP:-${ZDOTDIR:-~}/.zcompdump}
 
@@ -27,7 +27,7 @@ fi
 
 
 setopt COMBINING_CHARS
-
+HISTSIZE=100000
 # ########################################################################################################################
 # environment variables
 # ########################################################################################################################
@@ -51,11 +51,7 @@ export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 
 
 
-#For compilers to find readline you may need to set:
-#  export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
-#  export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
 
-#export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
 
 
 export ANTIDOTE_HOME="$HOME/.cache/antidote"
@@ -83,7 +79,7 @@ export BETTER_EXCEPTIONS=1
 
 
 export SCCACHE_ERROR_LOG=/tmp/sccache_log.txt
-
+export SCCACHE_DIRECT=true
 
 export RUST_BACKTRACE=full
 export CARGO_INCREMENTAL=0
@@ -96,10 +92,15 @@ export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
-export CFLAGS="-I$(brew --prefix)/include" 
+export CFLAGS="-I/opt/homebrew/include" 
 export CPPFLAGS="-I/opt/homebrew/include"
-export LDFLAGS="-L$(brew --prefix)/lib"
+export LDFLAGS="-L/opt/homebrew/lib"
 
+export CFLAGS="${CFLAGS} -I$(brew --prefix openssl)/include"
+export CFLAGS="${CFLAGS} -I$(brew --prefix openssl)/include"
+export LDFLAGS="${LDFLAGS} -L$(brew --prefix openssl)/lib"
+export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix openssl)/include"
+export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix zlib)/include"
 
 
 
@@ -118,17 +119,18 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig:$PKG_CONFI
 export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
 
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"
+
+#For compilers to find readline you may need to set:
+#  export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
+#  export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
+
+#export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
+
 export VCPKG_ROOT="$HOME/vcpkg"
 
 
 #export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig:$(brew --prefix)/opt/mysql-client/lib/pkgconfig:/opt/homebrew/opt/readline/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/curl/lib/pkgconfig:/opt/homebrew/opt/openssl@3/lib/pkgconfig"
-
-
-
-
-
-
-
 
 
 
@@ -332,6 +334,9 @@ alias rm="rm -i"
 
 alias mkdir="mkdir -p"
 
+alias rmdir="rmdir -p"
+
+
 # -------------------------------------utitlies--------------------------#
 
 alias csvutil="qsv"
@@ -352,14 +357,44 @@ alias zpro="cot ~/.zprofile"
 alias zrc="cot ~/.zshrc"
 
 
+# -------------------------------------fun--------------------------#
 
+alias wtf="dmesg"
+#alias onoz="cat /var/log/errors.log"
+alias rtfm="man"
 
+alias :3="echo"
+alias anoy="yes"
+alias visible="echo"
+alias invisible="cat"
+alias moar="more"
+alias alwayz="tail -f"
+
+alias hai="cd"
+alias iz="ls"
+alias plz="pwd"
+#alias ihasbucket='df -h'
+
+alias inur="locate"
+alias iminurbase="finger"
+
+alias btw="nice"
+alias obtw="nohup"
+
+alias nomz="ps aux"
+alias nomnom="killall"
+
+alias byes="exit"
+alias cya="reboot"
+alias kthxbai="halt"
+
+alias pwned="ssh"
 
 # ##########################################[Lazy Loading scripts ]###############################################################
 
 
 #macchina
-[ "$(date +%j)" != "$(cat ~/.mf.prevtime 2>/dev/null)" ] && { macchina > ~/.mf; date +%j > ~/.mf.prevtime; cat --style=plain ~/.mf; } || cat --style=plain ~/.mf
+[ "$(date +%j)" != "$(cat ~/.mf.prevtime 2>/dev/null)" ] && { macchina > ~/.mf; date +%j > ~/.mf.prevtime; cat ~/.mf; } || cat ~/.mf
 
 
 # git repository greeter aka onefetch
