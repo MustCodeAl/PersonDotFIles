@@ -1,0 +1,58 @@
+#!/usr/bin/env bash
+has_cmd() {
+	local opt
+	for opt; do
+		command -v "$opt" >/dev/null
+		(($? == 0)) || return $?
+	done
+}
+
+if ! has_cmd ansifilter && has_cmd col; then
+	ansifilter() {
+		col -bx
+	}
+fi
+
+if [ -t 0 ]; then
+	if [[ $# == 0 ]]; then
+		judge_shell() {
+			local shell
+			for shell in "$@"; do
+				[[ $SHELL == */$shell ]] && return
+			done
+			return 1
+		}
+		if ! has_cmd bat; then
+			bat() {
+				command cat "$*"
+			}
+		fi
+		self="$0"
+		self="'${self//\'/\'\\\'\'}'"
+		if judge_shell bash zsh ksh; then
+			echo -e "MANPAGER=$self\nexport MANPAGER" | bat --color=auto -plsh
+		elif judge_shell tclsh wish; then
+			echo -e "set env(MANPAGER) $self\nenv -export MANPAGER" | bat --color=auto -plsh
+		elif judge_shell csh tcsh; then
+			echo -e "setenv env MANPAGER $self" | bat --color=auto -plsh
+		elif judge_shell pwsh; then
+			echo -e "\$env:MANPAGER = $self\nExport-Variable -Name MANPAGER" | bat --color=auto -plsh
+		elif judge_shell cmd; then
+			echo -e "setx MANPAGER $self" | bat --color=auto -plsh
+		fi
+		exit
+	fi
+	# mandoc
+	if has_cmd ansifilter bat; then
+		ansifilter <"${!#}" | eval "bat --color=always --theme=\"Monokai Extended\" --italic-text=always -plman ${*:1:$#-1}"
+	else
+		cat "${!#}"
+	fi
+else
+	# man-db
+	if has_cmd ansifilter bat; then
+		ansifilter | eval "bat --color=always --theme=\"Monokai Extended\" --italic-text=always -plman ${*//\\/\\\\}"
+	else
+		cat
+	fi
+fi
