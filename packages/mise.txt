@@ -1,8 +1,17 @@
-bun                   1.0.29                  ~/.config/mise/config latest
+❯ mise list
+Plugin                Version                 Config Source         Requested
+bun                   1.0.30                  ~/.config/mise/config latest
                                               .toml
 cargo:cargo-binstall  1.6.1                   ~/.config/mise/config latest
                                               .toml
 dotnet                8.0.201                 ~/.config/mise/config latest
+                                              .toml
+gradle                7.2
+gradle                7.6.4
+gradle                8.4                     ~/.config/mise/config 8.4
+                                              .toml
+gradle                8.6
+gradle-profiler       0.20.0                  ~/.config/mise/config latest
                                               .toml
 java                  temurin-21.0.2+13.0.LT
                       S
@@ -29,6 +38,8 @@ npm:cordova           12.0.1-nightly.2023101  ~/.config/mise/config latest
 npm:flow-bin          0.227.0                 ~/.config/mise/config latest
                                               .toml
 npm:generator-webapp  4.0.0-9                 ~/.config/mise/config latest
+                                              .toml
+npm:grunt-cli         1.4.3                   ~/.config/mise/config latest
                                               .toml
 npm:gulp              4.0.2                   ~/.config/mise/config latest
                                               .toml
