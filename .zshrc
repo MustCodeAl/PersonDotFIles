@@ -321,8 +321,7 @@ alias sed="sd"
 alias timer="hyperfine"
 alias top="btm --basic"
 alias uniq="huniq"
-alias dups="fclones group --cache . | fclones remove --priority oldest --dry-run 2>/dev/null"
-alias dedupe="fclones group --cache . | fclones remove --priority oldest"
+
 
 # -------------------------------------commands--------------------------#
 
@@ -345,6 +344,8 @@ alias rmdir="rmdir -p"
 alias csvutil="qsv"
 alias ch="cht.sh"
 alias code="code-insiders"
+alias dedupe="fclones group --cache . | fclones remove --priority oldest"
+alias dups="fclones group --cache . | fclones remove --priority oldest --dry-run 2>/dev/null"
 alias dox="sn0int"
 alias hp="http-prompt"
 alias int="interpreter"
