@@ -2,6 +2,7 @@
 zsh etc for mac
 use [brew](https://brew.sh/) to install every needed tool 
 
+get [EnvPane](https://github.com/hschmidt/EnvPane)
 
 `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
@@ -29,7 +30,7 @@ $ brew install betterzip google-chrome mediainfo qlzipinfo utm
 $ brew install cakebrew handbrake obs quicklookase visual-studio-code-insiders
 $ brew install chromedriver orion  warp devutils stats displaylink swift-quit
 $ brew install clover-configurator diffusionbee iina pencil librewolf powershell wezterm
-$ brew install coteditor pgadmin4 superproductivity sony-ps-remote-play
+$ brew install textmate pgadmin4 superproductivity sony-ps-remote-play
 $ brew install cutter keycastr platypus suspicious-package mullvadvpn homebrew/cask/docker zed pieces
 $ brew install emojify chafa neofetch pygments tmux tmuxinator semgrep
 $ brew install redis mongodb-community@7.0 mongocli pgcli mycli litecli xo/xo/usql doctl
@@ -40,6 +41,7 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 
 `brew upgrade --greedy` to update all casks at the same time (NOT RECOMMENDED )
 
+`brew install man-db cppman moreutil gnu-sed`
 
 `brew install logi-options-plus`
 `brew install clipgrab`
