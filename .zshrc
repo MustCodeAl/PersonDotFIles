@@ -84,6 +84,7 @@ export SCCACHE_DIRECT=true
 export RUST_BACKTRACE=full
 export CARGO_INCREMENTAL=0
 export RUSTC_WRAPPER=~/.cargo/bin/sccache
+#export RUSTC_WRAPPER=sccache
 
 export CMAKE_C_COMPILER_LAUNCHER=sccache
 export CMAKE_CXX_COMPILER_LAUNCHER=sccache
@@ -153,7 +154,7 @@ export CLICOLOR=1
 export LESS="$LESS -R"
 export LESSOPEN='|~/.lessfilter %s'
 export LESSCOLORIZER='bat'
-export MANPAGER='manpager --style=plain | less --pattern=^\\S+'
+export MANPAGER='manpager | less --pattern=^\\S+'
 
 
 export warhol_ignore_du=1
@@ -318,8 +319,10 @@ alias hexadump="hexyl"
 alias ps="procs"
 alias sed="sd"
 alias timer="hyperfine"
-alias top="btm"
+alias top="btm --basic"
 alias uniq="huniq"
+alias dups="fclones group --cache . | fclones remove --priority oldest --dry-run 2>/dev/null"
+alias dedupe="fclones group --cache . | fclones remove --priority oldest"
 
 # -------------------------------------commands--------------------------#
 
@@ -352,9 +355,9 @@ alias lv="lnav"
 alias sl="ls"
 alias szrc="source ~/.zshrc"
 alias wt="wezterm"
-alias zplug="cot ~/.zsh_plugins.txt"
-alias zpro="cot ~/.zprofile"
-alias zrc="cot ~/.zshrc"
+alias zplug="mate ~/.zsh_plugins.txt"
+alias zpro="mate ~/.zprofile"
+alias zrc="mate ~/.zshrc"
 
 
 # -------------------------------------fun--------------------------#
