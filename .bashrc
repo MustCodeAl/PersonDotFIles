@@ -9,15 +9,16 @@ export PATH="/opt/homebrew/opt/icu4c/sbin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
-export PATH="$HOME/.local/share/rtx/shims:$PATH"
+export PATH="$HOME/.local/share/mise/shims:$PATH"
+export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
 
-export PATH="$PATH:/Users/~/Library/Application Support/JetBrains/Toolbox/scripts"
-
-
-
+export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
 
-export MANPAGER='manpager --theme=\"Monokai Extended\" --style=plain | less --pattern=^\\S+'
+
+
+
+export MANPAGER='manpager | less --pattern=^\\S+'
 export CLICOLOR=1
 export LESS="$LESS -R"
 export LESSOPEN='|~/.lessfilter %s'
@@ -188,7 +189,7 @@ alias uptime='/opt/homebrew/bin/grc --colour=auto uptime'
 alias whois='/opt/homebrew/bin/grc --colour=auto whois'
 
 
-alias bashconfig="cot ~/.bashrc"
+alias bashconfig="bash ~/.bashrc"
 
 
 
@@ -199,6 +200,7 @@ alias mv="mv -i"
 alias rm="rm -i"
 
 alias mkdir="mkdir -p"
+alias rmdir="rmdir -p"
 
 
 
