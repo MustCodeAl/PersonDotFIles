@@ -89,6 +89,17 @@ export RUSTC_WRAPPER=~/.cargo/bin/sccache
 export CMAKE_C_COMPILER_LAUNCHER=sccache
 export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 
+#make ninja default for make
+export CMAKE_GENERATOR=Ninja
+
+
+# force C colored diagnostic output
+export CFLAGS="${CFLAGS} -fdiagnostics-color=always"
+# force C++ colored diagnostic output
+export CXXFLAGS="${CXXFLAGS} -fdiagnostics-color=always"
+export CCFLAGS="${CCFLAGS} -fdiagnostics-color=always"
+# force C, C++, Cpp (pre-processor) colored diagnostic output
+export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
