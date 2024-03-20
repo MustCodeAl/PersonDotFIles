@@ -1,0 +1,33 @@
+world.gregs.intellij.plugins.deobfuscation
+String Manipulation
+com.vladsch.plugins.touchTypistsCompletionCaddy
+nl.bryanderidder.regexrenamefiles
+Keymap exporter
+com.jetbrains.inin
+com.chriscarini.jetbrains.environment-variable-settings-summary
+org.OverEngineer.InlineProblems
+com.nasller.CodeGlancePro
+com.ultrahob.zerolength.plugin
+com.noorts.toggler
+com.github.b3er.idea.plugins.arc.browser
+com.jetbrains.fast.mouse.scroll
+com.shetline.ligatures-limited
+com.github.copilot
+awesome.console
+org.nik.presentation-assistant
+com.alexey-anufriev.scopes-manager-intellij-plugin
+com.mallowigi
+org.rust.lang
+com.intellij.ml.llm
+com.intellij.datagen
+org.jetbrains.search-everywhere-docs
+color.scheme.GapStyle
+com.chylex.intellij.keeppopupswhiledebugging
+com.github.dyriavin.mimesistheme
+com.sburlyaev.terminal.plugin
+bundled-clion-help
+ru.adelf.idea.dotenv
+dev.feedforward.tldrintellij
+com.github.ArtsiomCh.NestedBracketsColorer
+org.exbin.deltahex.intellij
+krasa.CpuUsageIndicator
