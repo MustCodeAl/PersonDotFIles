@@ -22,13 +22,13 @@ brew cask installs
 
 ```sh-session
 
-$ brew install mise raycast alt-tab brave-browser hiddenbar jetbrains-toolbox iterm2 codewhisperer
+$ brew install mise raycast alt-tab brave-browser hiddenbar jetbrains-toolbox iterm2 codewhisperer antidote
 $ brew install anki linear-linear provisionql switchhosts
 $ brew install apparency exifcleaner linkliar qlimagesize syntax-highlight
 $ brew install background-music github masscode qlvideo google-chrome
 $ brew install betterzip google-chrome mediainfo qlzipinfo utm
 $ brew install cakebrew handbrake obs quicklookase visual-studio-code-insiders
-$ brew install chromedriver orion  warp devutils stats displaylink swift-quit
+$ brew install chromedriver orion warp devutils stats displaylink swift-quit
 $ brew install clover-configurator diffusionbee iina pencil librewolf powershell wezterm
 $ brew install textmate pgadmin4 superproductivity sony-ps-remote-play
 $ brew install cutter keycastr platypus suspicious-package mullvadvpn homebrew/cask/docker zed pieces
