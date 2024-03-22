@@ -54,7 +54,6 @@ export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 
 
 
-export ANTIDOTE_HOME="$HOME/.cache/antidote"
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
 export HOMEBREW_PREFIX=/opt/homebrew
@@ -102,6 +101,7 @@ export CCFLAGS="${CCFLAGS} -fdiagnostics-color=always"
 export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
+
 export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
 export CFLAGS="-I/opt/homebrew/include" 
@@ -114,9 +114,6 @@ export LDFLAGS="${LDFLAGS} -L$(brew --prefix openssl)/lib"
 export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix openssl)/include"
 export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix zlib)/include"
 
-
-
-#export LDFLAGS="-L/opt/homebrew/lib"
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/postgresql@16/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/postgresql@16/include"
@@ -133,11 +130,7 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"
 
-#For compilers to find readline you may need to set:
-#  export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
-#  export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
 
-#export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
 
 export VCPKG_ROOT="$HOME/vcpkg"
 
@@ -208,10 +201,7 @@ zsh_plugins=${ZDOTDIR:-~}/.zsh_plugins.zsh
 # Ensure you have a .zsh_plugins.txt file where you can add plugins.
 [[ -f ${zsh_plugins:r}.txt ]] || touch ${zsh_plugins:r}.txt
 
-# Lazy-load antidote.
-fpath+=(${ZDOTDIR:-~}/.antidote)
-autoload -Uz $fpath[-1]/antidote
-
+source /opt/homebrew/opt/antidote/share/antidote/antidote.zsh
 
 # Generate static file in a subshell when .zsh_plugins.txt is updated.
 if [[ ! $zsh_plugins -nt ${zsh_plugins:r}.txt ]]; then
@@ -317,6 +307,7 @@ autoload -Uz promptinit && promptinit && prompt powerlevel10k
 # -------------------------------------replacements--------------------------#
 alias aggregate="rs-aggregate"
 alias cat="bat"
+alias catn="bat --style=auto"
 alias cloc="tokei"
 alias curl="curlie"
 # alias cp="xcp"
@@ -328,7 +319,6 @@ alias grep="rga --color=auto"
 alias egrep="rga -F"
 alias hexadump="hexyl"
 alias ps="procs"
-alias sed="sd"
 alias timer="hyperfine"
 alias top="btm --basic"
 alias uniq="huniq"
@@ -355,8 +345,8 @@ alias rmdir="rmdir -p"
 alias csvutil="qsv"
 alias ch="cht.sh"
 alias code="code-insiders"
-alias dedupe="fclones group --cache . | fclones remove --priority oldest"
-alias dups="fclones group --cache . | fclones remove --priority oldest --dry-run 2>/dev/null"
+alias dedupe="fclones group --cache . | fclones remove --priority newest"
+alias dups="fclones group . | fclones remove --priority newest --dry-run 2>/dev/null"
 alias dox="sn0int"
 alias hp="http-prompt"
 alias int="interpreter"
@@ -367,9 +357,9 @@ alias lv="lnav"
 alias sl="ls"
 alias szrc="source ~/.zshrc"
 alias wt="wezterm"
-alias zplug="mate ~/.zsh_plugins.txt"
-alias zpro="mate ~/.zprofile"
-alias zrc="mate ~/.zshrc"
+alias zplug="cot ~/.zsh_plugins.txt"
+alias zpro="cot ~/.zprofile"
+alias zrc="cot ~/.zshrc"
 
 
 # -------------------------------------fun--------------------------#
