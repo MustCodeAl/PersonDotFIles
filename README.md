@@ -46,3 +46,5 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 
 `brew install logi-options-plus`
 `brew install clipgrab`
+
+install your fonts through `oh-my-posh font install` and themes through `gogh`
