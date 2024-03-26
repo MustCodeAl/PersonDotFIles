@@ -8,14 +8,15 @@ get [EnvPane](https://github.com/hschmidt/EnvPane)
 
 `brew install mise`
 
-then do `cargo install sccache --locked` before you install anything
+do 'cargo install cargo-binstall`
+then do `cargo binstall sccache` before you install anything
 
 MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMUM PERFORMANCE GAINS ON MAC
 
 `brew install atuin bat tlrc sd fd just bingrep ripgrep ripgrep-all git-delta procs grex starship just dust code-minimap mdbook ast-grep cherrybomb bacon fclones trippy gitui lemmeknow macchina onefetch tokei bottom qsv hyperfine mdcat hexyl`
 
 
-then `cargo install atuin bat eza tlrc bottom git-delta fd-find macchina qsv tokei sd procs hexyl du-dust onefetch dtool huniq bingrep grex lemmeknow ripsecrets cargo-show-asm mdcat gitui starship`
+then `cargo bininstall atuin bat eza tlrc bottom git-delta fd-find macchina qsv tokei sd procs hexyl du-dust onefetch dtool huniq bingrep grex lemmeknow ripsecrets cargo-show-asm mdcat gitui starship`
 `brew install libplist`
 
 brew cask installs
