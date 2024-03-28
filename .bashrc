@@ -11,18 +11,19 @@ export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
-
+export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
 
 
 
 
-export MANPAGER='manpager | less --pattern=^\\S+'
+export MANPAGER="manpager | less --pattern=^\\S+"
 export CLICOLOR=1
 export LESS="$LESS -R"
-export LESSOPEN='|~/.lessfilter %s'
-export LESSCOLORIZER='bat'
+export LESSOPEN="|~/.lessfilter %s"
+export LESSCOLORIZER="bat"
 
 export PYTHONDEBUG=1
 export BETTER_EXCEPTIONS=1
@@ -44,19 +45,20 @@ export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 
 
 export FZF_BASE="/opt/homebrew/bin/fzf"
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
+export VCPKG_ROOT="$HOME/vcpkg"
 
 
 # Path to the bash it configuration
-export BASH_IT="/Users/notlaggy/.bash_it"
+export BASH_IT="$HOME/.bash_it"
 
 # Lock and Load a custom theme file.
 # Leave empty to disable theming.
 # location /.bash_it/themes/
-export BASH_IT_THEME=''
+export BASH_IT_THEME="bobby"
 
 # Some themes can show whether `sudo` has a current token or not.
 # Set `$THEME_CHECK_SUDO` to `true` to check every prompt:
@@ -71,13 +73,13 @@ export BASH_IT_THEME=''
 # export BASH_IT_DEVELOPMENT_BRANCH='master'
 
 # Your place for hosting Git repos. I use this for private repos.
-export GIT_HOSTING='git@git.domain.com'
+export GIT_HOSTING="git@git.domain.com"
 
 # Don't check mail when opening terminal.
 unset MAILCHECK
 
 # Change this to your console based IRC client of choice.
-export IRC_CLIENT='irssi'
+export IRC_CLIENT="irssi"
 
 # Set this to the command you use for todo.txt-cli
 export TODO="t"
@@ -130,7 +132,7 @@ source "$BASH_IT"/bash_it.sh
 
 source ~/.iterm2_shell_integration.bash
 
-ble-face auto_complete='fg=gray'
+ble-face auto_complete="fg=gray"
 bleopt complete_ambiguous=
 
 
@@ -140,7 +142,7 @@ bleopt prompt_ps1_transient=always:trim
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-eval "$(starship init bash)"
+#eval "$(starship init bash)"
 eval "$(atuin init bash)"
 eval "$(mise activate bash)"
 #eval lesspipe.sh
@@ -149,7 +151,7 @@ eval "$(mise activate bash)"
 
 
 
-alias g++='/opt/homebrew/bin/grc --colour=auto g++'
+alias "g++"="/opt/homebrew/bin/grc --colour=auto g++"
 alias head='/opt/homebrew/bin/grc --colour=auto head'
 alias make='/opt/homebrew/bin/grc --colour=auto make'
 alias ld='/opt/homebrew/bin/grc --colour=auto ld'
@@ -173,7 +175,7 @@ alias lsof='/opt/homebrew/bin/grc --colour=auto lsof'
 alias mount='/opt/homebrew/bin/grc --colour=auto mount'
 alias mvn='/opt/homebrew/bin/grc --colour=auto mvn'
 alias netstat='/opt/homebrew/bin/grc --colour=auto netstat'
-alias nmap='/opt/homebrew/bin/grc --colour=auto nmap'
+alias "nmap"="/opt/homebrew/bin/grc --colour=auto nmap"
 alias php='/opt/homebrew/bin/grc --colour=auto php'
 alias ping='/opt/homebrew/bin/grc --colour=auto ping'
 alias ps='/opt/homebrew/bin/grc --colour=auto ps'
@@ -198,6 +200,7 @@ alias cp="cp -i"
 
 alias mv="mv -i"
 alias rm="rm -i"
+alias rf="rm -ird"
 
 alias mkdir="mkdir -p"
 alias rmdir="rmdir -p"
