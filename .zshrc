@@ -48,7 +48,7 @@ export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-
+export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 
 
 
@@ -62,9 +62,9 @@ export HOMEBREW_PREFIX=/opt/homebrew
 
 
 if [[ -n $SSH_CONNECTION ]]; then
-  export EDITOR='vim'
+  export EDITOR="vim"
 else
-  export EDITOR='nvim'
+  export EDITOR="nvim"
 fi
 
 
@@ -115,6 +115,12 @@ export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix openssl)/include"
 export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix zlib)/include"
 
 
+#export SONAR_HOME=/opt/homebrew/Cellar/sonarqube/10.4.1.88267/libexec
+#export SONAR=$SONAR_HOME/bin 
+#export PATH=$SONAR:$PATH
+
+#export LDFLAGS="-L/opt/homebrew/lib"
+
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/postgresql@16/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/postgresql@16/include"
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/mysql-client/lib"
@@ -130,7 +136,11 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"
 
+#For compilers to find readline you may need to set:
+#  export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
+#  export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
 
+#export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
 
 export VCPKG_ROOT="$HOME/vcpkg"
 
@@ -144,7 +154,7 @@ export VCPKG_ROOT="$HOME/vcpkg"
 
 
 export FZF_BASE="/opt/homebrew/bin/fzf"
-export FZF_DEFAULT_COMMAND='fd --type f --strip-cwd-prefix'
+export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
@@ -156,11 +166,13 @@ export ZSH_AUTOSUGGEST_COMPLETION_IGNORE="\#*"
 
 export CLICOLOR=1
 export LESS="$LESS -R"
-export LESSOPEN='|~/.lessfilter %s'
-export LESSCOLORIZER='bat'
-export MANPAGER='manpager | less --pattern=^\\S+'
+export LESSOPEN="|~/.lessfilter %s"
+export LESSCOLORIZER="bat"
+export MANPAGER="manpager | less --pattern=^\\S+"
 
+#export LSCOLORS=""
 
+export warhol_ignore_curl=1
 export warhol_ignore_du=1
 export warhol_ignore_df=1
 export warhol_ignore_diff=1
@@ -313,12 +325,14 @@ alias curl="curlie"
 # alias cp="xcp"
 alias df="duf"
 alias du="dust"
-alias diff="delta"
+alias diff="batdiff"
 alias find="fd"
 alias grep="rga --color=auto"
 alias egrep="rga -F"
 alias hexadump="hexyl"
 alias ps="procs"
+alias prettier="prettybat"
+# alias sed="sd"
 alias timer="hyperfine"
 alias top="btm --basic"
 alias uniq="huniq"
@@ -335,9 +349,13 @@ alias mv="mv -i"
 
 alias rm="rm -i"
 
+alias rf="rm -ird"
+
 alias mkdir="mkdir -p"
 
 alias rmdir="rmdir -p"
+
+alias sudo="sudo "
 
 
 # -------------------------------------utitlies--------------------------#
