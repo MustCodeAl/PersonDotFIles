@@ -72,7 +72,7 @@ zsh-users/zsh-autosuggestions kind:defer
 Aloxaf/fzf-tab kind:defer
 Freed-Wu/fzf-tab-source kind:defer
 hlissner/zsh-autopair kind:defer
-unixorn/warhol.plugin.zsh kind:defer
+MustCodeAl/warhol.plugin.zsh kind:defer
 
 
 
