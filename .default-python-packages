@@ -23,6 +23,7 @@ pydantic
 mypy
 matplotlib
 prompt_toolkit
+powerline-status
 python-editor
 python-lsp-black
 pytest
@@ -35,6 +36,7 @@ tqdm
 tokentrim
 better-exceptions
 tokenizers
+pip-review
 python-lsp-server
 sqlparse
 wheel
