@@ -47,12 +47,13 @@ export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
-
-
-
-
+export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
@@ -369,7 +370,6 @@ alias dox="sn0int"
 alias hp="http-prompt"
 alias int="interpreter"
 alias listalias="als"
-alias lte="ls --tree"
 alias ltd="tldr -p linux"
 alias lv="lnav"
 alias sl="ls"
