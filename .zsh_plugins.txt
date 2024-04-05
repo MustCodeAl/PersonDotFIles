@@ -8,7 +8,8 @@ romkatv/zsh-defer kind:clone
 
 # git hub repos
 mafredri/zsh-async
-zpm-zsh/ls
+# zpm-zsh/ls
+MustCodeAl/ls
 jeffreytse/zsh-vi-mode
 Freed-Wu/zsh-help
 MichaelAquilina/zsh-you-should-use
@@ -72,7 +73,7 @@ zsh-users/zsh-autosuggestions kind:defer
 Aloxaf/fzf-tab kind:defer
 Freed-Wu/fzf-tab-source kind:defer
 hlissner/zsh-autopair kind:defer
-MustCodeAl/warhol.plugin.zsh kind:defer
+unixorn/warhol.plugin.zsh kind:defer
 
 
 
