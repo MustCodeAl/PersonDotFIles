@@ -2,7 +2,7 @@
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zprofile.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zprofile.pre.zsh"
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-export PATH="$HOME/.local/share/mise/shims:$PATH"
+
 
 # Added by Toolbox App
 export PATH="$PATH:/Users/notlaggy/Library/Application Support/JetBrains/Toolbox/scripts"
