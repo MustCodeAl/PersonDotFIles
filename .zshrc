@@ -3,6 +3,10 @@
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
 
 
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+
 
 # .zshrc
 FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
@@ -89,8 +93,10 @@ export RUSTC_WRAPPER=~/.cargo/bin/sccache
 export CMAKE_C_COMPILER_LAUNCHER=sccache
 export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 
+
 #make ninja default for make
 export CMAKE_GENERATOR=Ninja
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 
 # force C colored diagnostic output
@@ -155,8 +161,8 @@ export VCPKG_ROOT="$HOME/vcpkg"
 
 
 export FZF_BASE="/opt/homebrew/bin/fzf"
-export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix"
-export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+#export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix"
+#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
 
@@ -256,7 +262,8 @@ autoload -Uz promptinit && promptinit && prompt powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
+#[[ ! -f ~/p10k.mise.zsh ]] || source ~/p10k.mise.zsh
+#[ -f ~/.config/shell/p10k.mise.zsh ] && source ~/.config/shell/p10k.mise.zsh
 
 
 
@@ -327,16 +334,16 @@ alias curl="curlie"
 alias df="duf"
 alias du="dust"
 alias diff="batdiff"
-alias find="fd"
+alias find="bfs"
 alias grep="rga --color=auto"
 alias egrep="rga -F"
 alias hexadump="hexyl"
 alias ps="procs"
-alias prettier="prettybat"
+#alias prettier="prettybat"
 # alias sed="sd"
 alias timer="hyperfine"
 alias top="btm --basic"
-alias uniq="huniq"
+#alias uniq="huniq"
 
 
 # -------------------------------------commands--------------------------#
@@ -348,9 +355,11 @@ alias cp="cp -i"
 
 alias mv="mv -i"
 
+#alias which="type -a"
+
 alias rm="rm -i"
 
-alias rf="rm -ird"
+alias rf="rm -frd"
 
 alias mkdir="mkdir -p"
 
@@ -361,6 +370,7 @@ alias sudo="sudo "
 
 # -------------------------------------utitlies--------------------------#
 
+alias cdr='cd $(git rev-parse --show-toplevel)'
 alias csvutil="qsv"
 alias ch="cht.sh"
 alias code="code-insiders"
@@ -368,6 +378,7 @@ alias dedupe="fclones group --cache . | fclones remove --priority newest"
 alias dups="fclones group . | fclones remove --priority newest --dry-run 2>/dev/null"
 alias dox="sn0int"
 alias hp="http-prompt"
+alias hgrep="fc -El 0 | rg"
 alias int="interpreter"
 alias listalias="als"
 alias ltd="tldr -p linux"
@@ -421,7 +432,8 @@ alias pwned="ssh"
 
 
 # git repository greeter aka onefetch
-last_repository=
+last_repository=""
+
 check_directory_for_new_repository() {
 	current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
 
@@ -436,7 +448,9 @@ cd() {
 	check_directory_for_new_repository
 }
 
-
+lcd() {
+        cd $1 && la
+}
 mcd (){
     mkdir -p -- "$1" &&
     z "$1"
