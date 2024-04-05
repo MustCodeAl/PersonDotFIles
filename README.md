@@ -8,15 +8,21 @@ get [EnvPane](https://github.com/hschmidt/EnvPane)
 
 `brew install mise`
 
+`do this command to keep your binarys automatically detected by ides`
+
+`sudo ln -s ~/.local/share/mise/shims /usr/local/bin`
+**if it exists copy the files from bin folder into the shims folder, remove the bin folder, then symlink**
+
 do 'cargo install cargo-binstall`
 then do `cargo binstall sccache` before you install anything
 
+
 MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMUM PERFORMANCE GAINS ON MAC
 
-`brew install atuin bat tlrc sd fd just bingrep ripgrep ripgrep-all git-delta procs grex starship just dust code-minimap mdbook ast-grep cherrybomb bacon fclones trippy gitui lemmeknow macchina onefetch tokei bottom qsv hyperfine mdcat hexyl`
+`brew install dfs atuin bat tlrc sd fd just bingrep ripgrep ripgrep-all git-delta procs grex starship just dust code-minimap mdbook ast-grep cherrybomb bacon fclones trippy gitui lemmeknow macchina onefetch tokei bottom qsv hyperfine mdcat hexyl`
 
 
-then `cargo bininstall atuin bat eza tlrc bottom git-delta fd-find macchina qsv tokei sd procs hexyl du-dust onefetch dtool huniq bingrep grex lemmeknow ripsecrets cargo-show-asm mdcat gitui starship`
+then `cargo bininstall atuin bat eza tlrc bottom git-delta fd-find macchina qsv tokei sd procs hexyl du-dust onefetch dtool huniq bingrep grex lemmeknow ripsecrets cargo-show-asm mdcat gitui starship glow curl doggo`
 `brew install libplist`
 
 brew cask installs
