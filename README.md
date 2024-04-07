@@ -61,3 +61,37 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 `brew install clipgrab`
 
 install your fonts through `oh-my-posh font install` and themes through `gogh`
+
+
+replace built in mac default commands as many are dated
+```sh
+
+$ brew install
+    "zsh"
+    "bash"
+    "coreutils"
+    "binutils"
+    "diffutils"
+    "ed"
+    "findutils"
+    "gawk"
+    "gnu-indent"
+    "gnu-sed"
+    "gnu-tar"
+    "gnu-which"
+    "grep"
+    "gzip"
+    "screen"
+    "openssh"
+    "perl"
+    "rsync"
+    "unzip"
+    "libressl"
+    "git"
+    "file-formula"
+    "watch"
+    "wget"
+    "wdiff"
+  ```
+    
+    
