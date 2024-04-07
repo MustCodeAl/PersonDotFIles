@@ -1,4 +1,4 @@
-# PersonDotFIles
+# PersonDotFiles
 zsh etc for mac
 use [brew](https://brew.sh/) to install every needed tool 
 
@@ -13,7 +13,15 @@ get [EnvPane](https://github.com/hschmidt/EnvPane)
 `sudo ln -s ~/.local/share/mise/shims /usr/local/bin`
 **if it exists copy the files from bin folder into the shims folder, remove the bin folder, then symlink**
 
-do 'cargo install cargo-binstall` then do `cargo binstall sccache` before you install anything
+Do: 
+
+`cargo install cargo-binstall`
+
+then do:
+
+`cargo binstall sccache`
+
+***before you install anything***
 
 
 MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMUM PERFORMANCE GAINS ON MAC
