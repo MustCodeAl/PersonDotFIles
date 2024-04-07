@@ -32,7 +32,7 @@ brew cask installs
 $ brew install mise raycast alt-tab brave-browser hiddenbar jetbrains-toolbox iterm2 codewhisperer antidote
 $ brew install anki linear-linear provisionql switchhosts
 $ brew install apparency exifcleaner linkliar qlimagesize syntax-highlight
-$ brew install background-music github masscode qlvideo google-chrome
+$ brew install background-music github masscode google-chrome
 $ brew install betterzip google-chrome mediainfo qlzipinfo utm
 $ brew install cakebrew handbrake obs quicklookase visual-studio-code-insiders
 $ brew install chromedriver orion warp devutils stats displaylink swift-quit
