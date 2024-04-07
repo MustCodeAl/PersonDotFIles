@@ -92,6 +92,13 @@ $ brew install
     "watch"
     "wget"
     "wdiff"
+    "m4"
+    "bison"
+    "flex"
+    "make"
+    "cmake"
+    "less"
+    "gpatch"
   ```
     
     
