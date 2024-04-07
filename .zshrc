@@ -45,6 +45,7 @@ HISTSIZE=100000
 typeset -U PATH path
 
 
+
 export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
 export PATH="/opt/homebrew/opt/icu4c/sbin:$PATH"
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
@@ -61,10 +62,12 @@ export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
-export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 export MODULAR_HOME="$HOME/.modular"
+export VCPKG_ROOT="$HOME/vcpkg"
+export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
-export HOMEBREW_PREFIX=/opt/homebrew
+
 
 #---------------------------------------exports-----------------------------------------------#
 
@@ -102,6 +105,9 @@ export CMAKE_GENERATOR=Ninja
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 
+
+
+
 # force C colored diagnostic output
 export CFLAGS="${CFLAGS} -fdiagnostics-color=always"
 # force C++ colored diagnostic output
@@ -112,50 +118,48 @@ export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 
-export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
+export CFLAGS="${CFLAGS} -I/opt/homebrew/include" 
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
 
-export CFLAGS="-I/opt/homebrew/include" 
-export CPPFLAGS="-I/opt/homebrew/include"
-export LDFLAGS="-L/opt/homebrew/lib"
 
-export CFLAGS="${CFLAGS} -I$(brew --prefix openssl)/include"
-export CFLAGS="${CFLAGS} -I$(brew --prefix openssl)/include"
-export LDFLAGS="${LDFLAGS} -L$(brew --prefix openssl)/lib"
-export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix openssl)/include"
+export CFLAGS="${CFLAGS} -I$(brew --prefix zlib)/include"
 export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix zlib)/include"
 
 
-#export SONAR_HOME=/opt/homebrew/Cellar/sonarqube/10.4.1.88267/libexec
-#export SONAR=$SONAR_HOME/bin 
-#export PATH=$SONAR:$PATH
+export LDFLAGS="${LDFLAGS} -L$(brew --prefix openssl)/lib"
+export CFLAGS="${CFLAGS} -I$(brew --prefix openssl)/include"
+export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix openssl)/include"
 
-#export LDFLAGS="-L/opt/homebrew/lib"
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/postgresql@16/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/postgresql@16/include"
+
+
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/mysql-client/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/mysql-client/include"
+
+
+
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/sqlite/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/sqlite/include"
 
 
-export PKG_CONFIG_PATH="$HOMEBREW_PREFIX/lib/pkgconfig"
+
+
+
+
+export PKG_CONFIG_PATH="$(brew --prefix)/lib/pkgconfig"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
-
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"
 
-#For compilers to find readline you may need to set:
-#  export LDFLAGS="-L/opt/homebrew/opt/readline/lib"
-#  export CPPFLAGS="-I/opt/homebrew/opt/readline/include"
-
-#export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig"
-
-export VCPKG_ROOT="$HOME/vcpkg"
 
 
-#export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig:$(brew --prefix)/opt/mysql-client/lib/pkgconfig:/opt/homebrew/opt/readline/lib/pkgconfig:/opt/homebrew/opt/zlib/lib/pkgconfig:/opt/homebrew/opt/curl/lib/pkgconfig:/opt/homebrew/opt/openssl@3/lib/pkgconfig"
+
+
+
 
 
 
@@ -163,7 +167,7 @@ export VCPKG_ROOT="$HOME/vcpkg"
 #------------------------------------plugin exports-------------------------------------#
 
 
-export FZF_BASE="/opt/homebrew/bin/fzf"
+#export FZF_BASE="/opt/homebrew/bin/fzf"
 
 
 
@@ -178,7 +182,6 @@ export LESSOPEN="|~/.lessfilter %s"
 export LESSCOLORIZER="bat"
 export MANPAGER="manpager | less --pattern=^\\S+"
 
-#export LSCOLORS=""
 
 export warhol_ignore_curl=1
 export warhol_ignore_du=1
