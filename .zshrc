@@ -3,10 +3,12 @@
 [[ -f "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/zshrc.pre.zsh"
 
 
-#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-#fi
-
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 # .zshrc
 FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
@@ -43,7 +45,6 @@ HISTSIZE=100000
 typeset -U PATH path
 
 
-
 export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
 export PATH="/opt/homebrew/opt/icu4c/sbin:$PATH"
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
@@ -58,8 +59,10 @@ export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
+export MODULAR_HOME="$HOME/.modular"
 
 export HOMEBREW_PREFIX=/opt/homebrew
 
@@ -161,8 +164,6 @@ export VCPKG_ROOT="$HOME/vcpkg"
 
 
 export FZF_BASE="/opt/homebrew/bin/fzf"
-#export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix"
-#export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
 
@@ -261,9 +262,8 @@ zvm_after_init_commands+=(
 autoload -Uz promptinit && promptinit && prompt powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-#[[ ! -f ~/p10k.mise.zsh ]] || source ~/p10k.mise.zsh
-#[ -f ~/.config/shell/p10k.mise.zsh ] && source ~/.config/shell/p10k.mise.zsh
+[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+
 
 
 
@@ -294,10 +294,6 @@ autoload -Uz promptinit && promptinit && prompt powerlevel10k
 # ########################################################################################################################
 # binds
 # ########################################################################################################################
-
-# ZVM_INSERT_MODE_CURSOR=$ZVM_CURSOR_BEAM
-# ZVM_NORMAL_MODE_CURSOR=$ZVM_CURSOR_BLOCK
-# ZVM_OPPEND_MODE_CURSOR=$ZVM_CURSOR_UNDERLINE
 
 
 
@@ -330,7 +326,6 @@ alias cat="bat"
 alias catn="bat --style=auto"
 alias cloc="tokei"
 alias curl="curlie"
-# alias cp="xcp"
 alias df="duf"
 alias du="dust"
 alias diff="batdiff"
@@ -339,11 +334,8 @@ alias grep="rga --color=auto"
 alias egrep="rga -F"
 alias hexadump="hexyl"
 alias ps="procs"
-#alias prettier="prettybat"
-# alias sed="sd"
 alias timer="hyperfine"
 alias top="btm --basic"
-#alias uniq="huniq"
 
 
 # -------------------------------------commands--------------------------#
@@ -355,7 +347,6 @@ alias cp="cp -i"
 
 alias mv="mv -i"
 
-#alias which="type -a"
 
 alias rm="rm -i"
 
@@ -384,7 +375,7 @@ alias listalias="als"
 alias ltd="tldr -p linux"
 alias lv="lnav"
 alias sl="ls"
-alias szrc="source ~/.zshrc"
+alias szrc="exec zsh" # better then sourcezing
 alias wt="wezterm"
 alias zplug="cot ~/.zsh_plugins.txt"
 alias zpro="cot ~/.zprofile"
