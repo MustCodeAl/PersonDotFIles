@@ -27,6 +27,7 @@ powerline-status
 python-editor
 python-lsp-black
 pytest
+ptpython
 regex
 rich
 mdurl
