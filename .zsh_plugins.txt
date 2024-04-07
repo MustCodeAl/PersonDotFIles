@@ -35,6 +35,7 @@ ohmyzsh/ohmyzsh path:plugins/encode64
 ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/git
 ohmyzsh/ohmyzsh path:plugins/gradle kind:defer
+ohmyzsh/ohmyzsh path:plugins/kubectl
 ohmyzsh/ohmyzsh path:plugins/mongocli
 ohmyzsh/ohmyzsh path:plugins/macos
 ohmyzsh/ohmyzsh path:plugins/mise
