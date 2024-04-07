@@ -1,4 +1,6 @@
 @angular/cli
+csso-cli
+coffeescript
 cucumber
 create-react-app
 emmet-ls
@@ -8,12 +10,14 @@ lodash
 ios-sim
 less
 mocha
-nativescript
+node-gyp
 np
 prettier
 @fsouza/prettierd
 protractor
 request
+stylus
+uglify-js
 @tailwindcss/language-server
 typescript
 typescript-language-server
