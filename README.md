@@ -8,13 +8,12 @@ get [EnvPane](https://github.com/hschmidt/EnvPane)
 
 `brew install mise`
 
-`do this command to keep your binarys automatically detected by ides`
+*do this command to keep your binarys automatically detected by ides*
 
 `sudo ln -s ~/.local/share/mise/shims /usr/local/bin`
 **if it exists copy the files from bin folder into the shims folder, remove the bin folder, then symlink**
 
-do 'cargo install cargo-binstall`
-then do `cargo binstall sccache` before you install anything
+do 'cargo install cargo-binstall` then do `cargo binstall sccache` before you install anything
 
 
 MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMUM PERFORMANCE GAINS ON MAC
