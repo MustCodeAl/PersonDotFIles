@@ -10,6 +10,8 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
+
+
 # .zshrc
 FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 autoload -Uz compinit
@@ -167,7 +169,6 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH
 #------------------------------------plugin exports-------------------------------------#
 
 
-#export FZF_BASE="/opt/homebrew/bin/fzf"
 
 
 
@@ -388,7 +389,6 @@ alias zrc="cot ~/.zshrc"
 # -------------------------------------fun--------------------------#
 
 alias wtf="dmesg"
-#alias onoz="cat /var/log/errors.log"
 alias rtfm="man"
 
 alias :3="echo"
@@ -401,7 +401,6 @@ alias alwayz="tail -f"
 alias hai="cd"
 alias iz="ls"
 alias plz="pwd"
-#alias ihasbucket='df -h'
 
 alias inur="locate"
 alias iminurbase="finger"
@@ -450,41 +449,7 @@ mcd (){
     z "$1"
 }
 
-#
-## Add any commands which depend on conda here
-##lazy_conda_aliases=('python' 'conda')
-#
-#load_conda() {
-#  for lazy_conda_alias in $lazy_conda_aliases
-#  do
-#    unalias $lazy_conda_alias
-#  done
-#
-#  __conda_prefix="/opt/homebrew/Caskroom/miniconda/base" # Set your conda Location
-##  __conda_prefix="$HOME/.miniconda3" # Set your conda Location
-#
-#  # >>> conda initialize >>>
-#  __conda_setup="$("$__conda_prefix/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
-#  if [ $? -eq 0 ]; then
-#      eval "$__conda_setup"
-#  else
-#      if [ -f "$__conda_prefix/etc/profile.d/conda.sh" ]; then
-## . "$__conda_prefix/etc/profile.d/conda.sh"  # commented out by conda initialize
-#      else
-#          export PATH="$__conda_prefix/bin:$PATH"
-#      fi
-#  fi
-#  unset __conda_setup
-#  # <<< conda initialize <<<
-#
-#  unset __conda_prefix
-#  unfunction load_conda
-#}
-#
-#for lazy_conda_alias in $lazy_conda_aliases
-#do
-#  alias $lazy_conda_alias="load_conda && $lazy_conda_alias"
-#done
+
 
 
 
