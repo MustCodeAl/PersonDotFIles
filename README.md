@@ -39,7 +39,7 @@ brew cask installs (do `$ brew install --no-qurantine` if some of them wont open
 ```sh-session
 
 $ brew install raycast alt-tab brave-browser hiddenbar jetbrains-toolbox iterm2 codewhisperer
-$ brew install anki linear-linear provisionql switchhosts
+$ brew install anki linear-linear provisionql switchhosts rapidapi
 $ brew install apparency exifcleaner linkliar qlimagesize syntax-highlight
 $ brew install background-music github masscode google-chrome
 $ brew install betterzip google-chrome qlzipinfo utm coteditor
