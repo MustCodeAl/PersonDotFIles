@@ -62,11 +62,24 @@ export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
+export PATH="/opt/homebrew/opt/ed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-which/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/file-formula/bin:$PATH"
+export PATH="/opt/homebrew/opt/m4/bin:$PATH"
+export PATH="/opt/homebrew/opt/flex/bin:$PATH"
+export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+
 export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+
+
 
 export MODULAR_HOME="$HOME/.modular"
 export VCPKG_ROOT="$HOME/vcpkg"
-export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+export LIBRARY_PATH="/opt/homebrew/opt/lib:$LIBRARY_PATH"
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
 
@@ -109,7 +122,6 @@ export CMAKE_EXPORT_COMPILE_COMMANDS=1
 
 
 
-
 # force C colored diagnostic output
 export CFLAGS="${CFLAGS} -fdiagnostics-color=always"
 # force C++ colored diagnostic output
@@ -120,18 +132,20 @@ export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/bison/lib"
+  
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
 export CFLAGS="${CFLAGS} -I/opt/homebrew/include" 
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
 
 
-export CFLAGS="${CFLAGS} -I$(brew --prefix zlib)/include"
-export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix zlib)/include"
+export CFLAGS="${CFLAGS} -I/opt/homebrew/opt/zlib/include"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/zlib/include"
 
 
-export LDFLAGS="${LDFLAGS} -L$(brew --prefix openssl)/lib"
-export CFLAGS="${CFLAGS} -I$(brew --prefix openssl)/include"
-export CPPFLAGS="${CPPFLAGS} -I$(brew --prefix openssl)/include"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/openssl/lib"
+export CFLAGS="${CFLAGS} -I/opt/homebrew/opt/openssl/include"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/openssl/include"
 
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/postgresql@16/lib"
@@ -146,17 +160,31 @@ export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/mysql-client/include"
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/sqlite/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/sqlite/include"
 
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/curl/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/curl/include"
 
 
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/flex/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/flex/include"
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libressl/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libressl/include"
+#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
+#export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/llvm/include"
 
 
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/binutils/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/binutils/include"
 
-export PKG_CONFIG_PATH="$(brew --prefix)/lib/pkgconfig"
+
+export PKG_CONFIG_PATH="/opt/homebrew/opt/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"
-
+export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libressl/lib/pkgconfig:$PKG_CONFIG_PATH"
 
 
 
@@ -340,6 +368,7 @@ alias hexadump="hexyl"
 alias ps="procs"
 alias timer="hyperfine"
 alias top="btm --basic"
+alias asdf="mise"
 
 
 # -------------------------------------commands--------------------------#
@@ -388,34 +417,34 @@ alias zrc="cot ~/.zshrc"
 
 # -------------------------------------fun--------------------------#
 
-alias wtf="dmesg"
-alias rtfm="man"
-
-alias :3="echo"
-alias anoy="yes"
-alias visible="echo"
-alias invisible="cat"
-alias moar="more"
-alias alwayz="tail -f"
-
-alias hai="cd"
-alias iz="ls"
-alias plz="pwd"
-
-alias inur="locate"
-alias iminurbase="finger"
-
-alias btw="nice"
-alias obtw="nohup"
-
-alias nomz="ps aux"
-alias nomnom="killall"
-
-alias byes="exit"
-alias cya="reboot"
-alias kthxbai="halt"
-
-alias pwned="ssh"
+#alias wtf="dmesg"
+#alias rtfm="man"
+#
+#alias :3="echo"
+#alias anoy="yes"
+#alias visible="echo"
+#alias invisible="cat"
+#alias moar="more"
+#alias alwayz="tail -f"
+#
+#alias hai="cd"
+#alias iz="ls"
+#alias plz="pwd"
+#
+#alias inur="locate"
+#alias iminurbase="finger"
+#
+#alias btw="nice"
+#alias obtw="nohup"
+#
+#alias nomz="ps aux"
+#alias nomnom="killall"
+#
+#alias byes="exit"
+#alias cya="reboot"
+#alias kthxbai="halt"
+#
+#alias pwned="ssh"
 
 # ##########################################[Lazy Loading scripts ]###############################################################
 
@@ -449,7 +478,41 @@ mcd (){
     z "$1"
 }
 
-
+#
+## Add any commands which depend on conda here
+##lazy_conda_aliases=('python' 'conda')
+#
+#load_conda() {
+#  for lazy_conda_alias in $lazy_conda_aliases
+#  do
+#    unalias $lazy_conda_alias
+#  done
+#
+#  __conda_prefix="/opt/homebrew/Caskroom/miniconda/base" # Set your conda Location
+##  __conda_prefix="$HOME/.miniconda3" # Set your conda Location
+#
+#  # >>> conda initialize >>>
+#  __conda_setup="$("$__conda_prefix/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
+#  if [ $? -eq 0 ]; then
+#      eval "$__conda_setup"
+#  else
+#      if [ -f "$__conda_prefix/etc/profile.d/conda.sh" ]; then
+## . "$__conda_prefix/etc/profile.d/conda.sh"  # commented out by conda initialize
+#      else
+#          export PATH="$__conda_prefix/bin:$PATH"
+#      fi
+#  fi
+#  unset __conda_setup
+#  # <<< conda initialize <<<
+#
+#  unset __conda_prefix
+#  unfunction load_conda
+#}
+#
+#for lazy_conda_alias in $lazy_conda_aliases
+#do
+#  alias $lazy_conda_alias="load_conda && $lazy_conda_alias"
+#done
 
 
 
