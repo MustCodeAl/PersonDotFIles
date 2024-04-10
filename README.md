@@ -31,7 +31,7 @@ MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMU
 `brew install bfs atuin bat tlrc sd fd just bingrep ripgrep ripgrep-all git-delta procs grex starship just dust code-minimap mdbook ast-grep cherrybomb bacon fclones trippy gitui lemmeknow macchina onefetch tokei bottom qsv hyperfine mdcat hexyl`
 
 
-if you are on linux do `mise use -g cargo:atuin cargo:bat cargo:eza cargo:tealdeer cargo:bottom cargo:git-delta cargo:fd-find cargo:macchina cargo:qsv cargo:tokei cargo:procs cargo:hexyl cargo:du-dust cargo:onefetch cargo:dtool cargo:bingrep cargo:grex cargo:lemmeknow cargo:trippy cargo:ripgrep cargo:ripgrep_all cargo:mdcat cargo:gitui cargo:starship`
+if you are on linux do `mise use -g cargo:atuin cargo:bat cargo:eza cargo:tealdeer cargo:bottom cargo:git-delta cargo:fd-find cargo:macchina cargo:qsv cargo:tokei cargo:procs cargo:hexyl cargo:du-dust cargo:onefetch cargo:dtool cargo:bingrep cargo:grex cargo:lemmeknow cargo:trippy cargo:ripgrep cargo:ripgrep_all cargo:gitui cargo:starship`
 `brew install libplist`
 
 brew cask installs (do `$ brew install --no-qurantine` if some of them wont open)
