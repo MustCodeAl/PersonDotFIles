@@ -32,22 +32,21 @@ MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMU
 
 
 if you are on linux do `mise use -g cargo:atuin cargo:bat cargo:eza cargo:tealdeer cargo:bottom cargo:git-delta cargo:fd-find cargo:macchina cargo:qsv cargo:tokei cargo:procs cargo:hexyl cargo:du-dust cargo:onefetch cargo:dtool cargo:bingrep cargo:grex cargo:lemmeknow cargo:trippy cargo:ripgrep cargo:ripgrep_all cargo:gitui cargo:starship cargo:zoxide`
-`brew install libplist`
 
 brew cask installs (do `$ brew install --no-qurantine` if some of them wont open)
 
 ```sh-session
+$ brew install alt-tab displaylink hiddenbar raycast stats swift-quit
+$ brew install codewhisper devutils jetbrains-toolbox iterm2 iina
+$ brew install coteditor switchhosts rapidapi warp utm
+$ brew install anki linear-linear superproductivity platypus
+$ brew install apparency betterzip quicklookase qlimagesize qlzipinfo provisionql syntax-highlight suspicious-package
+$ brew install clipgrab diffusionbee handbrake keycastr obs 
+$ brew install google-chrome librewolf microsoft-edge orion
+$ brew install homebrew/cask/docker github masscode pgadmin4  
+$ brew install background-music exifcleaner linkliar mullvadvpn textmate
+$ brew install cakebrew powershell chromedriver wezterm pieces zed 
 
-$ brew install raycast alt-tab brave-browser hiddenbar jetbrains-toolbox iterm2 codewhisperer
-$ brew install anki linear-linear provisionql switchhosts rapidapi
-$ brew install apparency exifcleaner linkliar qlimagesize syntax-highlight
-$ brew install background-music github masscode google-chrome
-$ brew install betterzip google-chrome qlzipinfo utm coteditor
-$ brew install cakebrew handbrake obs quicklookase visual-studio-code-insiders
-$ brew install chromedriver orion warp devutils stats displaylink swift-quit
-$ brew install diffusionbee iina pencil librewolf powershell wezterm
-$ brew install textmate pgadmin4 superproductivity sony-ps-remote-play
-$ brew install cutter keycastr platypus suspicious-package mullvadvpn homebrew/cask/docker zed pieces
 ```
 make sure you do `brew outdated --greedy` to check for updates as some applications like brave-browser to self update and brew ignores them
 
@@ -55,10 +54,14 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 
 `brew upgrade --greedy` to update all casks at the same time (NOT RECOMMENDED )
 
-`brew install man-db cppman moreutil gnu-sed`
+### extras 
 
-`brew install logi-options-plus`
-`brew install clipgrab`
+`brew install man-db cppman`
+
+`brew install logi-options-plus sony-ps-remote-play`
+
+`brew install libplist`
+
 
 install your fonts through `oh-my-posh font install` and themes through `gogh`
 
@@ -66,39 +69,7 @@ install your fonts through `oh-my-posh font install` and themes through `gogh`
 replace built in mac default commands as many are dated
 ```sh
 
-$ brew install
-    "zsh"
-    "bash"
-    "coreutils"
-    "binutils"
-    "diffutils"
-    "ed"
-    "findutils"
-    "gawk"
-    "gnu-indent"
-    "gnu-sed"
-    "gnu-tar"
-    "gnu-which"
-    "grep"
-    "gzip"
-    "screen"
-    "openssh"
-    "perl"
-    "rsync"
-    "unzip"
-    "libressl"
-    "git"
-    "file-formula"
-    "watch"
-    "wget"
-    "wdiff"
-    "m4"
-    "bison"
-    "flex"
-    "make"
-    "cmake"
-    "less"
-    "gpatch"
+$ brew install bash zsh binutils bison cmake coreutils diffutils ed file-formula findutils flex gawk git gnu-indent gnu-sed gnu-tar gnu-which gpatch grep gzip less libressl m4 make openssh perl rsync screen unzip watch wdiff wget
   ```
     
     
