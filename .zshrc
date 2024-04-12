@@ -72,6 +72,7 @@ export PATH="/opt/homebrew/opt/m4/bin:$PATH"
 export PATH="/opt/homebrew/opt/flex/bin:$PATH"
 export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 
 export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
@@ -108,8 +109,7 @@ export SCCACHE_DIRECT=true
 
 export RUST_BACKTRACE=full
 export CARGO_INCREMENTAL=0
-export RUSTC_WRAPPER=~/.cargo/bin/sccache
-#export RUSTC_WRAPPER=sccache
+export RUSTC_WRAPPER=sccache
 
 export CMAKE_C_COMPILER_LAUNCHER=sccache
 export CMAKE_CXX_COMPILER_LAUNCHER=sccache
@@ -169,9 +169,7 @@ export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/flex/include"
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libressl/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libressl/include"
-#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
-#export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/llvm/include"
+
 
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/binutils/lib"
@@ -263,16 +261,6 @@ fi
 source $zsh_plugins
 ####
 
-
-
-# integrations
-#if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-##### WHAT YOU WANT TO DISABLE FOR WARP - BELOW
-
-#test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-##### WHAT YOU WANT TO DISABLE FOR WARP - ABOVE
-#fi
 
 source $HOME/.iterm2_shell_integration.zsh
 
@@ -394,7 +382,6 @@ alias sudo="sudo "
 
 # -------------------------------------utitlies--------------------------#
 
-alias cdr='cd $(git rev-parse --show-toplevel)'
 alias csvutil="qsv"
 alias ch="cht.sh"
 alias code="code-insiders"
@@ -417,34 +404,7 @@ alias zrc="cot ~/.zshrc"
 
 # -------------------------------------fun--------------------------#
 
-#alias wtf="dmesg"
-#alias rtfm="man"
-#
-#alias :3="echo"
-#alias anoy="yes"
-#alias visible="echo"
-#alias invisible="cat"
-#alias moar="more"
-#alias alwayz="tail -f"
-#
-#alias hai="cd"
-#alias iz="ls"
-#alias plz="pwd"
-#
-#alias inur="locate"
-#alias iminurbase="finger"
-#
-#alias btw="nice"
-#alias obtw="nohup"
-#
-#alias nomz="ps aux"
-#alias nomnom="killall"
-#
-#alias byes="exit"
-#alias cya="reboot"
-#alias kthxbai="halt"
-#
-#alias pwned="ssh"
+
 
 # ##########################################[Lazy Loading scripts ]###############################################################
 
@@ -477,42 +437,6 @@ mcd (){
     mkdir -p -- "$1" &&
     z "$1"
 }
-
-#
-## Add any commands which depend on conda here
-##lazy_conda_aliases=('python' 'conda')
-#
-#load_conda() {
-#  for lazy_conda_alias in $lazy_conda_aliases
-#  do
-#    unalias $lazy_conda_alias
-#  done
-#
-#  __conda_prefix="/opt/homebrew/Caskroom/miniconda/base" # Set your conda Location
-##  __conda_prefix="$HOME/.miniconda3" # Set your conda Location
-#
-#  # >>> conda initialize >>>
-#  __conda_setup="$("$__conda_prefix/bin/conda" 'shell.zsh' 'hook' 2> /dev/null)"
-#  if [ $? -eq 0 ]; then
-#      eval "$__conda_setup"
-#  else
-#      if [ -f "$__conda_prefix/etc/profile.d/conda.sh" ]; then
-## . "$__conda_prefix/etc/profile.d/conda.sh"  # commented out by conda initialize
-#      else
-#          export PATH="$__conda_prefix/bin:$PATH"
-#      fi
-#  fi
-#  unset __conda_setup
-#  # <<< conda initialize <<<
-#
-#  unset __conda_prefix
-#  unfunction load_conda
-#}
-#
-#for lazy_conda_alias in $lazy_conda_aliases
-#do
-#  alias $lazy_conda_alias="load_conda && $lazy_conda_alias"
-#done
 
 
 
