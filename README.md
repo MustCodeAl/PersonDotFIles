@@ -31,41 +31,7 @@ MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMU
 `brew install bfs atuin bat tlrc sd fd just bingrep ripgrep ripgrep-all git-delta procs grex starship just dust code-minimap mdbook ast-grep cherrybomb bacon fclones trippy gitui lemmeknow macchina onefetch tokei bottom qsv hyperfine mdcat hexyl`
 
 
-if you are on linux do:
-
-```sh 
-
-# allow mise to use go and cargo installers
-mise settings set experimental true
-
-# install fast and standard build tools
-$ mise use -g go:https://github.com/rs/curlie
-$ mise use -g cargo:cargo-binstall
-$ mise use -g cmake just make maven sccache
-
-# languages to install
-$ mise use -g deno dotnet go java kotlin lua maven nim node python zig
-
-# tools to install
-
-# package managers to install
-$ mise use -g bun conan pipx pnpm yarn
-
-# standard system tools
-$ mise use -g fzf git hurl jq nano shellcheck shfmt tmux vim
-
-# utilities
-$ mise use -g bat bat-extras bfs chisel delta dust eza fd glow gitui lazygit sshuttle starship tokei watchexec zoxide
-
-
-# other utilties
-$ mise use -g cargo:bottom cargo:fclones cargo:macchina cargo:onefetch cargo:procs cargo:tealdeer cargo:trippy
-
-$ mise use -g cargo:bingrep cargo:dtool cargo:grex cargo:hexyl cargo:lemmeknow cargo:qsv cargo:zipsign
-
-$ mise use -g npm:localtunnel npm:prettier npm:tiktok-scraper
-
-```
+***if you are on linux use **[this](https://github.com/MustCodeAl/Settings4G)** instead***
 
 brew cask installs (do `$ brew install --no-qurantine` if some of them wont open)
 
