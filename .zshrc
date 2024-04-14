@@ -12,30 +12,29 @@ fi
 
 
 
-# .zshrc
+# shellcheck disable=SC1072
 FPATH="/opt/homebrew/share/zsh/site-functions:${FPATH}"
 autoload -Uz compinit
-ZSH_COMPDUMP=${ZSH_COMPDUMP:-${ZDOTDIR:-~}/.zcompdump}
+ZSH_COMPDUMP=${ZSH_COMPDUMP:-${ZDOTDIR:-$HOME}/.zcompdump}
 
 # cache .zcompdump for about a day
-if [[ $ZSH_COMPDUMP('#qNmh-20') ]]; then
+if [[ -n $(find "$ZSH_COMPDUMP" -mtime -1 2>/dev/null) ]]; then
   compinit -C -d "$ZSH_COMPDUMP"
 else
   compinit -i -d "$ZSH_COMPDUMP"; touch "$ZSH_COMPDUMP"
 fi
+
 {
-  # compile .zcompdump
+#   compile .zcompdump
   if [[ -s "$ZSH_COMPDUMP" && (! -s "${ZSH_COMPDUMP}.zwc" || "$ZSH_COMPDUMP" -nt "${ZSH_COMPDUMP}.zwc") ]]; then
     zcompile "$ZSH_COMPDUMP"
   fi
 } &!
 
 
-
-
-
 setopt COMBINING_CHARS
 HISTSIZE=100000
+
 # ########################################################################################################################
 # environment variables
 # ########################################################################################################################
@@ -73,14 +72,14 @@ export PATH="/opt/homebrew/opt/flex/bin:$PATH"
 export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/libxslt/bin:$PATH"
 
 export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
 
-
 export MODULAR_HOME="$HOME/.modular"
 export VCPKG_ROOT="$HOME/vcpkg"
-export LIBRARY_PATH="/opt/homebrew/opt/lib:$LIBRARY_PATH"
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
 
@@ -93,7 +92,6 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR="nvim"
 fi
-
 
 
 
@@ -133,9 +131,9 @@ export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/bison/lib"
-  
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
-export CFLAGS="${CFLAGS} -I/opt/homebrew/include" 
+
+#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
+export CFLAGS="${CFLAGS} -I/opt/homebrew/include"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
 
 
@@ -169,11 +167,16 @@ export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/flex/include"
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libressl/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libressl/include"
-
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/llvm/include"
 
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/binutils/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/binutils/include"
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libxslt/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libxslt/include"
 
 
 export PKG_CONFIG_PATH="/opt/homebrew/opt/lib/pkgconfig:$PKG_CONFIG_PATH"
@@ -262,7 +265,16 @@ source $zsh_plugins
 ####
 
 
-source $HOME/.iterm2_shell_integration.zsh
+
+# integrations
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+##### WHAT YOU WANT TO DISABLE FOR WARP - BELOW
+
+    test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+##### WHAT YOU WANT TO DISABLE FOR WARP - ABOVE
+fi
+
 
 
 # Append a command directly
@@ -282,7 +294,7 @@ zvm_after_init_commands+=(
 autoload -Uz promptinit && promptinit && prompt powerlevel10k
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f $HOME/.p10k.zsh ]] || source $HOME/.p10k.zsh
+[[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
 
 
 
@@ -402,15 +414,13 @@ alias zpro="cot ~/.zprofile"
 alias zrc="cot ~/.zshrc"
 
 
-# -------------------------------------fun--------------------------#
-
 
 
 # ##########################################[Lazy Loading scripts ]###############################################################
 
 
-#macchina
-[ "$(date +%j)" != "$(cat ~/.mf.prevtime 2>/dev/null)" ] && { macchina > ~/.mf; date +%j > ~/.mf.prevtime; cat ~/.mf; } || cat ~/.mf
+
+
 
 
 # git repository greeter aka onefetch
@@ -431,12 +441,28 @@ cd() {
 }
 
 lcd() {
-        cd $1 && la
+        cd "$1" && la
 }
 mcd (){
     mkdir -p -- "$1" &&
     z "$1"
 }
+update_mf() {
+    local mf_file="$1"
+    local prev_time_file="$2"
+    local time_format="$3"
+
+    # Check if the previous time exists and is different from the current time
+    if [ "$(date +"$time_format")" != "$(cat "$prev_time_file" 2>/dev/null)" ]; then
+        macchina > "$mf_file"
+        date +"$time_format" > "$prev_time_file"
+    fi
+
+    # Output the contents of the file
+    cat "$mf_file"
+}
+update_mf ~/.mf ~/.mf.prevweek "%U"
+
 
 
 
