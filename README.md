@@ -31,7 +31,41 @@ MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMU
 `brew install bfs atuin bat tlrc sd fd just bingrep ripgrep ripgrep-all git-delta procs grex starship just dust code-minimap mdbook ast-grep cherrybomb bacon fclones trippy gitui lemmeknow macchina onefetch tokei bottom qsv hyperfine mdcat hexyl`
 
 
-if you are on linux do `mise use -g cargo:atuin cargo:tealdeer cargo:bottom cargo:macchina cargo:qsv cargo:tokei cargo:procs cargo:hexyl cargo:onefetch cargo:dtool cargo:bingrep cargo:grex cargo:lemmeknow cargo:trippy cargo:ripgrep cargo:ripgrep_all bat bat-extras bfs chisel cmake conan delta dust eza fd gitui hurl jq just kotlin lazygit make maven nano pipx sccache shellcheck shfmt starship tokei vim zig zoxide`
+if you are on linux do:
+
+```sh 
+
+# allow mise to use go and cargo installers
+mise settings set experimental true
+
+# install fast and standard build tools
+$ mise use -g go:https://github.com/rs/curlie
+$ mise use -g cargo:cargo-binstall
+$ mise use -g cmake just make maven sccache
+
+# languages to install
+$ mise use -g deno dotnet go java kotlin lua maven nim node python zig
+
+# tools to install
+
+# package managers to install
+$ mise use -g bun conan pipx pnpm yarn
+
+# standard system tools
+$ mise use -g fzf git hurl jq nano shellcheck shfmt tmux vim
+
+# utilities
+$ mise use -g bat bat-extras bfs chisel delta dust eza fd glow gitui lazygit sshuttle starship tokei watchexec zoxide
+
+
+# other utilties
+$ mise use -g cargo:bottom cargo:fclones cargo:macchina cargo:onefetch cargo:procs cargo:tealdeer cargo:trippy
+
+$ mise use -g cargo:bingrep cargo:dtool cargo:grex cargo:hexyl cargo:lemmeknow cargo:qsv cargo:zipsign
+
+$ mise use -g npm:localtunnel npm:prettier npm:tiktok-scraper
+
+```
 
 brew cask installs (do `$ brew install --no-qurantine` if some of them wont open)
 
@@ -69,7 +103,7 @@ install your fonts through `oh-my-posh font install` and themes through `gogh`
 replace built in mac default commands as many are dated
 ```sh
 
-$ brew install bash zsh binutils bison cmake coreutils diffutils ed file-formula findutils flex gawk git gnu-indent gnu-sed gnu-tar gnu-which gpatch grep gzip less libressl m4 make openssh perl rsync screen unzip watch wdiff wget
+$ brew install bash zsh binutils bison cmake coreutils diffutils ed file-formula findutils flex gawk git gnu-indent gnu-sed gnu-tar gnu-which gpatch grep gzip less libressl m4 make openssh perl rsync screen unzip watch wdiff wget nano nanorc
   ```
     
     
