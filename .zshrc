@@ -39,33 +39,22 @@ HISTSIZE=100000
 # zsh uses $path array along with $PATH
 typeset -U PATH path
 
-export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
-export PATH="/opt/homebrew/opt/icu4c/sbin:$PATH"
-export PATH="/opt/homebrew/opt/bison/bin:$PATH"
-export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
-export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
-export PATH="/opt/homebrew/opt/gnu-getopt/bin:$PATH"
+
+
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/unzip/bin:$PATH"
-export PATH="/opt/homebrew/opt/curl/bin:$PATH"
-export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
-export PATH="/opt/homebrew/opt/ed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-which/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/file-formula/bin:$PATH"
-export PATH="/opt/homebrew/opt/m4/bin:$PATH"
-export PATH="/opt/homebrew/opt/flex/bin:$PATH"
-export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
-export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="/opt/homebrew/opt/libxslt/bin:$PATH"
+export PATH="/opt/homebrew/opt/ed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
+
+
+
+
 
 export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
@@ -106,18 +95,13 @@ export CCFLAGS="${CCFLAGS} -fdiagnostics-color=always"
 # force C, C++, Cpp (pre-processor) colored diagnostic output
 export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/bison/lib"
 
-#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
 export CFLAGS="${CFLAGS} -I/opt/homebrew/include"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
 
-export CFLAGS="${CFLAGS} -I/opt/homebrew/opt/zlib/include"
-export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/zlib/include"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/bison/lib"
 
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/openssl/lib"
-export CFLAGS="${CFLAGS} -I/opt/homebrew/opt/openssl/include"
-export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/openssl/include"
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/postgresql@16/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/postgresql@16/include"
@@ -128,8 +112,7 @@ export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/mysql-client/include"
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/sqlite/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/sqlite/include"
 
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/curl/lib"
-export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/curl/include"
+
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/flex/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/flex/include"
@@ -137,23 +120,75 @@ export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/flex/include"
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libressl/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libressl/include"
 
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/llvm/include"
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libxslt/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libxslt/include"
+
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/binutils/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/binutils/include"
 
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libxslt/lib"
-export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libxslt/include"
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/bzip2/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/bzip2/include"
+
+
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/llvm/include"
+
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/curl/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/curl/include"
+
+export LDFLAGS="${LDFLAGS}} -L/opt/homebrew/opt/zlib/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/zlib/include"
+
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/readline/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/readline/include"
+
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/openssl/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/openssl/include"
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/openssl@1.1/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/openssl@1.1/include"
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/openssl@3/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/openssl@3/include"
+
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libffi/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libffi/include"
+
+
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/ncurses/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/ncurses/include"
+
+
+
+
+
+
+
 
 export PKG_CONFIG_PATH="/opt/homebrew/opt/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/postgresql@16/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/mysql-client/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/sqlite/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"
-export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/libressl/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/libffi/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@1.1/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/openssl@3/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/zlib/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/readline/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/opt/ncurses/lib/pkgconfig:$PKG_CONFIG_PATH"
+export PKG_CONFIG_PATH="/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"
 
 #------------------------------------plugin exports-------------------------------------#
 
@@ -172,6 +207,9 @@ export warhol_ignore_df=1
 export warhol_ignore_diff=1
 export warhol_ignore_ls=1
 export warhol_ignore_ps=1
+
+export MISE_PYTHON_COMPILE=true
+
 
 # ########################################################################################################################
 
