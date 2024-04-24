@@ -4,26 +4,37 @@
 
 #!/usr/bin/env bash
 
-export PATH="/opt/homebrew/opt/icu4c/bin:$PATH"
-export PATH="/opt/homebrew/opt/icu4c/sbin:$PATH"
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
-export PATH="/opt/homebrew/opt/bison/bin:$PATH"
-export PATH="/opt/homebrew/opt/libiconv/bin:$PATH"
-export PATH="$HOME/.local/share/mise/shims:$PATH"
-export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
-export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-which/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/ed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
+
+#export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
 
+export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
 
 
-export MANPAGER="manpager | less --pattern=^\\S+"
 export CLICOLOR=1
 export LESS="$LESS -R"
 export LESSOPEN="|~/.lessfilter %s"
 export LESSCOLORIZER="bat"
+export MANPAGER="manpager | less --pattern=^\\S+"
+
+if ! [[ $__CFBundleIdentifier == "com.googlecode.iterm2" || $__CFBundleIdentifier == "com.github.wez.wezterm" ]]; then
+    # Bash-specific initialization
+    unset MANPAGER
+fi
+
 
 export PYTHONDEBUG=1
 export BETTER_EXCEPTIONS=1
@@ -34,17 +45,28 @@ export CARGO_INCREMENTAL=0
 export SCCACHE_ERROR_LOG=/tmp/sccache_log.txt 
 export SCCACHE_DIRECT=true
 
-export RUSTC_WRAPPER=~/.cargo/bin/sccache
+export RUSTC_WRAPPER=sccache
 export CMAKE_C_COMPILER_LAUNCHER=sccache
 export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 
+#make ninja default for make
+export CMAKE_GENERATOR=Ninja
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+
+export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig"
+
+
+export CFLAGS="${CFLAGS} -I$(brew --prefix)/include" 
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
+export LDFLAGS="${LDFLAGS} -L$(brew --prefix)/lib"
+
+#export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
 
 
 
 
 
-
-export FZF_BASE="/opt/homebrew/bin/fzf"
+#export FZF_BASE="/opt/homebrew/bin/fzf"
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
@@ -130,13 +152,17 @@ export SCM_CHECK=true
 source "$BASH_IT"/bash_it.sh
 #[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
-source ~/.iterm2_shell_integration.bash
 
-ble-face auto_complete="fg=gray"
-bleopt complete_ambiguous=
+# integrations
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+  ##### WHAT YOU WANT TO DISABLE FOR WARP - BELOW
+  	test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
+##### WHAT YOU WANT TO DISABLE FOR WARP - ABOVE
+fi
 
 
-bleopt prompt_ps1_transient=always:trim
+
 
 
 
@@ -145,50 +171,53 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 #eval "$(starship init bash)"
 eval "$(atuin init bash)"
 eval "$(mise activate bash)"
-#eval lesspipe.sh
 
 
 
+ble-face auto_complete="fg=gray"
+bleopt complete_ambiguous=""
 
+
+bleopt prompt_ps1_transient="always:trim"
 
 alias "g++"="/opt/homebrew/bin/grc --colour=auto g++"
-alias head='/opt/homebrew/bin/grc --colour=auto head'
-alias make='/opt/homebrew/bin/grc --colour=auto make'
-alias ld='/opt/homebrew/bin/grc --colour=auto ld'
-alias ping6='/opt/homebrew/bin/grc --colour=auto ping6'
-alias tail='/opt/homebrew/bin/grc --colour=auto tail'
-alias traceroute6='/opt/homebrew/bin/grc --colour=auto traceroute6'
-alias curl='/opt/homebrew/bin/grc --colour=auto curl'
-alias df='/opt/homebrew/bin/grc --colour=auto df'
-alias diff='/opt/homebrew/bin/grc --colour=auto diff'
-alias dig='/opt/homebrew/bin/grc --colour=auto dig'
-alias du='/opt/homebrew/bin/grc --colour=auto du'
-alias env='/opt/homebrew/bin/grc --colour=auto env'
-alias fdisk='/opt/homebrew/bin/grc --colour=auto fdisk'
-alias gcc='/opt/homebrew/bin/grc --colour=auto gcc'
-alias id='/opt/homebrew/bin/grc --colour=auto id'
-alias ifconfig='/opt/homebrew/bin/grc --colour=auto ifconfig'
-alias ip='/opt/homebrew/bin/grc --colour=auto ip'
-alias last='/opt/homebrew/bin/grc --colour=auto last'
-alias log='/opt/homebrew/bin/grc --colour=auto log'
-alias lsof='/opt/homebrew/bin/grc --colour=auto lsof'
-alias mount='/opt/homebrew/bin/grc --colour=auto mount'
-alias mvn='/opt/homebrew/bin/grc --colour=auto mvn'
-alias netstat='/opt/homebrew/bin/grc --colour=auto netstat'
-alias "nmap"="/opt/homebrew/bin/grc --colour=auto nmap"
-alias php='/opt/homebrew/bin/grc --colour=auto php'
-alias ping='/opt/homebrew/bin/grc --colour=auto ping'
-alias ps='/opt/homebrew/bin/grc --colour=auto ps'
-alias pv='/opt/homebrew/bin/grc --colour=auto pv'
-alias showmount='/opt/homebrew/bin/grc --colour=auto showmount'
-alias stat='/opt/homebrew/bin/grc --colour=auto stat'
-alias sysctl='/opt/homebrew/bin/grc --colour=auto sysctl'
-alias tcpdump='/opt/homebrew/bin/grc --colour=auto tcpdump'
-alias tail='/opt/homebrew/bin/grc --colour=auto tail'
-alias traceroute='/opt/homebrew/bin/grc --colour=auto traceroute'
-alias ulimit='/opt/homebrew/bin/grc --colour=auto ulimit'
-alias uptime='/opt/homebrew/bin/grc --colour=auto uptime'
-alias whois='/opt/homebrew/bin/grc --colour=auto whois'
+alias head="/opt/homebrew/bin/grc --colour=auto head"
+alias make="/opt/homebrew/bin/grc --colour=auto make"
+alias ld="/opt/homebrew/bin/grc --colour=auto ld"
+alias ping6="/opt/homebrew/bin/grc --colour=auto ping6"
+alias tail="/opt/homebrew/bin/grc --colour=auto tail"
+alias traceroute6="/opt/homebrew/bin/grc --colour=auto traceroute6"
+alias curl="/opt/homebrew/bin/grc --colour=auto curl"
+alias df="/opt/homebrew/bin/grc --colour=auto df"
+alias diff="/opt/homebrew/bin/grc --colour=auto diff"
+alias dig="/opt/homebrew/bin/grc --colour=auto dig"
+alias du="/opt/homebrew/bin/grc --colour=auto du"
+alias env="/opt/homebrew/bin/grc --colour=auto env"
+alias fdisk="/opt/homebrew/bin/grc --colour=auto fdisk"
+alias gcc="/opt/homebrew/bin/grc --colour=auto gcc"
+alias id="/opt/homebrew/bin/grc --colour=auto id"
+alias ifconfig="/opt/homebrew/bin/grc --colour=auto ifconfig"
+alias ip="/opt/homebrew/bin/grc --colour=auto ip"
+alias last="/opt/homebrew/bin/grc --colour=auto last"
+alias log="/opt/homebrew/bin/grc --colour=auto log"
+alias lsof="/opt/homebrew/bin/grc --colour=auto lsof"
+alias mount="/opt/homebrew/bin/grc --colour=auto mount"
+alias mvn="/opt/homebrew/bin/grc --colour=auto mvn"
+alias netstat="/opt/homebrew/bin/grc --colour=auto netstat"
+alias nmap="/opt/homebrew/bin/grc --colour=auto nmap"
+alias php="/opt/homebrew/bin/grc --colour=auto php"
+alias ping="/opt/homebrew/bin/grc --colour=auto ping"
+alias ps="/opt/homebrew/bin/grc --colour=auto ps"
+alias pv="/opt/homebrew/bin/grc --colour=auto pv"
+alias showmount="/opt/homebrew/bin/grc --colour=auto showmount"
+alias stat="/opt/homebrew/bin/grc --colour=auto stat"
+alias sysctl="/opt/homebrew/bin/grc --colour=auto sysctl"
+alias tcpdump="/opt/homebrew/bin/grc --colour=auto tcpdump"
+alias tail="/opt/homebrew/bin/grc --colour=auto tail"
+alias traceroute="/opt/homebrew/bin/grc --colour=auto traceroute"
+alias ulimit="/opt/homebrew/bin/grc --colour=auto ulimit"
+alias uptime="/opt/homebrew/bin/grc --colour=auto uptime"
+alias whois="/opt/homebrew/bin/grc --colour=auto whois"
 
 
 alias bashconfig="bash ~/.bashrc"
@@ -221,11 +250,26 @@ alias lv="lnav"
 alias sl="ls"
 
 
+alias brc="cot ~/.bashrc"
 
-#macchina
-[ "$(date +%j)" != "$(cat ~/.mf.prevtime 2>/dev/null)" ] && { macchina > ~/.mf; date +%j > ~/.mf.prevtime; cat ~/.mf; } || cat ~/.mf
+update_mf() {
+  local mf_file="$1"
+  local prev_time_file="$2"
+  local time_format="$3"
 
-last_repository=
+  # Check if the previous time exists and is different from the current time
+  if [ "$(date +"$time_format")" != "$(cat "$prev_time_file" 2>/dev/null)" ]; then
+    macchina >"$mf_file"
+    date +"$time_format" >"$prev_time_file"
+  fi
+
+  # Output the contents of the file
+  cat "$mf_file"
+}
+update_mf ~/.mf ~/.mf.prevweek "%U"
+
+last_repository=""
+
 check_directory_for_new_repository() {
 	current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
 	
@@ -241,48 +285,7 @@ cd() {
 }
 
 
-export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig"
 
-
-export CFLAGS="-I$(brew --prefix)/include" 
-export CPPFLAGS="-I/opt/homebrew/include"
-export LDFLAGS="-L$(brew --prefix)/lib"
-
-export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
-## Add any commands which depend on conda here
-#lazy_conda_aliases=('python' 'conda')
-#
-#load_conda() {
-#  for lazy_conda_alias in $lazy_conda_aliases
-#  do
-#    unalias $lazy_conda_alias
-#  done
-#
-#  __conda_prefix="/opt/homebrew/Caskroom/miniconda/base" # Set your conda Location
-##  __conda_prefix="$HOME/.miniconda3" # Set your conda Location
-#
-#  # >>> conda initialize >>>
-#  __conda_setup="$("$__conda_prefix/bin/conda" 'shell.bash' 'hook' 2> /dev/null)"
-#  if [ $? -eq 0 ]; then
-#      eval "$__conda_setup"
-#  else
-#      if [ -f "$__conda_prefix/etc/profile.d/conda.sh" ]; then
-#		 . "$__conda_prefix/etc/profile.d/conda.sh"
-#      else
-#          export PATH="$__conda_prefix/bin:$PATH"
-#      fi
-#  fi
-#  unset __conda_setup
-#  # <<< conda initialize <<<
-#
-#  unset __conda_prefix
-#  unfunction load_conda
-#}
-#
-#for lazy_conda_alias in $lazy_conda_aliases
-#do
-#  alias $lazy_conda_alias="load_conda && $lazy_conda_alias"
-#done
 
 
 
