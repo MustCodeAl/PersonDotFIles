@@ -53,15 +53,15 @@ brew cask installs (do `$ brew install --no-qurantine` if some of them wont open
 
 ```sh-session
 $ brew install alt-tab displaylink hiddenbar raycast stats swift-quit
-$ brew install codewhisper devutils jetbrains-toolbox iterm2 iina
+$ brew install codewhisperer devutils jetbrains-toolbox iterm2 iina
 $ brew install coteditor switchhosts rapidapi warp utm
 $ brew install anki linear-linear superproductivity platypus
-$ brew install apparency betterzip quicklookase qlimagesize qlzipinfo provisionql syntax-highlight suspicious-package
+$ brew install apparency betterzip qlimagesize qlzipinfo provisionql syntax-highlight suspicious-package
 $ brew install clipgrab diffusionbee handbrake keycastr obs 
 $ brew install google-chrome librewolf microsoft-edge orion
 $ brew install homebrew/cask/docker github masscode pgadmin4  
 $ brew install background-music exifcleaner linkliar mullvadvpn textmate
-$ brew install cakebrew powershell chromedriver wezterm pieces zed 
+$ brew install cakebrew powershell chromedriver wezterm zed 
 
 ```
 make sure you do `brew outdated --greedy` to check for updates as some applications like brave-browser to self update and brew ignores them
