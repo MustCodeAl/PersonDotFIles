@@ -274,7 +274,7 @@ local plugins = {
     },
     {
         "ThePrimeagen/refactoring.nvim", -- refacotring plugin
-        
+
         dependencies = {
             "nvim-lua/plenary.nvim",
             "nvim-treesitter/nvim-treesitter",
