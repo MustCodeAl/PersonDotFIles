@@ -201,6 +201,13 @@ export LESSOPEN="|~/.lessfilter %s"
 export LESSCOLORIZER="bat"
 export MANPAGER="manpager | less --pattern=^\\S+"
 
+
+if ! [[ $__CFBundleIdentifier == "com.googlecode.iterm2" || $__CFBundleIdentifier == "com.github.wez.wezterm" ]]; then
+    # Bash-specific initialization
+    unset MANPAGER
+fi
+
+
 export warhol_ignore_curl=1
 export warhol_ignore_du=1
 export warhol_ignore_df=1
@@ -209,7 +216,6 @@ export warhol_ignore_ls=1
 export warhol_ignore_ps=1
 
 export MISE_PYTHON_COMPILE=true
-
 
 # ########################################################################################################################
 
@@ -249,8 +255,12 @@ zvm_after_init_commands+=(
   'eval "$(atuin init zsh)"'
 )
 
+autoload -Uz async && async
+
 # appearance
 autoload -Uz promptinit && promptinit && prompt powerlevel10k
+
+
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
