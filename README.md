@@ -78,6 +78,9 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 
 `brew install libplist`
 
+`brew install llvm` 
+
+
 
 install your fonts through `oh-my-posh font install` and themes through `gogh`
 
