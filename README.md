@@ -17,8 +17,8 @@ Do:
 
 ```console
 
-# allow mise to use go and cargo installers
-mise settings set experimental true
+##allow mise to use go and cargo installers
+$ mise settings set experimental true
 
 # install fast and standard build tools
 $ mise use -g go:https://github.com/rs/curlie
