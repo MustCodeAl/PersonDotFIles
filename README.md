@@ -44,7 +44,7 @@ MAKE SURE TO INSTALL AS MUCH SOFTWARE YOU THREW BREW, MISE, AND CARGO FOR MAXIMU
 
 
 
-`brew install bfs atuin bat curlie tlrc sd fd just bingrep ripgrep ripgrep-all git-delta procs grex starship just dust code-minimap mdbook ast-grep cherrybomb bacon fclones trippy gitui lemmeknow macchina onefetch tokei bottom qsv hyperfine mdcat hexyl`
+`brew install bfs atuin bat curlie tlrc sd fd mold just bingrep ripgrep ripgrep-all git-delta procs grex starship just dust code-minimap mdbook ast-grep cherrybomb bacon fclones trippy gitui lemmeknow macchina onefetch tokei bottom qsv hyperfine mdcat hexyl`
 
 
 ***if you are on linux use **[this](https://github.com/MustCodeAl/Settings4G)** instead***
