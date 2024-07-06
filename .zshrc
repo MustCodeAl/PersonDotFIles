@@ -96,6 +96,9 @@ export CCFLAGS="${CCFLAGS} -fdiagnostics-color=always"
 export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
+export LDFLAGS="-fuse-ld=lld" # add to your .profile
+
+
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
 export CFLAGS="${CFLAGS} -I/opt/homebrew/include"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
