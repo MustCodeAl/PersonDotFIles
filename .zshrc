@@ -79,6 +79,7 @@ export SCCACHE_DIRECT=true
 export RUST_BACKTRACE=full
 export CARGO_INCREMENTAL=0
 export RUSTC_WRAPPER=sccache
+export RUSTFLAGS="-C link-arg=-fuse-ld=lld ${RUSTFLAGS:-}"
 
 export CMAKE_C_COMPILER_LAUNCHER=sccache
 export CMAKE_CXX_COMPILER_LAUNCHER=sccache
