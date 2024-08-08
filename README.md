@@ -90,5 +90,16 @@ replace built in mac default commands as many are dated
 
 $ brew install bash zsh binutils bison cmake coreutils diffutils ed file-formula findutils flex gawk git gnu-indent gnu-sed gnu-tar gnu-which gpatch grep gzip less libressl m4 make openssh perl rsync screen unzip watch wdiff wget nano nanorc
   ```
-    
+
+
+Notes for MacOS Users
+Starting with Mac OS X Mavericks, a feature named App Nap has been introduced to the operating system. This feature causes certain applications which are open (but not visible) to be placed in a suspended state. As this behavior causes Anki-Connect to stop working while you have another window in the foreground, App Nap should be disabled for Anki:
+
+Start the Terminal application.
+Execute the following commands in the terminal window:
+`defaults write net.ankiweb.dtop NSAppSleepDisabled -bool true`
+`defaults write net.ichi2.anki NSAppSleepDisabled -bool true`
+`defaults write org.qt-project.Qt.QtWebEngineCore NSAppSleepDisabled -bool true`
+
+Restart Application
     
