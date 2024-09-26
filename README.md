@@ -6,7 +6,7 @@ get [EnvPane](https://github.com/hschmidt/EnvPane)
 
 `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
 
-`brew install mise`
+`brew install mise usage`
 
 *do this command to keep your binarys automatically detected by ides*
 
@@ -55,7 +55,7 @@ brew cask installs (do `$ brew install --no-qurantine` if some of them wont open
 $ brew install alt-tab displaylink hiddenbar raycast stats swift-quit
 $ brew install codewhisperer devutils jetbrains-toolbox iterm2 iina
 $ brew install coteditor switchhosts rapidapi warp utm
-$ brew install anki linear-linear superproductivity platypus
+$ brew install anki chatgpt linear-linear platypus superproductivity 
 $ brew install apparency betterzip qlimagesize qlzipinfo provisionql syntax-highlight suspicious-package
 $ brew install clipgrab diffusionbee handbrake keycastr obs 
 $ brew install google-chrome librewolf microsoft-edge orion
@@ -66,7 +66,7 @@ $ brew install cakebrew powershell chromedriver wezterm zed
 ```
 make sure you do `brew outdated --greedy` to check for updates as some applications like brave-browser to self update and brew ignores them
 
-`brew upgrade brave-browser --greedy`
+`brew upgrade brave-browser --greedy --no-quarantine`
 
 `brew upgrade --greedy` to update all casks at the same time (NOT RECOMMENDED )
 
@@ -80,6 +80,7 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 
 `brew install llvm` 
 
+`mise use -g cargo:ubi cargo:syncat cargo:paper-terminal`
 
 
 install your fonts through `oh-my-posh font install` and themes through `gogh`
