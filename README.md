@@ -80,6 +80,9 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 
 `brew install llvm` 
 
+`brew install lld` 
+
+
 `mise use -g cargo:ubi cargo:syncat cargo:paper-terminal`
 
 
