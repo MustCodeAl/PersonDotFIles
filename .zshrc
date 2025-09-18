@@ -49,6 +49,7 @@ export PATH="/opt/homebrew/opt/gnu-which/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/ed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
 export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 
 
@@ -154,7 +155,7 @@ export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/llvm/include"
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/curl/include"
 
-export LDFLAGS="${LDFLAGS}} -L/opt/homebrew/opt/zlib/lib"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/zlib/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/zlib/include"
 
 
