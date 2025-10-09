@@ -8,6 +8,7 @@ get [EnvPane](https://github.com/hschmidt/EnvPane)
 
 `brew install mise usage`
 
+
 *do this command to keep your binarys automatically detected by ides*
 
 `sudo ln -s ~/.local/share/mise/shims /usr/local/bin`
@@ -82,6 +83,8 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 
 `brew install lld` 
 
+`brew install gdb`
+
 
 `mise use -g cargo:ubi cargo:syncat cargo:paper-terminal`
 
@@ -92,7 +95,7 @@ install your fonts through `oh-my-posh font install` and themes through `gogh`
 replace built in mac default commands as many are dated
 ```console
 
-$ brew install bash zsh binutils bison cmake coreutils diffutils ed file-formula findutils flex gawk git gnu-indent gnu-sed gnu-tar gnu-which gpatch grep gzip less libressl m4 make openssh perl rsync screen unzip watch wdiff wget nano nanorc
+$ brew install antidote bash zsh binutils bison cmake coreutils diffutils ed file-formula findutils flex gawk git gnu-indent gnu-sed gnu-tar gnu-which gpatch grep gzip less libressl m4 make openssh perl rsync screen unzip watch wdiff wget nano nanorc
   ```
 
 
