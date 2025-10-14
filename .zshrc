@@ -19,12 +19,11 @@ else
   touch "$ZSH_COMPDUMP"
 fi
 
-{
-  #   compile .zcompdump
-  if [[ -s "$ZSH_COMPDUMP" && (! -s "${ZSH_COMPDUMP}.zwc" || "$ZSH_COMPDUMP" -nt "${ZSH_COMPDUMP}.zwc") ]]; then
-    zcompile "$ZSH_COMPDUMP"
-  fi
-} &! 
+# Compile .zcompdump in background if needed
+if [[ -s "$ZSH_COMPDUMP" && ( ! -s "${ZSH_COMPDUMP}.zwc" || "$ZSH_COMPDUMP" -nt "${ZSH_COMPDUMP}.zwc" ) ]]; then
+  zcompile "$ZSH_COMPDUMP" &
+fi
+
 
 setopt COMBINING_CHARS
 HISTSIZE=100000
@@ -57,7 +56,7 @@ export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 
 export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
-export MODULAR_HOME="$HOME/.modular"
+#export MODULAR_HOME="$HOME/.modular"
 export VCPKG_ROOT="$HOME/vcpkg"
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
@@ -80,6 +79,7 @@ export CARGO_INCREMENTAL=0
 export RUSTC_WRAPPER=sccache
 export RUSTFLAGS="-C link-arg=-fuse-ld=lld ${RUSTFLAGS:-}"
 
+export SCCACHE_CACHE_SIZE="25G"
 export CMAKE_C_COMPILER_LAUNCHER=sccache
 export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 
@@ -368,15 +368,26 @@ alias zrc="cot ~/.zshrc"
 # git repository greeter aka onefetch
 last_repository=""
 
-check_directory_for_new_repository() {
-  current_repository=$(git rev-parse --show-toplevel 2>/dev/null)
 
-  if [ "$current_repository" ] &&
-    [ "$current_repository" != "$last_repository" ]; then
-    onefetch
+check_directory_for_new_repository() {
+  local current_repository
+  current_repository=$(git rev-parse --show-toplevel 2>/dev/null) || current_repository=""
+
+  if [[ -n $current_repository && $current_repository != $last_repository ]]; then
+    if command -v onefetch >/dev/null 2>&1 && git -C "$current_repository" rev-list -n 1 --all >/dev/null 2>&1; then
+      # Optional: if HEAD is unborn, pick the first commit on any branch
+      if ! git -C "$current_repository" rev-parse --verify HEAD >/dev/null 2>&1; then
+        # HEAD is unborn; just skip to avoid onefetch error
+        :
+      else
+        onefetch
+      fi
+    fi
   fi
+
   last_repository=$current_repository
 }
+
 cd() {
   z "$@"
   check_directory_for_new_repository
