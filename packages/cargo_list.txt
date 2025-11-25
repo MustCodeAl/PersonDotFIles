@@ -1,138 +1,54 @@
-cargo install --list
-actix-generator v0.4.4:
-    actix
-bacon v3.18.0:
-    bacon
-bacon-ls v0.23.0:
-    bacon-ls
-cargo-audit v0.21.2:
-    cargo-audit
-cargo-auditable v0.7.0:
-    cargo-auditable
-cargo-binstall v1.15.6:
-    cargo-binstall
-cargo-bloat v0.12.1:
-    cargo-bloat
-cargo-dylint v4.1.2:
-    cargo-dylint
-cargo-edit v0.13.7:
-    cargo-add
-    cargo-rm
-    cargo-set-version
-    cargo-upgrade
-cargo-expand v1.0.117:
-    cargo-expand
-cargo-fuzz v0.13.1:
-    cargo-fuzz
-cargo-generate v0.23.5:
-    cargo-generate
-cargo-info v0.7.7:
-    cargo-info
-cargo-lambda v1.8.6:
-    cargo-lambda
-cargo-limit v0.0.10:
-    _cargo-limit-open-in-nvim
-    cargo-lbench
-    cargo-lbuild
-    cargo-lcheck
-    cargo-lclippy
-    cargo-ldoc
-    cargo-lfix
-    cargo-llbench
-    cargo-llbuild
-    cargo-llcheck
-    cargo-llclippy
-    cargo-lldoc
-    cargo-llfix
-    cargo-llrun
-    cargo-llrustc
-    cargo-llrustdoc
-    cargo-lltest
-    cargo-lrun
-    cargo-lrustc
-    cargo-lrustdoc
-    cargo-ltest
-cargo-make v0.37.24:
-    cargo-make
-    makers
-cargo-modules v0.24.3:
-    cargo-modules
-cargo-outdated v0.17.0:
-    cargo-outdated
-cargo-pgx v0.7.4:
-    cargo-pgx
-cargo-play v0.5.1:
-    cargo-play
-cargo-readme v3.3.1:
-    cargo-readme
-cargo-release v0.25.20:
-    cargo-release
-cargo-show-asm v0.2.52:
-    cargo-asm
-cargo-shuttle v0.57.3:
-    cargo-shuttle
-    shuttle
-cargo-sonar v1.3.1:
-    cargo-codeclimate
-    cargo-sonar
-cargo-tarpaulin v0.33.0:
-    cargo-tarpaulin
-cargo-update v18.0.0:
-    cargo-install-update
-    cargo-install-update-config
-cargo-watch v8.5.3:
-    cargo-watch
-cargo-wipe v0.3.3:
-    cargo-wipe
-create-rust-app_cli v11.0.3:
-    create-rust-app
-create-tauri-app v4.6.2:
-    cargo-create-tauri-app
-cross v0.2.5:
-    cross
-    cross-util
-diesel_cli v2.3.2:
-    diesel
-dsync v0.1.0:
-    dsync
-dtool v0.12.0:
-    dtool
-dylint-link v4.1.2:
-    dylint-link
-flamegraph v0.6.9:
-    cargo-flamegraph
-    flamegraph
-fleet-rs v0.0.8:
-    cargo-fleet
-    fleet
-grcov v0.10.5:
-    grcov
-huniq v2.7.0:
-    huniq
-illa v1.2.14:
-    illa
-irust v1.76.2:
-    irust
-mdbook v0.4.52:
-    mdbook
-mdbook-pandoc v0.10.5:
-    mdbook-pandoc
-rs-aggregate v0.3.2:
-    rs-aggregate
-rustowl v0.3.4:
-    rustowl
-    rustowlc
-sccache v0.10.0:
-    sccache
-tauri-cli v2.8.4:
-    cargo-tauri
-tokio-console v0.1.13:
-    tokio-console
-trunk v0.21.14:
-    trunk
-tsync v3.0.0:
-    tsync
-twiggy v0.8.0:
-    twiggy
-watchexec-cli v2.3.2:
-    watchexec
+actix-generator --version 0.4.4
+bacon --version 3.18.0
+bacon-ls --version 0.23.0
+cargo-audit --version 0.21.2
+cargo-auditable --version 0.7.0
+cargo-binstall --version 1.15.7
+cargo-bloat --version 0.12.1
+cargo-dylint --version 5.0.0
+cargo-edit --version 0.13.7
+cargo-expand --version 1.0.117
+cargo-fuzz --version 0.13.1
+cargo-generate --version 0.23.5
+cargo-info --version 0.7.7
+cargo-lambda --version 1.8.6
+cargo-limit --version 0.0.10
+cargo-make --version 0.37.24
+cargo-modules --version 0.24.3
+cargo-outdated --version 0.17.0
+cargo-pgx --version 0.7.4
+cargo-play --version 0.5.1
+cargo-readme --version 3.3.1
+cargo-release --version 0.25.20
+cargo-show-asm --version 0.2.52
+cargo-shuttle --version 0.57.3
+cargo-sonar --version 1.3.1
+cargo-tarpaulin --version 0.33.0
+cargo-update --version 18.0.0
+cargo-watch --version 8.5.3
+cargo-wipe --version 0.3.3
+create-rust-app_cli --version 11.0.3
+create-tauri-app --version 4.6.2
+cross --version 0.2.5
+diesel_cli --version 2.3.2
+dsync --version 0.1.0
+dtool --version 0.12.0
+dylint-link --version 5.0.0
+flamegraph --version 0.6.9
+fleet-rs --version 0.0.8
+grcov --version 0.10.5
+huniq --version 2.7.0
+illa --version 1.2.14
+irust --version 1.76.2
+mdbook --version 0.4.52
+mdbook-pandoc --version 0.10.5
+rs-aggregate --version 0.3.2
+rustlings --version 6.5.0
+rustowl --version 0.3.4
+sccache --version 0.11.0
+tauri-cli --version 2.8.4
+tokio-console --version 0.1.13
+trunk --version 0.21.14
+tsync --version 3.0.0
+twiggy --version 0.8.0
+watchexec-cli --version 2.3.2
