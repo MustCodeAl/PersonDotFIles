@@ -1,8 +1,83 @@
-# CodeWhisperer pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/bashrc.pre.bash" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/bashrc.pre.bash"
-
-
 #!/usr/bin/env bash
+
+
+
+export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+
+
+export VCPKG_ROOT="$HOME/vcpkg"
+
+
+
+
+#---------------------------------------exports-----------------------------------------------#
+
+
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR="vim"
+else
+  export EDITOR="nvim"
+fi
+
+
+export PYTHONDEBUG=1
+export BETTER_EXCEPTIONS=1
+
+
+export SCCACHE_ERROR_LOG=/tmp/sccache_log.txt 
+export SCCACHE_DIRECT=true
+
+
+
+export RUST_BACKTRACE=full
+export CARGO_INCREMENTAL=0
+export RUSTC_WRAPPER=sccache
+export RUSTFLAGS="-C link-arg=-fuse-ld=lld ${RUSTFLAGS:-}"
+
+
+export SCCACHE_CACHE_SIZE="25G"
+export CMAKE_C_COMPILER_LAUNCHER=sccache
+export CMAKE_CXX_COMPILER_LAUNCHER=sccache
+
+#make ninja default for make
+export CMAKE_GENERATOR=Ninja
+export CMAKE_EXPORT_COMPILE_COMMANDS=1
+
+
+
+
+# force C colored diagnostic output
+export CFLAGS="${CFLAGS} -fdiagnostics-color=always"
+# force C++ colored diagnostic output
+export CXXFLAGS="${CXXFLAGS} -fdiagnostics-color=always"
+export CCFLAGS="${CCFLAGS} -fdiagnostics-color=always"
+# force C, C++, Cpp (pre-processor) colored diagnostic output
+export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
+
+
+
+
+# export LDFLAGS="${LDFLAGS} -fuse-ld=lld" # add to your .profile
+
+
+export CC="clang"
+export CXX="clang++"
+export LDFLAGS="${LDFLAGS} -fuse-ld=lld" # add to your .profile
+
+
+
+
+
+
+#export CFLAGS="${CFLAGS} -I$(brew --prefix)/include" 
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
+
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
+#export LDFLAGS="${LDFLAGS} -L$(brew --prefix)/lib"
+
+#export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+
 
 
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
@@ -16,11 +91,9 @@ export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/ed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
 
-#export PATH="/opt/homebrew/opt/man-db/libexec/bin:$PATH"
-export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
 
-export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+#------------------------------------plugin exports-------------------------------------#
 
 
 
@@ -28,50 +101,21 @@ export CLICOLOR=1
 export LESS="$LESS -R"
 export LESSOPEN="|~/.lessfilter %s"
 export LESSCOLORIZER="bat"
-export MANPAGER="manpager | less --pattern=^\\S+"
-
-if ! [[ $__CFBundleIdentifier == "com.googlecode.iterm2" || $__CFBundleIdentifier == "com.github.wez.wezterm" ]]; then
-    # Bash-specific initialization
-    unset MANPAGER
-fi
+export MANPAGER="$HOME/.local/bin/manpager | less --pattern=^\\S+"
 
 
-export PYTHONDEBUG=1
-export BETTER_EXCEPTIONS=1
-
-export RUST_BACKTRACE=full
-
-export CARGO_INCREMENTAL=0
-export SCCACHE_ERROR_LOG=/tmp/sccache_log.txt 
-export SCCACHE_DIRECT=true
-
-export RUSTC_WRAPPER=sccache
-export CMAKE_C_COMPILER_LAUNCHER=sccache
-export CMAKE_CXX_COMPILER_LAUNCHER=sccache
-
-#make ninja default for make
-export CMAKE_GENERATOR=Ninja
-export CMAKE_EXPORT_COMPILE_COMMANDS=1
-
-export PKG_CONFIG_PATH="$(brew --prefix icu4c)/lib/pkgconfig:$(brew --prefix krb5)/lib/pkgconfig:$(brew --prefix libedit)/lib/pkgconfig:$(brew --prefix libxml2)/lib/pkgconfig:$(brew --prefix openssl)/lib/pkgconfig"
-
-
-export CFLAGS="${CFLAGS} -I$(brew --prefix)/include" 
-export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
-export LDFLAGS="${LDFLAGS} -L$(brew --prefix)/lib"
-
-#export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+case "$TERM_PROGRAM" in
+  iTerm.app|WezTerm|WarpTerminal) : ;;  # keep MANPAGER
+  *) unset MANPAGER ;;
+esac
 
 
 
 
-
-#export FZF_BASE="/opt/homebrew/bin/fzf"
 export FZF_DEFAULT_COMMAND="fd --type f --strip-cwd-prefix"
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
 
-export VCPKG_ROOT="$HOME/vcpkg"
 
 
 # Path to the bash it configuration
@@ -150,35 +194,45 @@ export SCM_CHECK=true
 
 # Load Bash It
 source "$BASH_IT"/bash_it.sh
-#[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+ble-face auto_complete="fg=gray"
+bleopt complete_ambiguous=""
+bleopt prompt_ps1_transient="always:trim"
 
 
-# integrations
-if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
-  ##### WHAT YOU WANT TO DISABLE FOR WARP - BELOW
-  	test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
 
-##### WHAT YOU WANT TO DISABLE FOR WARP - ABOVE
+
+# Integrations
+if [[ $TERM_PROGRAM == "iTerm.app" ]]; then
+  # Commands to disable for iterm - below
+  test -e "${HOME}/.iterm2_shell_integration.bash" && source "${HOME}/.iterm2_shell_integration.bash"
+
 fi
 
 
-
-
+# #############################################[ Evals ]###########################################################
 
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
-
-#eval "$(starship init bash)"
 eval "$(atuin init bash)"
 eval "$(mise activate bash)"
 
 
 
-ble-face auto_complete="fg=gray"
-bleopt complete_ambiguous=""
 
 
-bleopt prompt_ps1_transient="always:trim"
+
+# ########################################################################################################################
+# -------aliases---------
+# ########################################################################################################################
+
+
+
+
+
+# -------------------------------------COLORIZED replacements--------------------------#
+
 
 alias "g++"="/opt/homebrew/bin/grc --colour=auto g++"
 alias head="/opt/homebrew/bin/grc --colour=auto head"
@@ -188,6 +242,9 @@ alias ping6="/opt/homebrew/bin/grc --colour=auto ping6"
 alias tail="/opt/homebrew/bin/grc --colour=auto tail"
 alias traceroute6="/opt/homebrew/bin/grc --colour=auto traceroute6"
 alias curl="/opt/homebrew/bin/grc --colour=auto curl"
+alias clang="grc --colour=auto --config=conf.gcc clang"
+alias "clang++"="grc --colour=auto --config=conf.gcc clang++"
+alias cpp="grc --colour=auto --config=conf.gcc cpp"
 alias df="/opt/homebrew/bin/grc --colour=auto df"
 alias diff="/opt/homebrew/bin/grc --colour=auto diff"
 alias dig="/opt/homebrew/bin/grc --colour=auto dig"
@@ -220,69 +277,91 @@ alias uptime="/opt/homebrew/bin/grc --colour=auto uptime"
 alias whois="/opt/homebrew/bin/grc --colour=auto whois"
 
 
-alias bashconfig="bash ~/.bashrc"
 
 
 
 # Overwrite existing commands for better defaults
 alias cp="cp -i"
-
 alias mv="mv -i"
 alias rm="rm -i"
 alias rf="rm -ird"
-
 alias mkdir="mkdir -p"
 alias rmdir="rmdir -p"
 
 
 
+# -------------------------------------utitlies aliases--------------------------#
 
+alias asdf="mise"
 alias csvutil="qsv"
-alias ch="cht.sh"
 alias code="code-insiders"
-alias dox="sn0int"
+alias dedupe="fclones group --cache . | fclones remove --priority newest"
+alias dups="fclones group . | fclones remove --priority newest --dry-run 2>/dev/null"
 alias hp="http-prompt"
-alias int="interpreter"
-alias listalias="als"
-alias lte="eza --tree"
 alias ltd="tldr -p linux"
 alias lv="lnav"
 alias sl="ls"
 
 
+alias bpro="cot ~/.zprofile"
 alias brc="cot ~/.bashrc"
+alias sbrc="bash ~/.bashrc"
 
-update_mf() {
-  local mf_file="$1"
+
+# ##########################################[Lazy Loading scripts ]###############################################################
+
+
+# git repository greeter aka onefetch
+last_repository=""
+
+
+check_directory_for_new_repository() {
+  local current_repository
+  current_repository=$(git rev-parse --show-toplevel 2>/dev/null) || current_repository=""
+
+  if [[ -n $current_repository && $current_repository != $last_repository ]]; then
+    if command -v onefetch >/dev/null 2>&1 && git -C "$current_repository" rev-list -n 1 --all >/dev/null 2>&1; then
+      # Optional: if HEAD is unborn, pick the first commit on any branch
+      if ! git -C "$current_repository" rev-parse --verify HEAD >/dev/null 2>&1; then
+        # HEAD is unborn; just skip to avoid onefetch error
+        :
+      else
+        onefetch
+      fi
+    fi
+  fi
+
+  last_repository=$current_repository
+}
+ 
+cd() {
+  z "$@"
+  check_directory_for_new_repository
+}
+
+lcd() {
+  cd "$1" && la
+}
+mcd() {
+  mkdir -p -- "$1" &&
+    z "$1"
+}
+
+update_nf() {
+  local nf_file="$1"
   local prev_time_file="$2"
   local time_format="$3"
 
   # Check if the previous time exists and is different from the current time
   if [ "$(date +"$time_format")" != "$(cat "$prev_time_file" 2>/dev/null)" ]; then
-    macchina >"$mf_file"
+    neofetch >"$nf_file"
     date +"$time_format" >"$prev_time_file"
   fi
 
   # Output the contents of the file
-  cat "$mf_file"
+  cat "$nf_file"
 }
-update_mf ~/.mf ~/.mf.prevweek "%U"
-
-last_repository=""
-
-check_directory_for_new_repository() {
-	current_repository=$(git rev-parse --show-toplevel 2> /dev/null)
-	
-	if [ "$current_repository" ] && \
-	   [ "$current_repository" != "$last_repository" ]; then
-		onefetch
-	fi
-	last_repository=$current_repository
-}
-cd() {
-	z "$@"
-	check_directory_for_new_repository
-}
+update_nf ~/.neof ~/.neof.prevweek "%U"
 
 
 
@@ -296,5 +375,4 @@ case $- in
     *) return;;
 esac
 
-# CodeWhisperer post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/codewhisperer/shell/bashrc.post.bash" ]] && builtin source "${HOME}/Library/Application Support/codewhisperer/shell/bashrc.post.bash"
+. "$HOME/.cargo/env"
