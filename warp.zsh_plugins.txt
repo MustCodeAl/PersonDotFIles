@@ -1,0 +1,42 @@
+# defered plugins
+
+
+
+
+# git hub repos
+MustCodeAl/ls
+Freed-Wu/zsh-help
+MichaelAquilina/zsh-you-should-use
+zpm-zsh/undollar
+caarlos0/zsh-pg
+
+
+
+
+
+## oh my zsh plugins
+ohmyzsh/ohmyzsh path:lib
+ohmyzsh/ohmyzsh path:plugins/aliases
+ohmyzsh/ohmyzsh path:plugins/brew
+ohmyzsh/ohmyzsh path:plugins/bun
+ohmyzsh/ohmyzsh path:plugins/docker
+ohmyzsh/ohmyzsh path:plugins/docker-compose
+ohmyzsh/ohmyzsh path:plugins/extract
+ohmyzsh/ohmyzsh path:plugins/encode64
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/macos
+ohmyzsh/ohmyzsh path:plugins/mise
+ohmyzsh/ohmyzsh path:plugins/nmap
+ohmyzsh/ohmyzsh path:plugins/npm
+ohmyzsh/ohmyzsh path:plugins/pip
+ohmyzsh/ohmyzsh path:plugins/postgres 
+ohmyzsh/ohmyzsh path:plugins/python
+ohmyzsh/ohmyzsh path:plugins/tmux kind:defer
+ohmyzsh/ohmyzsh path:plugins/wp-cli kind:defer
+ohmyzsh/ohmyzsh path:plugins/zoxide
+
+
+MustCodeAl/warhol.plugin.zsh kind:defer
+
+
+atuinsh/atuin
