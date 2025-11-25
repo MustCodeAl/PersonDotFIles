@@ -1,22 +1,18 @@
 
 
-romkatv/zsh-defer kind:clone 
 # defered plugins
 
 
 
 
 # git hub repos
-mafredri/zsh-async
-# zpm-zsh/ls
 MustCodeAl/ls
 jeffreytse/zsh-vi-mode
 Freed-Wu/zsh-help
 MichaelAquilina/zsh-you-should-use
 zpm-zsh/undollar
-zpm-zsh/mysql-colorize
 caarlos0/zsh-pg
-reegnz/jq-zsh-plugin
+
 
 
 
@@ -34,9 +30,6 @@ ohmyzsh/ohmyzsh path:plugins/extract
 ohmyzsh/ohmyzsh path:plugins/encode64
 ohmyzsh/ohmyzsh path:plugins/fzf
 ohmyzsh/ohmyzsh path:plugins/git
-ohmyzsh/ohmyzsh path:plugins/gradle kind:defer
-ohmyzsh/ohmyzsh path:plugins/kubectl
-ohmyzsh/ohmyzsh path:plugins/mongocli
 ohmyzsh/ohmyzsh path:plugins/macos
 ohmyzsh/ohmyzsh path:plugins/mise
 ohmyzsh/ohmyzsh path:plugins/nmap
@@ -44,11 +37,8 @@ ohmyzsh/ohmyzsh path:plugins/npm
 ohmyzsh/ohmyzsh path:plugins/pip
 ohmyzsh/ohmyzsh path:plugins/postgres 
 ohmyzsh/ohmyzsh path:plugins/python
-ohmyzsh/ohmyzsh path:plugins/rust
-ohmyzsh/ohmyzsh path:plugins/thefuck kind:defer
 ohmyzsh/ohmyzsh path:plugins/tmux kind:defer
 ohmyzsh/ohmyzsh path:plugins/wp-cli kind:defer
-ohmyzsh/ohmyzsh path:plugins/yarn
 ohmyzsh/ohmyzsh path:plugins/zoxide
 
 
@@ -64,7 +54,6 @@ romkatv/powerlevel10k kind:fpath
 
 
 # benchmarking
-#romkatv/zsh-bench kind:path
 
 
 
@@ -74,14 +63,14 @@ zsh-users/zsh-autosuggestions kind:defer
 Aloxaf/fzf-tab kind:defer
 Freed-Wu/fzf-tab-source kind:defer
 hlissner/zsh-autopair kind:defer
-unixorn/warhol.plugin.zsh kind:defer
+MustCodeAl/warhol.plugin.zsh kind:defer
 
 
 
 
 # completions
-MenkeTechnologies/zsh-more-completions
 
+atuinsh/atuin
 
 
 # save this for a reference
