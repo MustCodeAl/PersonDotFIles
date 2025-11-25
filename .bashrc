@@ -2,7 +2,38 @@
 
 
 
+
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
+
+
+
+export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/gnu-which/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/ed/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
+export PATH="/opt/homebrew/opt/curl/bin:$PATH"
+export PATH="/opt/homebrew/opt/bison/bin:$PATH"
+export PATH="/opt/homebrew/opt/libxslt/bin:$PATH"
+export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
+export PATH="/opt/homebrew/opt/flex/bin:$PATH"
+export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
+export PATH="/opt/homebrew/opt/bzip2/bin:$PATH"
+export PATH="/opt/homebrew/opt/ncurses/bin:$PATH"
+export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
+export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
+export PATH="/opt/homebrew/opt/libarchive/bin:$PATH"
+export PATH="/opt/homebrew/opt/m4/bin:$PATH"
+export PATH="/opt/homebrew/opt/file-formula/bin:$PATH"
+export PATH="/opt/homebrew/opt/gpatch/libexec/gnubin:$PATH"
+export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
+export PATH="$HOME/.bun/bin:$PATH"
 
 
 export VCPKG_ROOT="$HOME/vcpkg"
@@ -18,7 +49,6 @@ if [[ -n $SSH_CONNECTION ]]; then
 else
   export EDITOR="nvim"
 fi
-
 
 export PYTHONDEBUG=1
 export BETTER_EXCEPTIONS=1
@@ -42,6 +72,9 @@ export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 #make ninja default for make
 export CMAKE_GENERATOR=Ninja
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
+export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxslt"
+export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxml2"
+export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/llvm"
 
 
 
@@ -57,39 +90,28 @@ export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 
-# export LDFLAGS="${LDFLAGS} -fuse-ld=lld" # add to your .profile
 
-
-export CC="clang"
-export CXX="clang++"
-export LDFLAGS="${LDFLAGS} -fuse-ld=lld" # add to your .profile
-
+export CC="/opt/homebrew/opt/llvm/bin/clang"
+export CXX="/opt/homebrew/opt/llvm/bin/clang++"
+export LDFLAGS="-fuse-ld=lld" # add to your .profile
 
 
 
 
 
-#export CFLAGS="${CFLAGS} -I$(brew --prefix)/include" 
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
-
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
-#export LDFLAGS="${LDFLAGS} -L$(brew --prefix)/lib"
 
-#export LIBRARY_PATH="$LIBRARY_PATH:$(brew --prefix)/lib"
+# let pkg-config describe per-package libs/includes
+export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"
 
 
 
-export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/gnu-tar/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/gnu-indent/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/gnu-which/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/ed/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
+
+
+
+
 
 
 
@@ -242,9 +264,9 @@ alias ping6="/opt/homebrew/bin/grc --colour=auto ping6"
 alias tail="/opt/homebrew/bin/grc --colour=auto tail"
 alias traceroute6="/opt/homebrew/bin/grc --colour=auto traceroute6"
 alias curl="/opt/homebrew/bin/grc --colour=auto curl"
-alias clang="grc --colour=auto --config=conf.gcc clang"
-alias "clang++"="grc --colour=auto --config=conf.gcc clang++"
-alias cpp="grc --colour=auto --config=conf.gcc cpp"
+alias clang="/opt/homebrew/bin/grc --colour=auto --config=conf.gcc /opt/homebrew/opt/llvm/bin/clang"
+alias "clang++"="/opt/homebrew/bin/grc --colour=auto --config=conf.gcc /opt/homebrew/opt/llvm/bin/clang++"
+alias cpp="/opt/homebrew/bin/grc --colour=auto --config=conf.gcc cpp"
 alias df="/opt/homebrew/bin/grc --colour=auto df"
 alias diff="/opt/homebrew/bin/grc --colour=auto diff"
 alias dig="/opt/homebrew/bin/grc --colour=auto dig"
@@ -367,8 +389,6 @@ update_nf ~/.neof ~/.neof.prevweek "%U"
 
 
 
-
-
 # If not running interactively, don't do anything
 case $- in
   *i*) ;;
@@ -376,3 +396,20 @@ case $- in
 esac
 
 . "$HOME/.cargo/env"
+
+
+dedupe_path() {
+    local OLD_PATH="$PATH"
+    local NEW_PATH=""
+    local IFS=':'
+    for entry in $OLD_PATH; do
+        case ":$NEW_PATH:" in
+            *":$entry:"*) ;;             # already added → skip
+            *) NEW_PATH="$NEW_PATH:$entry" ;;
+        esac
+    done
+    NEW_PATH="${NEW_PATH#:}"            # strip leading :
+    export PATH="$NEW_PATH"
+}
+
+dedupe_path
