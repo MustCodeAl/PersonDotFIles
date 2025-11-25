@@ -220,8 +220,8 @@ export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libxml2/include"
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libarchive/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libarchive/include"
 
- export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libomp/lib"
-  export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libomp/include"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/libomp/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/libomp/include"
 
 
 
@@ -406,7 +406,6 @@ alias dups="fclones group . | fclones remove --priority newest --dry-run 2>/dev/
 alias dox="sn0int"
 alias hp="http-prompt"
 alias hgrep="fc -El 0 | rg"
-#alias int="interpreter"
 alias listalias="als"
 alias ltd="tldr -p linux"
 alias lv="lnav"
