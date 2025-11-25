@@ -1,83 +1,42 @@
-❯ mise list
-Plugin                Version                 Config Source         Requested
-bun                   1.0.30                  ~/.config/mise/config latest
-                                              .toml
-cargo:cargo-binstall  1.6.1                   ~/.config/mise/config latest
-                                              .toml
-dotnet                8.0.201                 ~/.config/mise/config latest
-                                              .toml
-gradle                7.2
-gradle                7.6.4
-gradle                8.4                     ~/.config/mise/config 8.4
-                                              .toml
-gradle                8.6
-gradle-profiler       0.20.0                  ~/.config/mise/config latest
-                                              .toml
-java                  temurin-21.0.2+13.0.LT
-                      S
-java                  17.0.2
-java                  21.0.2
-java                  22.0.0 (outdated)       ~/.config/mise/config latest
-                                              .toml
-java                  23-loom+2-48.0.0
-kotlin                1.9.22                  ~/.config/mise/config latest
-                                              .toml
-maven                 3.9.6                   ~/.config/mise/config latest
-                                              .toml
-nano                  7.2                     ~/.config/mise/config latest
-                                              .toml
-neovim                0.9.5                   ~/.config/mise/config latest
-                                              .toml
-node                  21.6.2                  ~/.config/mise/config latest
-                                              .toml
-npm:bower             1.8.14                  ~/.config/mise/config latest
-                                              .toml
-npm:cordova           12.0.1-nightly.2023101  ~/.config/mise/config latest
-                      0001454937.sha.bff99d3  .toml
-                      3
-npm:flow-bin          0.227.0                 ~/.config/mise/config latest
-                                              .toml
-npm:generator-webapp  4.0.0-9                 ~/.config/mise/config latest
-                                              .toml
-npm:grunt-cli         1.4.3                   ~/.config/mise/config latest
-                                              .toml
-npm:gulp              4.0.2                   ~/.config/mise/config latest
-                                              .toml
-npm:gulp-cli          2.3.0                   ~/.config/mise/config latest
-                                              .toml
-npm:localtunnel       2.0.2                   ~/.config/mise/config latest
-                                              .toml
-npm:ndb               1.1.5                   ~/.config/mise/config latest
-                                              .toml
-npm:nodemon           3.0.3                   ~/.config/mise/config latest
-                                              .toml
-npm:react-native-cli  2.0.1                   ~/.config/mise/config latest
-                                              .toml
-npm:solc              0.8.24                  ~/.config/mise/config latest
-                                              .toml
-npm:yarn              2.4.3                   ~/.config/mise/config latest
-                                              .toml
-npm:yo                5.0.0                   ~/.config/mise/config latest
-                                              .toml
-pipx                  1.4.3                   ~/.config/mise/config latest
-                                              .toml
-pnpm                  8.15.4                  ~/.config/mise/config latest
-                                              .toml
-python                2.7.18
-python                3.9.18
-python                3.10.13
-python                3.11.5
-python                3.12.2                  ~/.config/mise/config latest
-                                              .toml
-ruby                  3.3.0                   ~/.config/mise/config latest
-                                              .toml
-scala                 3.4.0                   ~/.config/mise/config latest
-                                              .toml
-shellcheck            0.9.0                   ~/.config/mise/config latest
-                                              .toml
-shfmt                 3.8.0                   ~/.config/mise/config latest
-                                              .toml
-vim                   9.1.0                   ~/.config/mise/config latest
-                                              .toml
-zig                   0.11.0                  ~/.config/mise/config latest
-                                              .toml
+bun                   1.3.1           ~/.config/mise/config.toml  latest
+cargo:cargo-binstall  1.16.2          ~/.config/mise/config.toml  latest
+cargo:paper-terminal  3.1.0           ~/.config/mise/config.toml  latest
+cargo:syncat          3.8.4           ~/.config/mise/config.toml  latest
+cargo:ubi             0.1.2           ~/.config/mise/config.toml  0.1.2
+deno                  2.5.1           ~/.config/mise/config.toml  latest
+dotnet                9.0.306         ~/.config/mise/config.toml  latest
+go                    1.25.1          ~/.config/mise/config.toml  latest
+gradle                9.1.0           ~/.config/mise/config.toml  latest
+java                  openjdk-23.0.1 
+java                  25.0.0          ~/.config/mise/config.toml  latest
+kotlin                2.2.20          ~/.config/mise/config.toml  latest
+lua                   5.4.8           ~/.config/mise/config.toml  latest
+maven                 3.9.9           ~/.config/mise/config.toml  latest
+node                  18.20.2        
+node                  25.0.0          ~/.config/mise/config.toml  latest
+npm:bower             1.8.14          ~/.config/mise/config.toml  latest
+npm:cordova           12.0.0          ~/.config/mise/config.toml  latest
+npm:flow-bin          0.288.0         ~/.config/mise/config.toml  latest
+npm:generator-webapp  4.0.0-9         ~/.config/mise/config.toml  latest
+npm:grunt-cli         1.5.0           ~/.config/mise/config.toml  latest
+npm:gulp              5.0.1           ~/.config/mise/config.toml  latest
+npm:gulp-cli          3.1.0           ~/.config/mise/config.toml  latest
+npm:localtunnel       2.0.2           ~/.config/mise/config.toml  latest
+npm:nativescript      8.9.3           ~/.config/mise/config.toml  latest
+npm:ndb               1.1.5           ~/.config/mise/config.toml  latest
+npm:nodemon           3.1.10          ~/.config/mise/config.toml  latest
+npm:react-native-cli  2.0.1           ~/.config/mise/config.toml  latest
+npm:solc              0.8.30          ~/.config/mise/config.toml  latest
+npm:tiktok-scraper    1.4.36          ~/.config/mise/config.toml  latest
+npm:yarn              1.22.22         ~/.config/mise/config.toml  latest
+npm:yo                5.1.0           ~/.config/mise/config.toml  latest
+pipx                  1.8.0           ~/.config/mise/config.toml  latest
+pixi                  0.59.0          ~/.config/mise/config.toml  latest
+pnpm                  9.15.9          ~/.config/mise/config.toml  latest
+python                2.7.18         
+python                3.14.0          ~/.config/mise/config.toml  latest
+ruby                  3.3.4          
+ruby                  3.4.6           ~/.config/mise/config.toml  latest
+scala                 3.7.3           ~/.config/mise/config.toml  latest
+vim                   9.1.1785        ~/.config/mise/config.toml  latest
+zig                   0.15.2          ~/.config/mise/config.toml  latest
