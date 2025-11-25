@@ -54,15 +54,15 @@ brew cask installs (do `$ brew install --no-qurantine` if some of them wont open
 
 ```console
 $ brew install alt-tab displaylink hiddenbar raycast stats swift-quit
-$ brew install codewhisperer devutils jetbrains-toolbox iterm2 iina
+$ brew install codex devutils jetbrains-toolbox iterm2 iina
 $ brew install coteditor switchhosts rapidapi requestly warp utm
-$ brew install anki chatgpt linear-linear platypus superproductivity 
+$ brew install anki bitwarden chatgpt linear-linear platypus superproductivity 
 $ brew install apparency betterzip qlimagesize qlzipinfo provisionql syntax-highlight suspicious-package
 $ brew install clipgrab diffusionbee handbrake keycastr obs 
 $ brew install google-chrome librewolf microsoft-edge orion
-$ brew install homebrew/cask/docker github masscode pgadmin4  
-$ brew install background-music exifcleaner linkliar mullvadvpn textmate
-$ brew install cakebrew powershell chromedriver wezterm zed vimr
+$ brew install homebrew/cask/docker orbstack github masscode pgadmin4  
+$ brew install background-music exifcleaner linkliar mullvad-vpn textmate
+$ brew install applite powershell chromedriver wezterm zed vimr
 
 ```
 make sure you do `brew outdated --greedy` to check for updates as some applications like brave-browser to self update and brew ignores them
@@ -75,7 +75,7 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 
 `brew install man-db cppman`
 
-`brew install logi-options-plus sony-ps-remote-play`
+`brew install logi-options+ sony-ps-remote-play`
 
 `brew install libplist`
 
@@ -84,6 +84,11 @@ make sure you do `brew outdated --greedy` to check for updates as some applicati
 `brew install lld` 
 
 `brew install gdb`
+
+`brew install zoom`
+
+`brew install zoom`
+
 
 
 `mise use -g cargo:ubi cargo:syncat cargo:paper-terminal`
