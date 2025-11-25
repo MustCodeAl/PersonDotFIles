@@ -71,9 +71,8 @@ path=(~/.bun/bin $path)
 
 
 
-#export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
-#export MODULAR_HOME="$HOME/.modular"
+
 export VCPKG_ROOT="$HOME/vcpkg"
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
@@ -120,22 +119,11 @@ export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 
-# OLD FLAGS DONT USE
-
-#export CPATH="${CPATH} -L/opt/homebrew/include"
-#export CFLAGS="${CFLAGS} -I/opt/homebrew/include"
-
-# only use these when necessary for building
-#export CFLAGS="-O2 -arch $(uname -m)"
-
-#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
 
 
 
-
-export CC="clang"
-export CXX="clang++"
+export CC="/opt/homebrew/opt/llvm/bin/clang"
+export CXX="/opt/homebrew/opt/llvm/bin/clang++"
 export LDFLAGS="-fuse-ld=lld" # add to your .profile
 
 
