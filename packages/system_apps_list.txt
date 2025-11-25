@@ -1,114 +1,79 @@
 Actions.app
-Alacritty.app
 AltTab.app
 Anki.app
-AnyUnlock
-Background Music.app
-BetterDiscord.app
+Apparency.app
+Apple Configurator.app
+Applite.app
+BetterZip.app
 Boris Continuum OFX HitFilm 2021.5
 Brave Browser.app
-Clean Me.app
+ChatGPT.app
 ClipGrab.app
-CodeWhisperer.app
-Color Picker.app
-Copilot for Xcode.app
 CotEditor.app
-Dash.app
+Debugging
+Developer.app
 DevUtils.app
+DiffusionBee.app
 Discord.app
-Do Not Disturb.app
+DisplayLink Manager.app
 Docker.app
-Figma.app
+Dorion.app
 FileZilla.app
-Firefox Developer Edition.app
-Firefox.app
-Folder Peek.app
-GIMP.app
+FontTools
+GarageBand.app
 GitHub Desktop.app
-Google Chrome Dev.app
+GitKraken.app
 Google Chrome.app
-Google Docs.app
-Google Drive.app
-Google Sheets.app
-Google Slides.app
-Gyazo Menu.app
-Gyazo Video.app
-Gyazo.app
 HandBrake.app
-HandBrakeCLI
 Hidden Bar.app
 HitFilm.app
-Itsycal.app
-JetBrains Toolbox Apps
-Karabiner-Elements.app
-Karabiner-EventViewer.app
+IINA.app
+iMovie.app
+iTerm.app
+JetBrains Toolbox.app
+KeyCastr.app
 Keynote.app
+LibreOffice.app
+LibreWolf.app
 Linear.app
 LinkLiar.app
+logioptionsplus.app
+massCode.app
 Microsoft Edge.app
-MiddleClick.app
-Notion.app
+Microsoft Word.app
+Mullvad VPN.app
+NewFileMenu.app
 Numbers.app
-Numi.app
 OBS.app
-OverSight.app
-PDFArchiver.app
+Orion.app
 Pages.app
-Pareto Security.app
+pgAdmin 4.app
 Plash.app
 Platypus.app
-Postman.app
 PowerShell.app
-Python 3.12
 RapidAPI.app
 Raycast.app
 Refined GitHub.app
 RemotePlay.app
 Requestly.app
 Safari.app
-Shareful.app
+Signal.app
+Silicon Info.app
 Stats.app
+Super Productivity.app
+Suspicious Package.app
+Swift Playground.app
+Swift Quit.app
 SwitchHosts.app
-Timelane.app
-TinkerTool.app
-Tools for Xcode.app
-TorGuard.app
-UTM.app
-Unity
+Syntax Highlight.app
+TestFlight.app
+TextMate.app
+Transporter.app
 Utilities
+UTM.app
 VimR.app
 Visual Studio Code - Insiders.app
 Warp.app
-Wireshark.app
-Xcode.app
-YaCy.app
-Yippy.app
-badchrome_too.app
-blobsaver.app
-iMovie.app
-iTerm.app
-keycode
-logioptionsplus.app
-massCode.app
-mobirise.app
-
-1542271266  Silicon Info        (1.0.3)
-497799835   Xcode               (15.2)
-409183694   Keynote             (13.2)
-1586435171  Actions             (3.1.0)
-408981434   iMovie              (10.4)
-640199958   Developer           (10.4.1)
-1494023538  Plash               (2.14.1)
-899247664   TestFlight          (3.3.0)
-409201541   Pages               (13.2)
-1037126344  Apple Configurator  (2.17)
-1450874784  Transporter         (1.2.5)
-682658836   GarageBand          (10.4.10)
-1066302071  New File Menu Lite  (1.7.2)
-1496833156  Playgrounds         (4.4.1)
-409203825   Numbers             (13.2)
-1519867270  Refined GitHub      (23.12.1)
-
-response.html
-superProductivity.app
+WezTerm.app
+Zed.app
 zoom.us.app
