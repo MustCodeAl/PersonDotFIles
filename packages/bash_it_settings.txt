@@ -1,0 +1,4 @@
+## Enabled Components
+Aliases (1): general
+Plugins (18): base blesh colors docker extract fzf git go gradle history java node osx ruby thefuck tmux tmuxinator zoxide
+Completions (3): aliases bash-it system
