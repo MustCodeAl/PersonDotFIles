@@ -72,9 +72,8 @@ path=(~/.bun/bin $path)
 
 
 
-#export PATH="$HOME/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
 
-#export MODULAR_HOME="$HOME/.modular"
+
 export VCPKG_ROOT="$HOME/vcpkg"
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
@@ -98,8 +97,6 @@ export CARGO_INCREMENTAL=0
 export RUSTC_WRAPPER=sccache
 export RUSTFLAGS="-C link-arg=-fuse-ld=lld ${RUSTFLAGS:-}"
 
-#export SCCACHE_DIR=~/Library/Caches/Mozilla.sccache
-#export SCCACHE_DIR=~/.cache/sccache
 
 export SCCACHE_CACHE_SIZE="25G"
 export CMAKE_C_COMPILER_LAUNCHER=sccache
@@ -123,30 +120,39 @@ export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 
+# OLD FLAGS DONT USE
 
-#export LDFLAGS="${LDFLAGS} -fuse-ld=sold" # add to your .profile
-#export LDFLAGS="${LDFLAGS} -fuse-ld=mold" # add to your .profile
-
-export LDFLAGS="${LDFLAGS} -fuse-ld=lld" # add to your .profile
-export LD="${LD} /opt/homebrew/bin/lld"
-
-
-
-#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
-#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
-export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/llvm/include"
-
-
-export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
 #export CPATH="${CPATH} -L/opt/homebrew/include"
 #export CFLAGS="${CFLAGS} -I/opt/homebrew/include"
 
-export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
 # only use these when necessary for building
 #export CFLAGS="-O2 -arch $(uname -m)"
 
+#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -Wl,-rpath,/opt/homebrew/opt/llvm/lib/c++"
+#export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
+
+
+
+
+export CC="clang"
+export CXX="clang++"
+export LDFLAGS="${LDFLAGS} -fuse-ld=lld" # add to your .profile
+
+
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
+
+
+
+
+
+
+
+
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
+export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
+export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/llvm/include"
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/bison/lib"
 
@@ -257,12 +263,6 @@ export LESSOPEN="|$HOME/.lessfilter %s"
 export LESSCOLORIZER="bat"
 export MANPAGER="~/.local/bin/manpager | less --pattern=^\\S+"
 
-#lessc () { /usr/share/vim/vim90/macros/less.sh "$@"}
-
-#if ! [[ $__CFBundleIdentifier == "com.googlecode.iterm2" || $__CFBundleIdentifier == "com.github.wez.wezterm" || $__CFBundleIdentifier == "dev.warp.Warp-Stable" ]]; then
-    # Bash-specific initialization
- #   unset MANPAGER
-#fi
 
 
 case "$TERM_PROGRAM" in
@@ -322,16 +322,16 @@ if [[ $TERM_PROGRAM == "iTerm.app" ]]; then
   [[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
   test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
   # Commands to disable for Warp - above
-#  autoload -Uz async && async
-#  autoload -Uz async 2>/dev/null && type async >/dev/null 2>&1 && async
 
 fi
 
 
+# INCASE ATUIN IS OVERRIDEN BY ZVIM
 # Append a command directly
 #zvm_after_init_commands+=(
 #  'eval "$(atuin init zsh)"'
 #)
+
 
 
 # appearance
@@ -394,7 +394,6 @@ alias sudo="sudo "
 
 
 alias csvutil="qsv"
-alias ch="cht.sh"
 
 alias clang="grc --colour=auto --config=conf.gcc clang"
 alias "clang++"="grc --colour=auto --config=conf.gcc clang++"
@@ -403,7 +402,6 @@ alias cpp="grc --colour=auto --config=conf.gcc cpp"
 alias code="code-insiders"
 alias dedupe="fclones group --cache . | fclones remove --priority newest"
 alias dups="fclones group . | fclones remove --priority newest --dry-run 2>/dev/null"
-alias dox="sn0int"
 alias hp="http-prompt"
 alias hgrep="fc -El 0 | rg"
 alias listalias="als"
@@ -412,7 +410,6 @@ alias lv="lnav"
 alias sl="ls"
 alias szrc="exec zsh" # better then sourcezing
 alias wt="wezterm"
-
 alias zplug="cot ${zsh_plugins:r}.txt"
 
 alias zpro="cot ~/.zprofile"
