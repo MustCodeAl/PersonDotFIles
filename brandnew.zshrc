@@ -92,7 +92,6 @@ export SCCACHE_DIRECT=true
 export RUST_BACKTRACE=full
 export CARGO_INCREMENTAL=0
 export RUSTC_WRAPPER=sccache
-# export RUSTFLAGS="-C link-arg=-fuse-ld=lld ${RUSTFLAGS:-}"
 
 
 export SCCACHE_CACHE_SIZE="25G"
@@ -145,7 +144,6 @@ with_brew_build_env() {
 
     # export CC="/opt/homebrew/opt/llvm/bin/clang"
     # export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-    export LDFLAGS="-fuse-ld=/opt/homebrew/bin/bold" # add to your .profile
 
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
@@ -192,8 +190,8 @@ with_brew_build_env() {
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/zlib/lib"
     export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/zlib/include"
     
-    # export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/expat/lib"
-    # export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/expat/include"
+    export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/expat/lib"
+    export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/expat/include"
     
     
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/readline/lib"
@@ -249,12 +247,13 @@ with_brew_build_env() {
     export PKG_CONFIG_PATH="/opt/homebrew/opt/libxslt/lib/pkgconfig:$PKG_CONFIG_PATH"
     export PKG_CONFIG_PATH="/opt/homebrew/opt/libxml2/lib/pkgconfig:$PKG_CONFIG_PATH"
     export PKG_CONFIG_PATH="/opt/homebrew/opt/libarchive/lib/pkgconfig:$PKG_CONFIG_PATH"
+    export PKG_CONFIG_PATH="/opt/homebrew/opt/expat/lib/pkgconfig:$PKG_CONFIG_PATH"
     export PKG_CONFIG_PATH="/opt/homebrew/opt/lib/pkgconfig:$PKG_CONFIG_PATH"
     export PKG_CONFIG_PATH="/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"
-    export PKG_CONFIG_PATH="/opt/homebrew/opt/expat/lib/pkgconfig:$PKG_CONFIG_PATH"
 
      "$@"
 }
+
 
 
 
