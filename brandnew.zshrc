@@ -39,6 +39,7 @@ HISTSIZE=100000
 typeset -U PATH path
 
 
+path=(~/.bun/bin $path)
 path=(/opt/homebrew/opt/make/libexec/gnubin $path)
 path=(/opt/homebrew/opt/gnu-sed/libexec/gnubin $path)
 path=(/opt/homebrew/opt/gawk/libexec/gnubin $path)
@@ -48,24 +49,21 @@ path=(/opt/homebrew/opt/grep/libexec/gnubin $path)
 path=(/opt/homebrew/opt/findutils/libexec/gnubin $path)
 path=(/opt/homebrew/opt/gnu-which/libexec/gnubin $path)
 path=(/opt/homebrew/opt/ed/libexec/gnubin $path)
-path=(/opt/homebrew/opt/libtool/libexec/gnubin $path)
 path=(/opt/homebrew/opt/libressl/bin $path)
 path=(/opt/homebrew/opt/curl/bin $path)
 path=(/opt/homebrew/opt/bison/bin $path)
 path=(/opt/homebrew/opt/libxslt/bin $path)
 path=(/opt/homebrew/opt/libxml2/bin $path)
 path=(/opt/homebrew/opt/flex/bin $path)
-path=(/opt/homebrew/opt/binutils/bin $path)
 path=(/opt/homebrew/opt/bzip2/bin $path)
 path=(/opt/homebrew/opt/ncurses/bin $path)
+path=(/opt/homebrew/opt/expat/bin $path)
 path=(/opt/homebrew/opt/postgresql@16/bin $path)
 path=(/opt/homebrew/opt/sqlite/bin $path)
 path=(/opt/homebrew/opt/libarchive/bin $path)
 path=(/opt/homebrew/opt/m4/bin $path)
 path=(/opt/homebrew/opt/file-formula/bin $path)
 path=(/opt/homebrew/opt/gpatch/libexec/gnubin $path)
-path=(/opt/homebrew/opt/llvm/bin $path)
-path=(~/.bun/bin $path)
 
 
 
@@ -77,6 +75,7 @@ export VCPKG_ROOT="$HOME/vcpkg"
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
 #---------------------------------------exports-----------------------------------------------#
+
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
@@ -93,7 +92,7 @@ export SCCACHE_DIRECT=true
 export RUST_BACKTRACE=full
 export CARGO_INCREMENTAL=0
 export RUSTC_WRAPPER=sccache
-export RUSTFLAGS="-C link-arg=-fuse-ld=lld ${RUSTFLAGS:-}"
+# export RUSTFLAGS="-C link-arg=-fuse-ld=lld ${RUSTFLAGS:-}"
 
 
 export SCCACHE_CACHE_SIZE="25G"
@@ -105,7 +104,6 @@ export CMAKE_GENERATOR=Ninja
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxslt"
 export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxml2"
-export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/llvm"
 
 
 # force C colored diagnostic output
@@ -122,21 +120,32 @@ export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 
-export CC="/opt/homebrew/opt/llvm/bin/clang"
-export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-export LDFLAGS="-fuse-ld=lld" # add to your .profile
+
 
 
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
 
+
+
 export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"
 
 
 
 
+
+
 with_brew_build_env() {
+
+    path=(/opt/homebrew/opt/llvm/bin $path)
+    export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/llvm"
+    export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/expat"
+
+
+    # export CC="/opt/homebrew/opt/llvm/bin/clang"
+    # export CXX="/opt/homebrew/opt/llvm/bin/clang++"
+    export LDFLAGS="-fuse-ld=/opt/homebrew/bin/bold" # add to your .profile
 
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
@@ -182,6 +191,9 @@ with_brew_build_env() {
     
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/zlib/lib"
     export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/zlib/include"
+    
+    # export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/expat/lib"
+    # export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/opt/expat/include"
     
     
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/readline/lib"
@@ -239,8 +251,11 @@ with_brew_build_env() {
     export PKG_CONFIG_PATH="/opt/homebrew/opt/libarchive/lib/pkgconfig:$PKG_CONFIG_PATH"
     export PKG_CONFIG_PATH="/opt/homebrew/opt/lib/pkgconfig:$PKG_CONFIG_PATH"
     export PKG_CONFIG_PATH="/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"
+    export PKG_CONFIG_PATH="/opt/homebrew/opt/expat/lib/pkgconfig:$PKG_CONFIG_PATH"
+
      "$@"
 }
+
 
 
 #------------------------------------plugin exports-------------------------------------#
