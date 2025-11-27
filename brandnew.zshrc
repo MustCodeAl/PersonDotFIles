@@ -70,7 +70,7 @@ path=(/opt/homebrew/opt/gpatch/libexec/gnubin $path)
 
 
 
-
+export SDKROOT=$(xcrun --show-sdk-path)
 export VCPKG_ROOT="$HOME/vcpkg"
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
 
