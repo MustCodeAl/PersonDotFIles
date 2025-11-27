@@ -6,7 +6,7 @@
 export PATH="$PATH:$HOME/Library/Application Support/JetBrains/Toolbox/scripts"
 
 
-
+export PATH="$HOME/.bun/bin:$PATH"
 export PATH="/opt/homebrew/opt/make/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-sed/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gawk/libexec/gnubin:$PATH"
@@ -16,26 +16,26 @@ export PATH="/opt/homebrew/opt/grep/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/findutils/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/gnu-which/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/ed/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/libtool/libexec/gnubin:$PATH"
 export PATH="/opt/homebrew/opt/libressl/bin:$PATH"
 export PATH="/opt/homebrew/opt/curl/bin:$PATH"
 export PATH="/opt/homebrew/opt/bison/bin:$PATH"
 export PATH="/opt/homebrew/opt/libxslt/bin:$PATH"
 export PATH="/opt/homebrew/opt/libxml2/bin:$PATH"
 export PATH="/opt/homebrew/opt/flex/bin:$PATH"
-export PATH="/opt/homebrew/opt/binutils/bin:$PATH"
 export PATH="/opt/homebrew/opt/bzip2/bin:$PATH"
 export PATH="/opt/homebrew/opt/ncurses/bin:$PATH"
+export PATH="/opt/homebrew/opt/expat/bin:$PATH"
 export PATH="/opt/homebrew/opt/postgresql@16/bin:$PATH"
 export PATH="/opt/homebrew/opt/sqlite/bin:$PATH"
 export PATH="/opt/homebrew/opt/libarchive/bin:$PATH"
 export PATH="/opt/homebrew/opt/m4/bin:$PATH"
 export PATH="/opt/homebrew/opt/file-formula/bin:$PATH"
 export PATH="/opt/homebrew/opt/gpatch/libexec/gnubin:$PATH"
-export PATH="/opt/homebrew/opt/llvm/bin:$PATH"
-export PATH="$HOME/.bun/bin:$PATH"
 
 
+
+
+export SDKROOT=$(xcrun --show-sdk-path)
 export VCPKG_ROOT="$HOME/vcpkg"
 
 
@@ -50,7 +50,8 @@ else
   export EDITOR="nvim"
 fi
 
-export PYTHONDEBUG=1
+
+# export PYTHONDEBUG=1
 export BETTER_EXCEPTIONS=1
 
 
@@ -62,7 +63,6 @@ export SCCACHE_DIRECT=true
 export RUST_BACKTRACE=full
 export CARGO_INCREMENTAL=0
 export RUSTC_WRAPPER=sccache
-export RUSTFLAGS="-C link-arg=-fuse-ld=lld ${RUSTFLAGS:-}"
 
 
 export SCCACHE_CACHE_SIZE="25G"
@@ -74,7 +74,6 @@ export CMAKE_GENERATOR=Ninja
 export CMAKE_EXPORT_COMPILE_COMMANDS=1
 export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxslt"
 export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxml2"
-export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/llvm"
 
 
 
@@ -91,9 +90,6 @@ export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 
-export CC="/opt/homebrew/opt/llvm/bin/clang"
-export CXX="/opt/homebrew/opt/llvm/bin/clang++"
-export LDFLAGS="-fuse-ld=lld" # add to your .profile
 
 
 
@@ -102,6 +98,8 @@ export LDFLAGS="-fuse-ld=lld" # add to your .profile
 
 export LDFLAGS="${LDFLAGS} -L/opt/homebrew/lib"
 export CPPFLAGS="${CPPFLAGS} -I/opt/homebrew/include"
+
+
 
 # let pkg-config describe per-package libs/includes
 export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfig:$PKG_CONFIG_PATH"
@@ -264,8 +262,8 @@ alias ping6="/opt/homebrew/bin/grc --colour=auto ping6"
 alias tail="/opt/homebrew/bin/grc --colour=auto tail"
 alias traceroute6="/opt/homebrew/bin/grc --colour=auto traceroute6"
 alias curl="/opt/homebrew/bin/grc --colour=auto curl"
-alias clang="/opt/homebrew/bin/grc --colour=auto --config=conf.gcc /opt/homebrew/opt/llvm/bin/clang"
-alias "clang++"="/opt/homebrew/bin/grc --colour=auto --config=conf.gcc /opt/homebrew/opt/llvm/bin/clang++"
+alias clang="/opt/homebrew/bin/grc --colour=auto --config=conf.gcc clang"
+alias "clang++"="/opt/homebrew/bin/grc --colour=auto --config=conf.gcc clang++"
 alias cpp="/opt/homebrew/bin/grc --colour=auto --config=conf.gcc cpp"
 alias df="/opt/homebrew/bin/grc --colour=auto df"
 alias diff="/opt/homebrew/bin/grc --colour=auto diff"
