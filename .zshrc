@@ -261,8 +261,7 @@ export CLICOLOR=1
 export LESS="$LESS -R --use-color"
 export LESSOPEN="|$HOME/.lessfilter %s"
 export LESSCOLORIZER="bat"
-export MANPAGER="~/.local/bin/manpager | less --pattern=^\\S+"
-
+export MANPAGER="manpager --theme=Monokai --italic-text=always | less --pattern=^\\S+"
 
 
 case "$TERM_PROGRAM" in
