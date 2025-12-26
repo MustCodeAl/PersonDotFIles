@@ -22,8 +22,8 @@ Do:
 $ mise settings set experimental true
 
 # install fast and standard build tools
-$ mise use -g go:https://github.com/rs/curlie
-$ mise use -g cargo:cargo-binstall
+$ mise use -g curlie
+$ mise use -g cargo-binstall
 $ mise use -g cmake just make maven sccache
 ```
 ***before you install anything***
