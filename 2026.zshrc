@@ -100,14 +100,14 @@ export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxslt"
 export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxml2"
 
 
+# -fdiagnostics-color=always doesnt work on mac since there is no gcc it is llvm so use -fcolor-diagnostics
 # force C colored diagnostic output
-export CFLAGS="${CFLAGS} -fdiagnostics-color=always"
+export CFLAGS="${CFLAGS} -fcolor-diagnostics"
 # force C++ colored diagnostic output
-export CXXFLAGS="${CXXFLAGS} -fdiagnostics-color=always"
-export CCFLAGS="${CCFLAGS} -fdiagnostics-color=always"
+export CXXFLAGS="${CXXFLAGS} -fcolor-diagnostics"
+export CCFLAGS="${CCFLAGS} -fcolor-diagnostics"
 # force C, C++, Cpp (pre-processor) colored diagnostic output
-export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
-
+export CPPFLAGS="${CPPFLAGS} -fcolor-diagnostics"
 
 
 
