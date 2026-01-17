@@ -23,19 +23,20 @@ $ mise settings set experimental true
 
 # install fast and standard build tools
 $ mise use -g curlie
-$ mise use -g cargo-binstall
+$ mise use -g cargo-binstall cargo:ubi
 $ mise use -g cmake just make maven sccache
 ```
 ***before you install anything***
 
 ```console
 # languages to install
-$ mise use -g deno dotnet go java kotlin lua maven nim node python zig
+$ mise use -g dotnet go java kotlin lua maven nim node python scala zig
 
 # tools to install
+$ mise use -g gradle maven manpager
 
 # package managers to install
-$ mise use -g bun conan pipx pnpm yarn
+$ mise use -g bun conan pixi pipx pnpm uv yarn
 ```
 
 
