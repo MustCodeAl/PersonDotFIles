@@ -368,8 +368,8 @@ alias df="duf"
 alias du="dust"
 alias diff="batdiff"
 alias find="bfs"
-alias grep="rga --color=auto"
-alias egrep="rga -F"
+alias grep="ug -G"
+alias egrep="ug -E"
 alias hexadump="hexyl"
 alias ps="procs"
 alias timer="hyperfine"
@@ -379,18 +379,22 @@ alias asdf="mise"
 # -------------------------------------commands--------------------------#
 
 # Overwrite existing commands for better defaults
-alias cp="cp -i"
+alias cp="cp -iv"
 
-alias mv="mv -i"
+alias mv="mv -iv"
 
-alias rm="rm -i"
+alias rm="rm -iv"
 
-alias rf="rm -frd"
+# alias rf="rm -frd"
+# Usually, 'rm -rf' is enough, but be careful with this alias!
+alias rf="rm -rf"
 
-alias mkdir="mkdir -p"
+alias mkdir="mkdir -pv"
 
 alias rmdir="rmdir -p"
 
+# --- The "Sudo Alias" Trick ---
+# This allows aliases to be expanded even when using sudo (e.g., sudo grep).
 alias sudo="sudo "
 
 # -------------------------------------utitlies--------------------------#
@@ -399,18 +403,20 @@ alias sudo="sudo "
 
 alias csvutil="qsv"
 
-alias clang="grc --colour=auto --config=conf.gcc clang"
-alias "clang++"="grc --colour=auto --config=conf.gcc clang++"
-alias cpp="grc --colour=auto --config=conf.gcc cpp"
+# alias clang="grc --colour=auto --config=conf.gcc clang"
+# alias "clang++"="grc --colour=auto --config=conf.gcc clang++"
+# alias cpp="grc --colour=auto --config=conf.gcc cpp"
 
 alias code="code-insiders"
 alias dedupe="fclones group --cache . | fclones remove --priority newest"
 alias dups="fclones group . | fclones remove --priority newest --dry-run 2>/dev/null"
+alias erg="rga -F"
 alias hp="http-prompt"
 alias hgrep="fc -El 0 | rg"
 alias listalias="als"
 alias ltd="tldr -p linux"
 alias lv="lnav"
+alias rg="rga --color=auto"
 alias sl="ls"
 alias szrc="exec zsh" # better then sourcezing
 alias wt="wezterm"
