@@ -38,7 +38,6 @@ HISTSIZE=100000
 # zsh uses $path array along with $PATH
 typeset -U PATH path
 
-
 path=(~/.bun/bin $path)
 path=(/opt/homebrew/opt/make/libexec/gnubin $path)
 path=(/opt/homebrew/opt/gnu-sed/libexec/gnubin $path)
@@ -68,14 +67,11 @@ path=(/opt/homebrew/opt/gpatch/libexec/gnubin $path)
 
 
 
-
-
 export SDKROOT=$(xcrun --show-sdk-path)
 export VCPKG_ROOT="$HOME/vcpkg"
 export ZSH_CACHE_DIR="$HOME/.cache/zshcache"
-
+# export GEMINI_SANDBOX=docker
 #---------------------------------------exports-----------------------------------------------#
-
 
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR="vim"
@@ -90,11 +86,12 @@ export SCCACHE_ERROR_LOG=/tmp/sccache_log.txt
 export SCCACHE_DIRECT=true
 
 export RUST_BACKTRACE=full
-export CARGO_INCREMENTAL=0
+# export CARGO_INCREMENTAL=0
 export RUSTC_WRAPPER=sccache
 
 
 export SCCACHE_CACHE_SIZE="25G"
+export SCCACHE_CACHE_ZSTD_LEVEL=10
 export CMAKE_C_COMPILER_LAUNCHER=sccache
 export CMAKE_CXX_COMPILER_LAUNCHER=sccache
 
@@ -105,15 +102,36 @@ export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxslt"
 export CMAKE_PREFIX_PATH="${CMAKE_PREFIX_PATH} /opt/homebrew/opt/libxml2"
 
 
+
+
 # force C colored diagnostic output
-export CFLAGS="${CFLAGS} -fdiagnostics-color=always"
+# export CFLAGS="${CFLAGS} -fdiagnostics-color=always"
 # force C++ colored diagnostic output
-export CXXFLAGS="${CXXFLAGS} -fdiagnostics-color=always"
-export CCFLAGS="${CCFLAGS} -fdiagnostics-color=always"
+# export CXXFLAGS="${CXXFLAGS} -fdiagnostics-color=always"
+# export CCFLAGS="${CCFLAGS} -fdiagnostics-color=always"
 # force C, C++, Cpp (pre-processor) colored diagnostic output
-export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
+# export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
+
+# force C colored diagnostic output
+export CFLAGS="${CFLAGS} -fcolor-diagnostics"
+# force C++ colored diagnostic output
+export CXXFLAGS="${CXXFLAGS} -fcolor-diagnostics"
+export CCFLAGS="${CCFLAGS} -fcolor-diagnostics"
+# force C, C++, Cpp (pre-processor) colored diagnostic output
+export CPPFLAGS="${CPPFLAGS} -fcolor-diagnostics"
 
 
+# Source - https://stackoverflow.com/a/73349744
+# Posted by lionkor, modified by community. See post 'Timeline' for change history
+# Retrieved 2026-01-13, License - CC BY-SA 4.0
+
+# force C colored diagnostic output
+# export CFLAGS="${CFLAGS} -fdiagnostics-color=always"
+# force C++ colored diagnostic output
+# export CXXFLAGS="${CXXFLAGS} -fdiagnostics-color=always"
+# export CCFLAGS="${CCFLAGS} -fdiagnostics-color=always"
+# force C, C++, Cpp (pre-processor) colored diagnostic output
+# export CPPFLAGS="${CPPFLAGS} -fdiagnostics-color=always"
 
 
 
@@ -133,8 +151,6 @@ export PKG_CONFIG_PATH="/opt/homebrew/lib/pkgconfig:/opt/homebrew/share/pkgconfi
 
 
 
-
-
 with_brew_build_env() {
 
     path=(/opt/homebrew/opt/llvm/bin $path)
@@ -144,6 +160,7 @@ with_brew_build_env() {
 
     # export CC="/opt/homebrew/opt/llvm/bin/clang"
     # export CXX="/opt/homebrew/opt/llvm/bin/clang++"
+    # export LDFLAGS="-fuse-ld=/opt/homebrew/bin/bold" # add to your .profile
 
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib/c++ -L/opt/homebrew/opt/llvm/lib/unwind -lunwind"
     export LDFLAGS="${LDFLAGS} -L/opt/homebrew/opt/llvm/lib"
@@ -255,8 +272,6 @@ with_brew_build_env() {
 }
 
 
-
-
 #------------------------------------plugin exports-------------------------------------#
 
 export ZSH_AUTOSUGGEST_STRATEGY=(match_prev_cmd completion history)
@@ -266,8 +281,7 @@ export CLICOLOR=1
 export LESS="$LESS -R --use-color"
 export LESSOPEN="|$HOME/.lessfilter %s"
 export LESSCOLORIZER="bat"
-export MANPAGER="$HOME/.local/bin/manpager | less --pattern=^\\S+"
-
+export MANPAGER="manpager --theme=default --italic-text=always | less --pattern=^\\S+"
 
 
 case "$TERM_PROGRAM" in
@@ -285,8 +299,8 @@ export warhol_ignore_ps=1
 
 export ZSH_LS_BACKEND=eza
 
-export MISE_PYTHON_COMPILE=true
-export MISE_NODE_COMPILE=true
+# export MISE_PYTHON_COMPILE=true
+# export MISE_NODE_COMPILE=true
 
 
 # ########################################################################################################################
@@ -319,7 +333,8 @@ source $zsh_plugins
 export PATH="/usr/local/bin:$PATH"
 
 # Integrations
-if [[ $TERM_PROGRAM == "iTerm.app" ]]; then
+# if [[ $TERM_PROGRAM == "iTerm.app" ]] || [[ $TERM_PROGRAM == "waveterm" ]]; then
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
   # Commands to disable for Warp - below
   autoload -Uz promptinit && promptinit && prompt powerlevel10k
   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
@@ -330,6 +345,17 @@ if [[ $TERM_PROGRAM == "iTerm.app" ]]; then
 
 fi
 
+# # Integrations
+# if [[ $TERM_PROGRAM == "Waveterm" ]]; then
+#   # Commands to disable for Warp - below
+#   autoload -Uz promptinit && promptinit && prompt powerlevel10k
+#   # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#   [[ ! -f "$HOME/.p10k.zsh" ]] || source "$HOME/.p10k.zsh"
+#   # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+#   # Commands to disable for Warp - above
+# 
+# 
+# fi
 
 # INCASE ATUIN IS OVERRIDEN BY ZVIM
 # Append a command directly
@@ -407,7 +433,7 @@ alias csvutil="qsv"
 # alias "clang++"="grc --colour=auto --config=conf.gcc clang++"
 # alias cpp="grc --colour=auto --config=conf.gcc cpp"
 
-alias code="code-insiders"
+# alias code="code-insiders"
 alias dedupe="fclones group --cache . | fclones remove --priority newest"
 alias dups="fclones group . | fclones remove --priority newest --dry-run 2>/dev/null"
 alias erg="rga -F"
@@ -479,9 +505,15 @@ update_mf() {
   # Output the contents of the file
   cat "$mf_file"
 }
-update_mf ~/.mf ~/.mf.prevweek "%U"
+
+if [[ $TERM_PROGRAM != "WarpTerminal" ]]; then
+  # Commands to disable for Warp - below
+    update_mf ~/.mf ~/.mf.prevweek "%U"
+
+  # Commands to disable for Warp - above
+fi
+
 
 
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
-
