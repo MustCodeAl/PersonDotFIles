@@ -1,53 +1,172 @@
-call plug#begin()
-" The default plugin directory will be as follows:
-"   - Vim (Linux/macOS): '~/.vim/plugged'
-"   - Vim (Windows): '~/vimfiles/plugged'
-"   - Neovim (Linux/macOS/Windows): stdpath('data') . '/plugged'
-" You can specify a custom plugin directory by passing it as the argument
-"   - e.g. `call plug#begin('~/.vim/plugged')`
-"   - Avoid using standard Vim directory names like 'plugin'
+" ====================================================================
+" 1. RECOMMENDED GENERAL VIM SETTINGS
+" ====================================================================
 
-" Make sure you use single quotes
+"" --- General Settings & Behavior ---
+set nocompatible        " Use Vim defaults instead of old Vi behavior
+set encoding=utf-8      " Set standard text encoding to UTF-8
+set mouse=a             " Enable mouse support for scrolling and clicking
+set clipboard=unnamedplus " Use system clipboard (copy/paste outside Vim)
+set history=1000        " Remember up to 1000 history items
+set undofile            " Maintain undo history even after closing files
+set backspace=indent,eol,start " Allow backspacing over everything in insert mode
 
-" Shorthand notation; fetches https://github.com/junegunn/vim-easy-align
+"" --- Interface & Visuals ---
+set number              " Show absolute line number on the current line
+set relativenumber      " Show relative line numbers on all other lines
+set numberwidth=2       " Keep the number column as skinny as possible
+set signcolumn=number   " Overlay Signify/Git signs directly onto numbers
+set showcmd             " Display incomplete commands in the status bar
+set ruler               " Always show current cursor position (row, col)
+set t_Co=256            " Enable 256-color support for themes
+syntax on               " Turn syntax highlighting on explicitly
+
+" --- Environment-Aware Tuning (M1 Local vs. Warp SSH) ---
+if has_key(environ(), "SSH_CLIENT") || has_key(environ(), "SSH_TTY")
+    " On a remote SSH link: disable heavy rendering to prevent typing lag
+    set nocursorline
+    set lazyredraw
+else
+    " On your local M1 Mac: enjoy lightning-fast native terminal rendering
+    set cursorline
+    set nolazyredraw
+endif
+
+"" --- Tabs, Indentation & Layout ---
+set expandtab           " Convert typed tabs into spaces
+set tabstop=4           " Number of spaces a <Tab> counts for
+set shiftwidth=4        " Number of spaces used for auto-indents
+set autoindent          " Copy indent from current line when hitting enter
+set smartindent         " Make auto-indentation layout smarter based on syntax
+set wrap                " Turn on soft wrapping for long text lines
+
+"" --- Searching ---
+set hlsearch            " Highlight matches when searching text
+set incsearch           " Show matches dynamically as you type a query
+set ignorecase          " Make search case-insensitive...
+set smartcase           " ...unless your query includes a capital letter
+set gdefault            " Apply substitutions globally across a line by default
+
+"" --- Backup & Swap Safety ---
+set backup              " Enable safety backups
+set writebackup         " Protect against crashes during writing
+set swapfile            " Protect against simultaneous file editing
+
+" Create dedicated folders for Vim clutter so your code stays clean
+if !isdirectory($HOME . '/.vim/backups')
+    call mkdir($HOME . '/.vim/backups', 'p')
+endif
+if !isdirectory($HOME . '/.vim/swaps')
+    call mkdir($HOME . '/.vim/swaps', 'p')
+endif
+if !isdirectory($HOME . '/.vim/undo')
+    call mkdir($HOME . '/.vim/undo', 'p')
+endif
+
+set backupdir=~/.vim/backups//
+set directory=~/.vim/swaps//
+set undodir=~/.vim/undo//
+
+"" --- Useful Quality-of-Life Mappings ---
+let mapleader = " "
+
+" Pressing Space + h turns off the distracting search highlights
+nnoremap <leader>h :nohlsearch<CR>
+
+" Easily navigate split windows using Control + Arrow Keys
+nnoremap <C-Left> <C-w>h
+nnoremap <C-Down> <C-w>j
+nnoremap <C-Up> <C-w>k
+nnoremap <C-Right> <C-w>l
+
+
+" ====================================================================
+" 2. VIM-PLUG BLOCK (YOUR PLUGINS)
+" ====================================================================
+
+call plug#begin('~/.vim/plugged')
+
+" --- Existing Plugins ---
 Plug 'junegunn/vim-easy-align'
-
-" Any valid git URL is allowed
-Plug 'https://github.com/junegunn/vim-github-dashboard.git'
-
-" Multiple Plug commands can be written in a single line using | separators
-Plug 'SirVer/ultisnips' | Plug 'honza/vim-snippets'
-
-" On-demand loading
+Plug 'https://github.com'
 Plug 'preservim/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'tpope/vim-fireplace', { 'for': 'clojure' }
-
-" Using a non-default branch
 Plug 'rdnetto/YCM-Generator', { 'branch': 'stable' }
-
-" Using a tagged release; wildcard allowed (requires git 1.9.2 or above)
 Plug 'fatih/vim-go', { 'tag': '*' }
-
-" Plugin options
 Plug 'nsf/gocode', { 'tag': 'v.20150303', 'rtp': 'vim' }
-
-" Plugin outside ~/.vim/plugged with post-update hook
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-
-" Unmanaged plugin (manually installed and updated)
 Plug '~/my-prototype-plugin'
+Plug 'VundleVim/Vundle.vim'
+Plug 'luochen1990/rainbow'
+Plug 'ntnn/vim-ctagser'
+Plug 'rust-lang/rust.vim'
+Plug 'prabirshrestha/vim-lsp'
+Plug 'prabirshrestha/asyncomplete.vim'
+Plug 'prabirshrestha/asyncomplete-lsp.vim'
+Plug 'tpope/vim-sensible' 
+Plug 'sheerun/vim-polyglot'
 
-" Initialize plugin system
-" - Automatically executes `filetype plugin indent on` and `syntax enable`.
+" --- Essential Plugin Additions ---
+Plug 'vim-airline/vim-airline'           " Clean statusline at bottom
+Plug 'vim-airline/vim-airline-themes'    " Statusline color presets
+Plug 'tpope/vim-commentary'              " Context-aware comment hotkeys
+Plug 'jiangmiao/auto-pairs'              " Smart auto-brackets/quotes closure
+Plug 'dracula/vim', { 'as': 'dracula' }  " Professional aesthetic theme color palette
+
+" --- Remote SSH & Local Performance Additions ---
+Plug 'christoomey/vim-tmux-navigator'     " Smooth split management
+Plug 'mhinz/vim-signify'                 " Asynchronous fast Git gutter indicators 
+Plug 'mhinz/vim-startify'                " Start screen panel for fast remote session recall
+Plug 'junegunn/fzf.vim'                  " Extension mappings block for full FZF utility
+
+" --- Power-User Utility Additions ---
+Plug 'tpope/vim-surround'                " Intuitively manage wrapping quotes/parentheses/tags
+Plug 'tpope/vim-repeat'                  " Allow the dot (.) command to repeat macro-plugin tasks
+Plug 'mbbill/undotree'                   " Chronological branch-tree layout visualizer for undoing
+
 call plug#end()
-" You can revert the settings after the call like so:
-"   filetype indent off   " Disable file-type-specific indentation
-"   syntax off            " Disable syntax highlighting
 
 
+" ====================================================================
+" 3. PLUGIN CONFIGURATIONS & KEYMAPS
+" ====================================================================
 
+"" --- Theme Palette Settings ---
+colorscheme dracula                      " Load Dracula theme coloring
+set t_ut=                                " Fix background coloring bugs over SSH/Warp
 
-" LSP config"
+"" --- Vim-Easy-Align Mappings ---
+xmap ga <Plug>(EasyAlign)
+nmap ga <Plug>(EasyAlign)
+
+"" --- NERDTree Configuration ---
+nnoremap <leader>n :NERDTreeToggle<CR>
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+
+"" --- FZF (Fuzzy Finder) Configuration ---
+nnoremap <leader>f :Files<CR>
+nnoremap <leader>b :Buffers<CR>
+nnoremap <leader>g :Rg<CR>
+
+"" --- UndoTree Configuration ---
+" Press Space + u to toggle the visual branching timeline of historical changes
+nnoremap <leader>u :UndotreeToggle<CR>
+
+"" --- Vim-Airline Settings ---
+let g:airline_powerline_fonts = 1        
+let g:airline_theme = 'dracula'          
+let g:airline#extensions#tabline#enabled = 1 
+
+"" --- Signify (Git Status) Settings ---
+set updatetime=100                       " Fast sign column refresh interval
+
+"" --- Rainbow Parentheses Automation ---
+let g:rainbow_active = 1 
+
+"" --- Startify Greeting Settings ---
+let g:startify_session_persistence = 1   
+
+"" --- LSP Configuration ---
 function! s:on_lsp_buffer_enabled() abort
     setlocal omnifunc=lsp#complete
     setlocal signcolumn=yes
@@ -62,30 +181,34 @@ function! s:on_lsp_buffer_enabled() abort
     nmap <buffer> [g <plug>(lsp-previous-diagnostic)
     nmap <buffer> ]g <plug>(lsp-next-diagnostic)
     nmap <buffer> K <plug>(lsp-hover)
-    "nnoremap <buffer> <expr><c-f> lsp#scroll(+4)
-    "nnoremap <buffer> <expr><c-d> lsp#scroll(-4)
 
     let g:lsp_format_sync_timeout = 1000
     autocmd! BufWritePre *.rs,*.go call execute('LspDocumentFormatSync')
-
-    " refer to doc to add more commands"
 endfunction
 
+augroup lsp_install
+    au!
+    autocmd User lsp_buffer_enabled call s:on_lsp_buffer_enabled()
+augroup END
 
 
-" Vundle manages Vundle
-Plug 'VundleVim/Vundle.vim'
+" ====================================================================
+" 4. SKINNY CURSOR & INPUT TUNING (CROSS-PLATFORM SAFE)
+" ====================================================================
 
-" Rainbow Parenthesis "
-Plug 'kien/rainbow_parentheses.vim'
+" Force xterm compatibility overrides for cursor handling (Warp + Terminal App Safe)
+let &t_SI = "\<Esc>[5 q"  " Insert Mode -> Skinny Line
+let &t_EI = "\<Esc>[2 q"  " Normal Mode -> Solid Block
 
-" System-wide ctags"
-Plug 'ntnn/vim-ctagser'
+" Clear lag delays when hitting Escape over network lines
+set ttimeout
+set ttimeoutlen=1
+set ttyfast
 
-" Rust"
-Plug 'rust-lang/rust.vim'
-
-" Vim LSP/Async auto-complete"
-Plug 'prabirshrestha/vim-lsp'
-Plug 'prabirshrestha/asyncomplete.vim'
-Plug 'prabirshrestha/asyncomplete-lsp.vim'
+" Safe bracketed paste mode toggles for external snippet pasting
+if &term =~ "xterm"
+    let &t_BE = "\e[?2004h"
+    let &t_BD = "\e[?2004l"
+    let &t_PS = "\e[200~"
+    let &t_PE = "\e[201~"
+endif
