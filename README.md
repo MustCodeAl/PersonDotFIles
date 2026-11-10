@@ -55,7 +55,7 @@ brew cask installs (do `$ brew install --no-qurantine` if some of them wont open
 
 ```console
 $ brew install alt-tab displaylink hiddenbar raycast stats swift-quit
-$ brew install codex devutils jetbrains-toolbox iterm2 iina
+$ brew install codex devutils jetbrains-toolbox iterm2 iina mangodisk
 $ brew install coteditor switchhosts rapidapi requestly warp utm
 $ brew install anki bitwarden chatgpt linear-linear platypus superproductivity 
 $ brew install apparency betterzip qlimagesize qlzipinfo provisionql syntax-highlight suspicious-package
